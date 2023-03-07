@@ -11,14 +11,14 @@ Page({
             {id: 2, imgSrc: '/static/image/banner3.jpg'}
         ],
         tabData: [
-            {index: 0,name:'代取快递', iconSrc:'/static/image/kuaidi.png',url:'/pages/home/page/pick-express/pick-express'},
-            {index: 1,name:'代寄快递', iconSrc:'/static/image/daiji.png',url:'/pages/home/page/post-express/post-express'},
-			{index: 2,name:'代拿外卖', iconSrc:'/static/image/waimai.png',url:'/pages/home/page/pick-take-out/pick-take-out'},
-			{index: 3,name:'代排队', iconSrc:'/static/image/paidui.png',url:'/pages/home/page/sub-queue/sub-queue'},
-            {index: 4,name:'代购', iconSrc:'/static/image/daigou.png',url:'/pages/home/page/buy-agent/buy-agent'},
-            {index: 5,name:'代送', iconSrc:'/static/image/daisong.png',url:'/pages/home/page/designee/designee'},
-            {index: 6,name:'闲置物', iconSrc:'/static/image/idle.png',url:'/pages/home/page/designee/designee'},
-            {index: 7,name:'其他服务', iconSrc:'/static/image/wanN.png',url:'/pages/home/page/other/other'}
+            {index: 0,name:'代取快递', iconSrc:'/static/image/kuaidi.png',url:'/pages/home/navpage/pick-express/pick-express'},
+            {index: 1,name:'代寄快递', iconSrc:'/static/image/daiji.png',url:'/pages/home/navpage/post-express/post-express'},
+			{index: 2,name:'代拿外卖', iconSrc:'/static/image/waimai.png',url:'/pages/home/navpage/pick-take-out/pick-take-out'},
+			{index: 3,name:'代排队', iconSrc:'/static/image/paidui.png',url:'/pages/home/navpage/sub-queue/sub-queue'},
+            {index: 4,name:'代购', iconSrc:'/static/image/daigou.png',url:'/pages/home/navpage/buy-agent/buy-agent'},
+            {index: 5,name:'代送', iconSrc:'/static/image/daisong.png',url:'/pages/home/navpage/designee/designee'},
+            {index: 6,name:'闲置物', iconSrc:'/static/image/idle.png',url:'/pages/home/navpage/idle/idle'},
+            {index: 7,name:'其他服务', iconSrc:'/static/image/wanN.png',url:'/pages/home/navpage/universal/universal'}
         ]
     },
     /**

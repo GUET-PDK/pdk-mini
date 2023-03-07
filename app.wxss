@@ -31,5 +31,7 @@
 .title-top {
   z-index: 2;
   font-size: 14px;
-  margin: auto;
+  font-weight: 600;
+  margin: 12rpx auto;
+  color:#3E54AC;
 }

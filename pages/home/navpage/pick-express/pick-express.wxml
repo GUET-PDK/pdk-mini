@@ -7,4 +7,9 @@
 
 	<!-- 顶部标题 -->
 	<view class="title-top">代取快递</view>
+
+	<!-- 订单页 -->
+	<view class="order">
+		
+	</view>
 </view>

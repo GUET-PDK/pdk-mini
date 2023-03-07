@@ -1,4 +1,4 @@
-// pages/home/page/other/other.js
+// pages/home/page/idle/idle.js
 Page({
 
     /**
