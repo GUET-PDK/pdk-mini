@@ -1,0 +1,47 @@
+{
+    "pages": [
+        "pages/home/index/index",
+        "pages/order/order",
+        "pages/user/user",
+        "pages/home/page/other/other",
+        "pages/home/page/designee/designee",
+        "pages/home/page/buy-agent/buy-agent",
+        "pages/home/page/pick-express/pick-express",
+        "pages/home/page/pick-take-out/pick-take-out",
+        "pages/home/page/post-express/post-express",
+        "pages/home/page/sub-queue/sub-queue"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "校园跑腿小程序",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "backgroundColor": "#F6F6F6",
+        "borderStyle": "black",
+        "selectedColor": "#2F88FF",
+        "list": [
+            {
+                "pagePath": "pages/home/index/index",
+                "text": "首页",
+                "iconPath": "/static/image/icon/_home.png",
+                "selectedIconPath": "/static/image/icon/home.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "订单",
+                "iconPath": "/static/image/icon/_order.png",
+                "selectedIconPath": "/static/image/icon/order.png"
+            },
+            {
+                "pagePath": "pages/user/user",
+                "text": "我的",
+                "iconPath": "/static/image/icon/_mine.png",
+                "selectedIconPath": "/static/image/icon/mine.png"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

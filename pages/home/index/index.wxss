@@ -1,0 +1,66 @@
+/* pages/home/index/index.wxss */
+/* 顶部背景图 */
+.bg-imageTop {
+	width: 100%;
+	height: 320rpx;
+	position: fixed;
+	top: 0;
+	left: 0;
+	border-radius: 12rpx;
+	overflow: hidden;
+	z-index: 1;
+}
+.bg-imageTop image {
+	width: 100%;
+	height: 100%;
+}
+
+/* 顶部校区信息、骑手数据显示 */
+.top-intro {
+	margin-top: 6rpx;
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+	z-index: 2;
+}
+
+/* 顶部轮播图 */
+.banner {
+	width: 100%;
+	height: 384rpx;
+	z-index: 2;
+}
+.banner image {
+	width: 100%;
+	height: 100%;
+	transform: scale(0.92);
+	border-radius: 36rpx;
+}
+.wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: 0rpx;
+}
+
+/* 功能选项菜单 */
+.tab-menu {
+	flex: 1 1 auto; /*自适应撑满剩余屏幕空间*/
+	width: 95%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.tab-menu .tab-item {
+	width: 25%;
+	height: 150rpx;
+	margin: 18rpx 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-weight: 300;
+}
+.tab-menu .tab-item image {
+	width: 120rpx;
+	height:120rpx;
+}
