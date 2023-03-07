@@ -1,6 +1,6 @@
 <view class="container">
 	<!-- 顶部背景图 -->
-	<view class="bg-imageTop">
+	<view class="bg-image-top">
 		<image src="/static/image/bg-guet.png" mode="aspectFill"/>
 	</view>
 

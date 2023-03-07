@@ -1,2 +1,10 @@
 <!--pages/home/page/pick-express/pick-express.wxml-->
-<text>pages/home/page/pick-express/pick-express.wxml</text>
+<view class="container">
+	<!-- 顶部背景图 -->
+	<view class="bg-image-top">
+		<image src="/static/image/bg-guet.png" mode="aspectFill"/>
+	</view>
+
+	<!-- 顶部标题 -->
+	<view class="title-top">代取快递</view>
+</view>

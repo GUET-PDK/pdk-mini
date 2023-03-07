@@ -14,7 +14,7 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "校园跑腿小程序",
+        "navigationBarTitleText": "GUET跑得快",
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
