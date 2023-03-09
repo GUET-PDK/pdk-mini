@@ -2,7 +2,7 @@
 
 /* 顶部校区信息、骑手数据显示 */
 .top-intro {
-	margin-top: 6rpx;
+	margin-top: 20rpx;
 	width: 80%;
 	display: flex;
 	justify-content: space-between;

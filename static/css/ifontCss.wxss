@@ -1,21 +1,54 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3926611 */
-  src: url('//at.alicdn.com/t/c/font_3926611_s1h0hh82x6.woff2?t=1677748601202') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3926611_s1h0hh82x6.woff?t=1677748601202') format('woff'),
-       url('//at.alicdn.com/t/c/font_3926611_s1h0hh82x6.ttf?t=1677748601202') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3926611_8drnlsyu1o8.woff2?t=1678266716230') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3926611_8drnlsyu1o8.woff?t=1678266716230') format('woff'),
+       url('//at.alicdn.com/t/c/font_3926611_8drnlsyu1o8.ttf?t=1678266716230') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* 地址图图标1 */
 .icon-weibiaoti-3:before {
   content: "\e601";
 }
 
+/* 小骑手图标 */
 .icon-qishou:before {
   content: "\e63d";
+}
+
+/* 地址图标2 */
+.icon-daohangdizhi:before {
+  content: "\e65e";
+}
+
+/* 进入箭头 */
+.icon-jinrujiantou:before {
+  font-weight: 600;
+  content: "\e88e";
+}
+
+/* 分享图标 */
+.icon-fenxiang:before {
+  content: "\e602";
+}
+
+/* 建议图标 */
+.icon-xiugaioryijian:before {
+  content: "\e603";
+}
+
+/* 关于图标 */
+.icon-guanyu_o:before {
+  content: "\eb77";
+}
+
+/* 个人信息图标 */
+.icon-gerenxinxi:before {
+  content: "\e617";
 }

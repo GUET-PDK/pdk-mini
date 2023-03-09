@@ -1,2 +1,6 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="container">
+	<view class="top-bar">
+		
+	</view>
+</view>

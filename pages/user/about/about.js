@@ -1,23 +1,11 @@
-// pages/user/user.js
+// pages/user/about/about.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        userDataBar: [
-            {index:1, name:'我的订单', num:12},
-            {index:2, name:'我的接单', num:111},
-            {index:3, name:'我的评价', num:45},
-            {index:4, name:'我的闲置', num:8}
-        ],
-        userList: [
-            {id:1,name:"个人信息",icon:"/static/image/user_ic/person_ifon.png"},
-            {id:2,name:"我的地址",icon:"/static/image/user_ic/addr.png"},
-            {id:3,name:"分享好友",icon:"/static/image/user_ic/share.png"},
-            {id:4,name:"意见反馈",icon:"/static/image/user_ic/opinion.png"},
-            {id:5,name:"关于我们",icon:"/static/image/user_ic/about.png"}
-        ]
+
     },
 
     /**

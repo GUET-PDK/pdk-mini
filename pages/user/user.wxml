@@ -1,2 +1,39 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="container">
+	<view class="backg">
+    	<image src="" mode="aspectFill" />
+  	</view>
+
+	<!-- 用户简介 -->
+	<view class="user-intro">
+		<image src="/static/image/icon/avatar.png" mode="aspectFit" />
+		<view class="user-name">蛋白质</view>
+		<view class="user-id">2000301417</view>
+	</view>
+
+	<!-- 用户订单、跑腿数据 -->
+	<view class="user-data-bar">
+		<view class="bar-item" wx:for="{{userDataBar}}" wx:key="index" wx:for-item="barItem">
+			<view>{{barItem.num}}</view>
+			<view>{{barItem.name}}</view>
+		</view>
+	</view>
+
+	<!-- 用户列表 -->
+	<view class="user-list">
+		<view class="main-list">
+			<view class="list-item" wx:for="{{userList}}" wx:key="id" wx:for-item="listItem">
+				<view>
+					<image src="{{listItem.icon}}" mode="aspectFit"/>
+					<text>{{listItem.name}}</text>
+				</view>
+				<image src="/static/image/into.png" mode="aspectFit"/>
+			</view>
+		</view>
+
+		<!-- 版本号 -->
+		<view class="version">
+			v1.0.0
+		</view>
+	</view>
+</view>

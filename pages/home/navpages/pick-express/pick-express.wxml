@@ -1,0 +1,37 @@
+<!--pages/home/page/pick-express/pick-express.wxml-->
+<view class="container">
+	<!-- 顶部背景图 -->
+	<view class="bg-image-top">
+		<image src="/static/image/bg-guet.png" mode="aspectFill"/>
+	</view>
+
+	<!-- 顶部标题 -->
+	<view class="title-top">代取快递</view>
+
+	<!-- 订单内容 -->
+	<view class="main-from">
+		<view class="addr-top border-bottom-line">
+			<text class="iconfont icon-daohangdizhi font-16">配送地址（姓名+电话+宿舍号）</text>
+			<text class="iconfont icon-jinrujiantou font-18"></text>
+		</view>
+		
+		<!-- 表单滑动区域 -->
+		<scroll-view class="main-section" scroll-y enable-flex="true">
+			<view class="main-item item-time border-bottom-line">
+				<view class="time-lable">
+					<text>选择集中配送时间</text>
+					<text>(单选)</text>
+				</view>
+
+				<view class="time-option">
+            		<text class="time-select">12:00 ~ 14:00</text><text class="time-select time-selected">19:00 ~ 22:00</text>
+          		</view>
+			</view>
+
+			<view class="main-item item-picture">
+				
+			</view>
+		</scroll-view>
+	</view>
+</view>
+

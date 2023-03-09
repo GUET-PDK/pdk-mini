@@ -3,6 +3,7 @@
 
 /* 各页面主体布局 */
 .container {
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -26,12 +27,4 @@
 .bg-image-top image {
 	width: 100%;
 	height: 100%;
-}
-
-.title-top {
-  z-index: 2;
-  font-size: 14px;
-  font-weight: 600;
-  margin: 12rpx auto;
-  color:#3E54AC;
 }
