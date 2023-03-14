@@ -1,87 +1,253 @@
 /* 首页导航标签页面 */
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
 /* 顶部标题 */
 .title-top {
-	z-index: 2;
-	font-weight: 600;
-	margin: 20rpx auto;
-	color:#3E54AC;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin: 12rpx auto;
+  color: #07c160;
+  z-index: 2;
 }
 
 /* 主要表单区域 */
 .main-from {
-	width: 92%;
-	flex: 1 1 auto;
-	background-color: #fff;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	border-top-left-radius: 30rpx;
-	border-top-right-radius: 30rpx;
-	z-index: 2;
+  width: 92%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
 
-/* 表单顶部地址栏 */
+/* 表单地址栏 */
 .addr-top {
-	width: 95%;
-	height: 90rpx;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	text-align: center;
+  position: absolute;
+  top: 66rpx;
+  width: 690rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 16rpx;
+  background-color: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  z-index: 2;
 }
 
-/* 滑动区域 */
-.main-section {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+/* 表单滑动区域(包括主要和公共部分) */
+.main-from-section {
+  position: absolute;
+  top: 150rpx;
+  bottom: 0;
+  width: 690rpx;
 }
+/* 主要部分 */
+.main-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  background-color: #fff;
+}
+
+/* 公共部分 */
+.common-section {
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* 表单子项 */
 .main-item {
-	width: 95%;
-	padding: 20rpx 0;
-	font-size: 32rpx;
+  width: 95%;
+  padding: 20rpx 0;
+  font-size: 32rpx;
+}
+.common-item {
+  width: 100%;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  padding: 20rpx 18rpx;
 }
 
-
-/* 子项-集中配送时间 */
+/* 主要子项-配送时间栏 */
 .item-time {
-	display: flex;
-	flex-direction: column;
-}
-.time-lable text:last-child {
-	color: #333;
-}
-.time-option {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
 }
 
+.time-option {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 /* 时间选项 */
 .time-select {
-    background-color: #F8F8F8;
-    color: #666;
-    padding: 10rpx 20rpx;
-    margin: 12rpx 20rpx 0 0;
-    border-radius: 10rpx;
+  background-color: #f8f8f8;
+  color: #666;
+  padding: 10rpx 20rpx;
+  margin: 12rpx 20rpx 0 0;
+  border-radius: 10rpx;
 }
 
 .time-selected {
-    color: #FFF;
+  /* color: #FFF; */
 }
 
-/* 常用功能 */
-.font-16 {
-	font-size: 32rpx;
+/* 上传栏 */
+.pic-upload-item {
+  width: 160rpx;
+  height: 160rpx;
+  margin: 20rpx 20rpx 0 0;
+  position: relative;
 }
 
-.font-18 {
-	font-size: 36rpx;
+.pic-upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px #d2d0d0 dashed; /*虚线边框*/
+  border-radius: 10rpx;
 }
 
+/* 备注栏 */
+.item-remake {
+  display: flex;
+}
+
+/* 物品大小栏 */
+.item-size {
+  display: flex;
+}
+.size-radio-lab {
+  margin-left: 18rpx;
+}
+radio .wx-radio-input {
+  border-radius: 50%; /* 圆角 */
+  width: 24rpx;
+  height: 24rpx;
+  border: 2rpx solid #5e5e5f;
+}
+radio .wx-radio-input.wx-radio-input-checked {
+  border: none;
+  background: #07c160;
+}
+radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%; /* 圆角 */
+  width: 28rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 28rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 24rpx; /* 对勾大小 30rpx */
+  color: #fff; /* 对勾颜色 白色 */
+  background: #07c160;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 数量选择项 */
+.item-number {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+}
+.number-select {
+  margin-right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.count-num {
+  margin: 0 10rpx;
+  font-size: 40rpx;
+  text-align: center;
+  color: coral;
+}
+
+/* 费用小计 */
+.item-cost {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+}
+
+/* 支付方式栏 */
+.item-pay {
+  margin: 20rpx 0;
+  background-color: #fff;
+  border-radius: 30rpx;
+}
+.item-pay view {
+  margin-top: 6rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.item-pay image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 10rpx;
+}
+
+/* 结算、合计栏 */
+.total-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  z-index: 10;
+}
+
+/* 常用图标 */
+.icon-daohangdizhi {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+.icon-jinrujiantou {
+  font-size: 36rpx;
+}
+.icon-qujianma:before {
+  font-size: 30rpx;
+  content: "\e604";
+}
+
+.input-holder,
+.lable-tip {
+  font-size: 28rpx;
+  color: #999;
+}
 .border-bottom-line {
-	border-bottom: 1px #e8e8e8 solid;
+  border-bottom: 1px #e8e8e8 solid;
 }

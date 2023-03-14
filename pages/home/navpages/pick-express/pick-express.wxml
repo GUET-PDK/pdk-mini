@@ -1,37 +1,127 @@
 <!--pages/home/page/pick-express/pick-express.wxml-->
 <view class="container">
-	<!-- 顶部背景图 -->
-	<view class="bg-image-top">
-		<image src="/static/image/bg-guet.png" mode="aspectFill"/>
-	</view>
+    <!-- 顶部背景图 -->
+    <view class="bg-image-top">
+        <image src="/static/image/bg-guet.png" mode="aspectFill" />
+    </view>
 
-	<!-- 顶部标题 -->
-	<view class="title-top">代取快递</view>
+    <!-- 顶部标题 -->
+    <view class="title-top" id="test">代取快递</view>
 
-	<!-- 订单内容 -->
-	<view class="main-from">
-		<view class="addr-top border-bottom-line">
-			<text class="iconfont icon-daohangdizhi font-16">配送地址（姓名+电话+宿舍号）</text>
-			<text class="iconfont icon-jinrujiantou font-18"></text>
-		</view>
-		
-		<!-- 表单滑动区域 -->
-		<scroll-view class="main-section" scroll-y enable-flex="true">
-			<view class="main-item item-time border-bottom-line">
-				<view class="time-lable">
-					<text>选择集中配送时间</text>
-					<text>(单选)</text>
-				</view>
+    <!-- 订单内容 -->
+    <view class="main-from">
+        <!-- Todo 表单优化 -->
+        <!-- <form bindsubmit=""></form> -->
 
-				<view class="time-option">
-            		<text class="time-select">12:00 ~ 14:00</text><text class="time-select time-selected">19:00 ~ 22:00</text>
-          		</view>
-			</view>
+        <!-- 地址栏 -->
+        <view class="addr-top border-bottom-line">
+            <text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> (姓名+电话+宿舍号)</text></text>
+            <text class="iconfont icon-jinrujiantou"></text>
+        </view>
 
-			<view class="main-item item-picture">
-				
-			</view>
-		</scroll-view>
-	</view>
+        <!-- 表单滑动区域 -->
+        <scroll-view class="main-from-section" scroll-y enable-flex="true">
+            <view class="main-section">
+                <!-- 配送时间栏 -->
+                <view class="main-item item-time border-bottom-line">
+                    <view class="time-lable">
+                        <text>选择配送时间</text>
+                        <text class="lable-tip"> (单选)</text>
+                    </view>
+                    <view class="time-option">
+                        <text class="time-select">12:00 ~ 14:00</text>
+                        <text class="time-select time-selected">19:00 ~ 22:00</text>
+                    </view>
+                </view>
+
+                <!-- 上传图片栏 -->
+                <view class="main-item item-picture border-bottom-line">
+                    <view class="pictrue-lable">
+                        <text class="iconfont icon-qujianma"></text>
+                        上传取件码
+                        <text class="lable-tip"> (最多可上传3张截图)</text>
+                    </view>
+
+                    <view class="pictrue-upload">
+                        <view class="pic-upload-item">
+                            <block wx:for="" wx:for-item="upData">
+                                <view>
+                                    <image src="" mode="" />
+                                </view>
+                            </block>
+                            <view class="pic-upload-item pic-upload-icon">
+                                <text class="iconfont icon-upload"></text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 备注栏 -->
+                <view class="main-item item-remake border-bottom-line">
+                    <text>备注：</text>
+                    <input type="text" placeholder="如物品贵重" class="" placeholder-class="input-holder" />
+                </view>
+
+                <!-- 物件大小栏 -->
+                <view class="main-item item-size">
+                    <text>快递大小：</text>
+                    <radio-group bindchange="radioChange">
+                        <label wx:for="{{radios}}" wx:key="id" class="size-radio-lab">
+                            <radio value="{{item.value}}" checked="{{item.check}}" />{{item.name}}
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+
+
+            <!-- 公共底部 -->
+            <view class="common-section">
+                <!-- 数量栏 -->
+                <view class="common-item item-number border-bottom-line">
+                    <text>请选择数量</text>
+                    <view class="number-select">
+                        <view bindtap="subNum">
+                            <text class="iconfont icon-Sub"></text>
+                        </view>
+                        <text class="count-num">{{number}}</text>
+                        <view bindtap="addNum">
+                            <text class="iconfont icon-Add"></text>
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 费用小计 -->
+                <view class="common-item item-cost border-bottom-line">
+                    <view>
+                        <text>费用</text><text class="iconfont icon-wenhao"></text>
+                    </view>
+                    <text>￥{{price}}</text>
+                </view>
+                <!-- 支付方式栏目 -->
+                <view class="common-item item-pay border-bottom-line">
+                    <text>请选择支付方式</text>
+                    <view>
+                        <view>
+                            <image src="/static/image/wxzf.png" mode="aspectFit" />
+                            微信支付
+                        </view>
+                        <radio value="wx" checked="true" />
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+
+        <!-- 总结、结算栏 -->
+        <view class="total-bottom">
+            <view>
+                <text>合计</text>
+                <text>￥{{total}}</text>
+            </view>
+            <view>
+                <button size="mini" type="primary" class="submitBtn">提交订单</button>
+            </view>
+        </view>
+    </view>
+
+
 </view>
-
