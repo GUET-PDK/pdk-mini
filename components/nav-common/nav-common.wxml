@@ -1,0 +1,46 @@
+<!-- 首页各导航页面公共部分 -->
+<view class="common-section">
+	<!-- 物件大小栏 -->
+	<view class="common-item item-size bottom-line">
+		<text>快递大小：</text>
+		<radio-group bindchange="radioChange">
+			<label wx:for="{{radios}}" wx:key="id" class="size-radio-lab">
+				<radio value="{{item.value}}" checked="{{item.check}}" />{{item.name}}
+			</label>
+		</radio-group>
+	</view>
+
+	<!-- 费用小计 -->
+	<view class="common-item item-cost bottom-line">
+		<view>
+			<text>服务单价</text><text class="iconfont icon-wenhao"></text>
+		</view>
+		<text class="def-price">￥{{def_price}}</text>
+	</view>
+
+	<!-- 数量栏 -->
+	<view class="common-item item-number">
+		<text>请选择数量</text>
+		<view class="number-select">
+			<view bindtap="subNum">
+				<text class="iconfont icon-Sub"></text>
+			</view>
+			<text class="count-num">{{def_num}}</text>
+			<view bindtap="addNum">
+				<text class="iconfont icon-Add"></text>
+			</view>
+		</view>
+	</view>
+
+	<!-- 支付方式栏目 -->
+	<view class="common-item item-pay">
+		<text>请选择支付方式</text>
+		<view>
+			<view>
+				<image src="/static/image/wxzf.png" mode="aspectFit" />
+				微信支付
+			</view>
+			<radio value="wx" checked="true" />
+		</view>
+	</view>
+</view>

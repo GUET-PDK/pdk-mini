@@ -1,3 +1,6 @@
 {
-    
+	"navigationBarTitleText": "代取快递",
+	"usingComponents": {
+		"nav-common": "/components/nav-common/nav-common"
+	}
 }

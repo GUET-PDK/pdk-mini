@@ -5,9 +5,6 @@
         <image src="/static/image/bg-guet.png" mode="aspectFill" />
     </view>
 
-    <!-- 顶部标题 -->
-    <view class="title-top" id="test">代取快递</view>
-
     <!-- 订单内容 -->
     <view class="main-from">
         <!-- Todo 表单优化 -->
@@ -61,61 +58,17 @@
                     <text>备注：</text>
                     <input type="text" placeholder="如物品贵重" class="" placeholder-class="input-holder" />
                 </view>
-
-                <!-- 物件大小栏 -->
-                <view class="main-item item-size">
-                    <text>快递大小：</text>
-                    <radio-group bindchange="radioChange">
-                        <label wx:for="{{radios}}" wx:key="id" class="size-radio-lab">
-                            <radio value="{{item.value}}" checked="{{item.check}}" />{{item.name}}
-                        </label>
-                    </radio-group>
-                </view>
             </view>
 
-
-            <!-- 公共底部 -->
-            <view class="common-section">
-                <!-- 数量栏 -->
-                <view class="common-item item-number border-bottom-line">
-                    <text>请选择数量</text>
-                    <view class="number-select">
-                        <view bindtap="subNum">
-                            <text class="iconfont icon-Sub"></text>
-                        </view>
-                        <text class="count-num">{{number}}</text>
-                        <view bindtap="addNum">
-                            <text class="iconfont icon-Add"></text>
-                        </view>
-                    </view>
-                </view>
-
-                <!-- 费用小计 -->
-                <view class="common-item item-cost border-bottom-line">
-                    <view>
-                        <text>费用</text><text class="iconfont icon-wenhao"></text>
-                    </view>
-                    <text>￥{{price}}</text>
-                </view>
-                <!-- 支付方式栏目 -->
-                <view class="common-item item-pay border-bottom-line">
-                    <text>请选择支付方式</text>
-                    <view>
-                        <view>
-                            <image src="/static/image/wxzf.png" mode="aspectFit" />
-                            微信支付
-                        </view>
-                        <radio value="wx" checked="true" />
-                    </view>
-                </view>
-            </view>
+            <!-- 公共部分 -->
+            <nav-common bind:totalEvent="onEvent"></nav-common>
         </scroll-view>
 
         <!-- 总结、结算栏 -->
         <view class="total-bottom">
             <view>
                 <text>合计</text>
-                <text>￥{{total}}</text>
+                <text>￥{{sum}}</text>
             </view>
             <view>
                 <button size="mini" type="primary" class="submitBtn">提交订单</button>

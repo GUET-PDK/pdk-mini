@@ -1,0 +1,97 @@
+/* 导航页面公共部分样式 */
+
+/* 公共部分 */
+.common-section {
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 子项 */
+.common-item {
+  width: 100%;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  padding: 20rpx 18rpx;
+}
+
+/* 物品大小栏 */
+.item-size {
+  display: flex;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  background-color: #fff;
+}
+.size-radio-lab {
+  margin-left: 30rpx;
+}
+
+/* 数量选择项 */
+.item-number {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+}
+.number-select {
+  margin-right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.count-num {
+  margin: 0 12rpx;
+  font-size: 42rpx;
+  text-align: center;
+  color: coral;
+}
+
+/* 服务单价 */
+.item-cost {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.def-price {
+  color: coral;
+  margin-right: 64rpx;
+}
+
+/* 支付方式栏 */
+.item-pay {
+  margin: 20rpx 0;
+  background-color: #fff;
+  border-radius: 30rpx;
+}
+.item-pay view {
+  margin-top: 6rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.item-pay image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 10rpx;
+}
+
+/* 底边边框95%居中样式 */
+.bottom-line {
+  position: relative;
+}
+.bottom-line:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 2rpx;
+  width: 95%;
+  background-color: #e8e8e8;
+  left: 50%;
+  transform: translateX(-50%);
+}
