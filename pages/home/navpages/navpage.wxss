@@ -1,4 +1,7 @@
 /* 首页导航标签页面 */
+page {
+  --active-bg-color:#07c160
+}
 .container {
   position: fixed;
   left: 0;
@@ -25,7 +28,7 @@
   position: absolute;
   top: 36rpx;
   width: 690rpx;
-  height: 90rpx;
+  height: 100rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,7 +44,7 @@
 /* 表单滑动区域(包括主要和公共部分) */
 .main-from-section {
   position: absolute;
-  top: 120rpx;
+  top: 135rpx;
   bottom: 0;
   width: 690rpx;
 }
@@ -84,19 +87,39 @@
 }
 
 .time-selected {
-  /* color: #FFF; */
+  color: #FFF;
+  background-color: var(--active-bg-color);
 }
 
 /* 上传栏 */
 .pic-upload-item {
-  width: 160rpx;
-  height: 160rpx;
-  margin: 20rpx 20rpx 0 0;
+  width: 190rpx;
+  height: 190rpx;
+  margin: 20rpx 30rpx 0 6rpx;
   position: relative;
 }
+/* 上传图片的样式 */
+.pic-upload-item image {
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 10rpx;
+}
+.pic-upload-item:nth-child(3n) {
+  margin-right: 0;
+}
+/* 删除图标 */
+.pic-upload-item .icon-close {
+  position: absolute;
+  font-size: 48rpx;
+    right: -20rpx;
+    top: -20rpx;
+    color: #c3cfe2;
+}
 
+/* 上传图标 */
 .pic-upload-icon {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border: 1px #d2d0d0 dashed; /*虚线边框*/
@@ -158,7 +181,7 @@ radio .wx-radio-input {
 }
 radio .wx-radio-input.wx-radio-input-checked {
   border: none;
-  background: #07c160;
+  background: var(--active-bg-color);
 }
 radio .wx-radio-input.wx-radio-input-checked::before {
   border-radius: 50%; /* 圆角 */
@@ -168,6 +191,6 @@ radio .wx-radio-input.wx-radio-input-checked::before {
   text-align: center;
   font-size: 24rpx; /* 对勾大小 30rpx */
   color: #fff; /* 对勾颜色 白色 */
-  background: #07c160;
+  background: var(--active-bg-color);
   transform: translate(-50%, -50%) scale(1);
 }

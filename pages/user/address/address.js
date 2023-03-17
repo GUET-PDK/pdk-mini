@@ -1,4 +1,4 @@
-// pages/home/navpages/designee/designee.js
+// pages/user/address/address.js
 Page({
 
     /**

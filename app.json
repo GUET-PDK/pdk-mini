@@ -1,6 +1,5 @@
 {
     "pages": [
-        "pages/home/navpages/pick-express/pick-express",
         "pages/home/index/index",
         "pages/order/order",
         "pages/user/user",
@@ -8,10 +7,12 @@
         "pages/home/navpages/idle/idle",
         "pages/home/navpages/designee/designee",
         "pages/home/navpages/buy-agent/buy-agent",
+        "pages/home/navpages/pick-express/pick-express",
         "pages/home/navpages/pick-take-out/pick-take-out",
         "pages/home/navpages/post-express/post-express",
         "pages/home/navpages/sub-queue/sub-queue",
-        "pages/user/about/about"
+        "pages/user/about/about",
+        "pages/user/address/address"
     ],
     "window": {
         "backgroundTextStyle": "light",

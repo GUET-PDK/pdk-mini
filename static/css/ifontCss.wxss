@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3926611 */
-  src: url('//at.alicdn.com/t/c/font_3926611_0h5fru6p7el9.woff2?t=1678793787994') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3926611_0h5fru6p7el9.woff?t=1678793787994') format('woff'),
-       url('//at.alicdn.com/t/c/font_3926611_0h5fru6p7el9.ttf?t=1678793787994') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3926611_nj6pucbx48.woff2?t=1679053195963') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3926611_nj6pucbx48.woff?t=1679053195963') format('woff'),
+       url('//at.alicdn.com/t/c/font_3926611_nj6pucbx48.ttf?t=1679053195963') format('truetype');
 }
 
 .iconfont {
@@ -93,4 +93,9 @@
 /* 微信支付图标 */
 .icon-weixinzhifu:before {
   content: "\e650";
+}
+
+/* 关闭图标 */
+.icon-close:before {
+  content: "\e6a7";
 }

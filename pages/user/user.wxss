@@ -1,4 +1,5 @@
 /* 我的页面 */
+
 /* 背景图 */
 .backg {
   width: 100%;
@@ -33,12 +34,12 @@
 }
 .user-intro .user-name {
   margin-top: 12rpx;
-  font-size: 18px;
+  font-size: 36rpx;
   font-weight: 600;
 }
 .user-intro view:last-child {
   margin-top: 6rpx;
-  font-size: 8px;
+  font-size: 30rpx;
 }
 
 /* 用户数据概况栏 */
@@ -57,7 +58,7 @@
   justify-content: center;
 }
 .bar-item view:first-child {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
 }
 
@@ -102,7 +103,9 @@
 }
 
 .version {
-  margin-top: 12rpx;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 6rpx;
   text-align: center;
   font-size: 32rpx;
   color: #999;

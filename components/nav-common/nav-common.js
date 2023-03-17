@@ -6,7 +6,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    radios:Array,
   },
 
   /**
@@ -16,11 +16,6 @@ Component({
     def_num: 1,
     def_price: 2.0,
     sum: 2.0,
-    radios: [
-      { id: 1, name: "小件", value: "small", price: 1.5 },
-      { id: 2, name: "中小件", value: "middle", check: "true", price: 2.0 },
-      { id: 3, name: "大件", value: "big", price: 3.0 },
-    ],
   },
 
   /**
@@ -61,7 +56,7 @@ Component({
 
     // 快递大小单选监听
     radioChange(e) {
-      console.log(e.detail.value);
+      // console.log(e.detail.value);
       const items = this.data.radios;
       for (let i = 0; i < items.length; i++) {
         if ((items[i].check = items[i].value === e.detail.value)) {
