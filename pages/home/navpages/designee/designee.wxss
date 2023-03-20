@@ -1,1 +1,1 @@
-/* pages/home/navpages/designee/designee.wxss */
+@import '../navpage2.wxss'

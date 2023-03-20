@@ -1,1 +1,1 @@
-/* pages/home/page/buy-agent/buy-agent.wxss */
+@import '../navpage2.wxss'

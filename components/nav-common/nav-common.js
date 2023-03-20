@@ -6,7 +6,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    radios:Array,
+    radios:Array, // 父组件传递的数据
   },
 
   /**

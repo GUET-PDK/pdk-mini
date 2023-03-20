@@ -1,1 +1,1 @@
-/* pages/home/page/post-express/post-express.wxss */
+@import '../navpage2.wxss'

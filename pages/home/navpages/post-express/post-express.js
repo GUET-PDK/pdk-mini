@@ -5,7 +5,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        _express: [
+            {id:1 , val: '顺丰', name: '顺丰快递'},
+            {id:2 , val: '中通', name: '中通快递'},
+            {id:3 , val: '圆通', name: '圆通快递'},
+            {id:4 , val: '韵达', name: '韵达快递'},
+            {id:5 , val: '邮政', name: '邮政快递'}
+        ]
     },
 
     /**

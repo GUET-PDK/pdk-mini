@@ -1,1 +1,1 @@
-/* pages/home/page/sub-queue/sub-queue.wxss */
+@import '../navpage2.wxss'

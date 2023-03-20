@@ -1,7 +1,8 @@
-/* 首页导航标签页面 */
+/* 首页导航标签页面--重构版 */
 page {
   --active-bg-color: #07c160;
 }
+
 .container {
   position: fixed;
   left: 0;
@@ -12,7 +13,6 @@ page {
   background-color: #f2f2f2;
 }
 
-/* 主要表单区域 */
 .main-from {
   width: 92%;
   flex: 1 1 auto;
@@ -23,113 +23,72 @@ page {
   z-index: 2;
 }
 
-/* 表单地址栏 */
-.addr-top {
+/* 滑动区域 */
+.scroll-section {
   position: absolute;
-  top: 36rpx;
-  width: 690rpx;
-  height: 100rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  padding: 0 16rpx;
-  background-color: #fff;
-  border-top-left-radius: 30rpx;
-  border-top-right-radius: 30rpx;
-  z-index: 2;
-}
-
-/* 表单滑动区域(包括主要和公共部分) */
-.main-from-section {
-  position: absolute;
-  top: 135rpx;
+  top: 30rpx;
   bottom: 0;
   width: 690rpx;
+  z-index: 10;
 }
-/* 主要部分 */
+
+/* 主要独有部分 */
 .main-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom-left-radius: 30rpx;
-  border-bottom-right-radius: 30rpx;
   background-color: #fff;
+  border-radius: 30rpx;
+  padding: 0 20rpx;
 }
 
 /* 表单子项 */
 .main-item {
-  width: 95%;
   padding: 20rpx 0;
   font-size: 32rpx;
 }
 
-/* 主要子项-配送时间栏 */
-.item-time {
-  display: flex;
-  flex-direction: column;
+.radio-group label {
+  display: inline-block;  /* 行内块 */
+  margin-left: 6rpx;
 }
 
-.time-option {
-  display: flex;
-  flex-wrap: wrap;
+.radio-group label:nth-child(n+6) {
+
 }
 
-/* 时间选项 */
-.time-select {
-  background-color: #f8f8f8;
-  color: #666;
-  padding: 10rpx 20rpx;
-  margin: 12rpx 20rpx 0 0;
-  border-radius: 10rpx;
+.radio-group .radio-label {
+  position: absolute; 
+  width: 108rpx; 
+  height: 60rpx; 
+  line-height: 65rpx; 
+  font-size: 24rpx; 
+  color: #333; 
+  text-align: center; 
+  border-radius: 12rpx;
+  z-index:3; 
 }
 
-.time-selected {
-  color: #fff;
-  background-color: var(--active-bg-color);
+.radio-group radio .wx-radio-input {
+  width: 108rpx; 
+  height: 60rpx;
+  background: #fff; 
+  border: solid 1rpx #ccc; 
+  border-radius: 12rpx; 
+  float: left;
 }
 
-/* 上传栏 */
-.pic-upload-item {
-  width: 190rpx;
-  height: 190rpx;
-  margin: 20rpx 30rpx 0 6rpx;
-  position: relative;
-}
-/* 上传图片的样式 */
-.pic-upload-item image {
-  width: 190rpx;
-  height: 190rpx;
-  border-radius: 10rpx;
-}
-.pic-upload-item:nth-child(3n) {
-  margin-right: 0;
-}
-/* 删除图标 */
-.pic-upload-item .icon-close {
-  position: absolute;
-  font-size: 48rpx;
-  right: -20rpx;
-  top: -20rpx;
-  color: #c3cfe2;
+.radio-group radio .wx-radio-input.wx-radio-input-checked {
+  width: 108rpx; 
+  height: 60rpx; 
+  background: #FFF2F2; 
+  border: solid 1px var(--active-bg-color); 
+  border-radius: 12rpx;  
 }
 
-/* 上传图标 */
-.pic-upload-icon {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  border: 1px #d2d0d0 dashed; /*虚线边框*/
-  border-radius: 10rpx;
+.radio-group radio .wx-radio-input.wx-radio-input-checked::before {
+  background: #FFF2F2; 
+  border-radius: 12rpx; 
+  content: ''; 
 }
 
-/* 备注栏 */
-.item-remake {
-  display: flex;
-}
 
 /* 结算、合计栏 */
 .total-bottom {
@@ -149,6 +108,35 @@ page {
   z-index: 10;
 }
 
+/* 其他通用 */
+.flex {
+ display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-warp {
+  flex-wrap: wrap;
+}
+.flex-row-warp {
+  flex-flow: row wrap;
+}
+.flex-a-center {
+  align-items: center;
+}
+.flex-j-center {
+  justify-content: center;
+}
+.flex-j-between {
+  justify-content: space-between;
+}
+.flex-j-around {
+  justify-content: space-around;
+}
+
 /* 常用图标 */
 .icon-daohangdizhi {
   font-size: 32rpx;
@@ -156,18 +144,26 @@ page {
 }
 .icon-jinrujiantou {
   font-size: 36rpx;
-}
-.icon-qujianma:before {
-  font-size: 30rpx;
-  content: "\e604";
+  margin-right: 12rpx;
 }
 
 /* 默认提示小文字 */
 .input-holder,
+.textarea-holder,
 .lable-tip {
   font-size: 28rpx;
   color: #999;
 }
+.textarea-class {
+  margin-top: 20rpx;
+  background-color: #f2f2f2;
+  width: 630rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  color: #666;
+}
+
 .border-bottom-line {
   border-bottom: 1px #e8e8e8 solid;
 }
@@ -179,10 +175,15 @@ radio .wx-radio-input {
   height: 24rpx;
   border: 2rpx solid #5e5e5f;
 }
+
+
+/*单选，多选按钮选中后背景样式 */
 radio .wx-radio-input.wx-radio-input-checked {
   border: none;
   background: var(--active-bg-color);
 }
+
+/*单选，多选按钮选中后勾勾样式*/
 radio .wx-radio-input.wx-radio-input-checked::before {
   border-radius: 50%; /* 圆角 */
   width: 28rpx; /* 选中后对勾大小，不要超过背景的尺寸 */

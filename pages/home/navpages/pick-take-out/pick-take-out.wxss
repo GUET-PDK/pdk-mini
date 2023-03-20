@@ -1,1 +1,5 @@
-/* pages/home/page/pick-take-out/pick-take-out.wxss */
+@import '../navpage2.wxss';
+
+.main-item {
+	padding: 40rpx 0;
+}
