@@ -35,8 +35,8 @@
 	justify-content: space-between;
 }
 .tab-menu .tab-item {
-	width: 25%;
-	height: 150rpx;
+	width: 30%;
+	height: 160rpx;
 	margin: 18rpx 0;
 	display: flex;
 	flex-direction: column;
@@ -46,6 +46,6 @@
 	font-weight: 300;
 }
 .tab-menu .tab-item image {
-	width: 120rpx;
-	height:120rpx;
+	width: 160rpx;
+	height:160rpx;
 }

@@ -20,7 +20,7 @@
 					<text>
 						<text class="">收件人地址<text class="lable-tip"> (收件人详细信息)</text></text>
 					</text>
-					<textarea value="" placeholder="请填写收件人姓名+详细地址+手机号" placeholder-class="textarea-holder" class="textarea-class" />
+					<textarea model:value="{{}}" placeholder="请填写收件人姓名+详细地址+手机号" placeholder-class="textarea-holder" class="textarea-class" />
 				</view>
 
 				<!-- 快递选择栏 -->
@@ -37,7 +37,7 @@
 				<!-- 备注栏 -->
 				<view class="main-item flex border-bottom-line">
 					<text>备注：</text>
-					<input type="text" placeholder="如物品贵重" placeholder-class="input-holder" />
+					<input model:value="{{}}" type="text" placeholder="如物品贵重" placeholder-class="input-holder" />
 				</view>
 			</view>
 

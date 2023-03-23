@@ -18,13 +18,13 @@
 				<!-- 说明栏 -->
 				<view class="main-item border-bottom-line">
 					<text>购买内容<text class="lable-tip"> (描述购物内容)</text></text>
-					<textarea value="" placeholder="请填写代购的东西、件数等，实际价格面付。如牙膏大支1支，仲园餐厅二楼现炒(瘦肉+香菇+洋葱)" placeholder-class="textarea-holder" class="textarea-class" />
+					<textarea model:value="{{}}" placeholder="请填写代购的东西、件数等，实际价格面付。如牙膏大支1支，仲园餐厅二楼现炒(瘦肉+香菇+洋葱)" placeholder-class="textarea-holder" class="textarea-class" />
 				</view>
 
 				<!-- 备注栏 -->
 				<view class="main-item flex border-bottom-line">
 					<text>备注：</text>
-					<input type="text" placeholder="如送达时间、紧急情况" placeholder-class="input-holder" />
+					<input model:value="{{}}" type="text" placeholder="如送达时间、紧急情况" placeholder-class="input-holder" />
 				</view>
 			</view>
 

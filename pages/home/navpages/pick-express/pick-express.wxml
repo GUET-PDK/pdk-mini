@@ -58,7 +58,7 @@
 				<!-- 备注栏 -->
 				<view class="main-item item-remake border-bottom-line">
 					<text>备注：</text>
-					<input type="text" placeholder="如物品贵重" placeholder-class="input-holder" />
+					<input model:value="{{}}" type="text" placeholder="如物品贵重" placeholder-class="input-holder"/>
 				</view>
 			</view>
 

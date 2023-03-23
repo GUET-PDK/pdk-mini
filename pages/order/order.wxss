@@ -1,1 +1,50 @@
-/* pages/order/order.wxss */
+/* 个人订单页面样式 */
+.container {
+  background-color: #f2f2f2;
+}
+
+.scroll-tabs {
+  width: 680rpx;
+  height: 60rpx;
+  padding: 0 calc(100% - 680rpx);
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.tab-title {
+  font-weight: 400;
+  color: #b2b3b6;
+}
+
+.active {
+  font-size: 33rpx;
+  color: #3a3a3a;
+  font-weight: 500;
+  border-bottom: 1px red solid;
+}
+
+.swiper-container {
+  overflow: scroll;
+  width: 750rpx;
+}
+
+.scroll-container {
+  height: 100%;
+  overflow: scroll;
+  padding-top: 10rpx;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  width: 690rpx;
+  height: 120rpx;
+  margin: 10rpx 0;
+  background-color: #fff;
+  border: 1px red solid;
+}

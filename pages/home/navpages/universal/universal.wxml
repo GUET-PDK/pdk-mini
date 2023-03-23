@@ -18,13 +18,13 @@
 				<!-- 说明栏 -->
 				<view class="main-item border-bottom-line">
 					<text>万能服务<text class="lable-tip"> (描述实际需要的服务)</text></text>
-					<textarea value="" placeholder="请输入实际需要服务的内容，如原神代肝、创高代跑等" placeholder-class="textarea-holder" class="textarea-class" />
+					<textarea model:value="{{}}" placeholder="请输入实际需要服务的内容，如原神代肝、创高代跑等" placeholder-class="textarea-holder" class="textarea-class" />
 				</view>
 
 				<!-- 备注栏 -->
 				<view class="main-item flex border-bottom-line">
 					<text>备注：</text>
-					<input type="text" placeholder="如送达时间" placeholder-class="input-holder" />
+					<input model:value="{{}}" type="text" placeholder="如送达时间" placeholder-class="input-holder" />
 				</view>
 			</view>
 

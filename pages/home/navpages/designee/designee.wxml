@@ -18,13 +18,13 @@
 				<!-- 说明栏 -->
 				<view class="main-item border-bottom-line">
 					<text>代送内容<text class="lable-tip"> (描述具体事项)</text></text>
-					<textarea value="" placeholder="请填写代送的东西、件数等，实际价格面付。如桶装水2桶" placeholder-class="textarea-holder" class="textarea-class" />
+					<textarea model:value="{{}}" placeholder="请填写代送的东西、件数等，实际价格面付。如桶装水2桶" placeholder-class="textarea-holder" class="textarea-class" />
 				</view>
 
 				<!-- 备注栏 -->
 				<view class="main-item flex border-bottom-line">
 					<text>备注：</text>
-					<input type="text" placeholder="如送达时间" placeholder-class="input-holder" />
+					<input model:value="{{}}" type="text" placeholder="如送达时间" placeholder-class="input-holder" />
 				</view>
 			</view>
 

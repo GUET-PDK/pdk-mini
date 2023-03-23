@@ -1,6 +1,22 @@
-<!--pages/order/order.wxml-->
 <view class="container">
-	<view class="top-bar">
-		
-	</view>
+	<!-- 标签 -->
+	<scroll-view scroll-x="true" enable-flex="true" class="scroll-tabs">
+		<text class="tab-title {{currentIndex == index ? 'active' : ''}}" wx:for="{{tabs}}" data-index="{{index}}" wx:key="index" bindtap="tabSwitch">{{item.title}}</text>
+	</scroll-view>
+
+	<!-- swiper容器 -->
+	<swiper class="swiper-container" current="{{currentIndex}}" style="height: {{scrollHeight}}rpx;" bindchange="swiperSwitch" 	next-margin="6rpx">
+		<swiper-item wx:for="{{tabs}}" wx:key="index">
+			<scroll-view class="scroll-container" scroll-y="true">
+				<view class="item-container">
+					<view class="item" wx:for="{{list}}" wx:key="id" bindtap="">
+						<view>
+							<view class="order-type">代取快递</view>
+							<text>SN1000000000…… <text class=""></text></text>
+						</view>
+					</view>
+				</view>
+			</scroll-view>
+		</swiper-item>
+	</swiper>
 </view>
