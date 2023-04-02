@@ -10,7 +10,7 @@
 			<view class="main-section">
 
 				<!-- 配送地址栏 -->
-				<view class="main-item flex flex-j-between border-bottom-line">
+				<view class="main-item flex flex-j-between border-bottom-line" bindtap="jumpAddr">
 					<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> (姓名+电话+宿舍号)</text></text>
 					<text class="iconfont icon-jinrujiantou"></text>
 				</view>

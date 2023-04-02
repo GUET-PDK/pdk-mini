@@ -51,7 +51,7 @@ page {
 }
 
 .radio-group label:nth-child(n+6) {
-
+  
 }
 
 .radio-group .radio-label {

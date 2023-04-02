@@ -1,5 +1,6 @@
 {
     "pages": [
+        
         "pages/home/index/index",
         "pages/order/order",
         "pages/user/user",
@@ -9,8 +10,9 @@
         "pages/home/navpages/buy-agent/buy-agent",
         "pages/home/navpages/designee/designee",
         "pages/home/navpages/universal/universal",
+        "pages/user/address/address",
         "pages/user/about/about",
-        "pages/user/address/address"
+        "pages/user/addAddr/addAddr"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -44,5 +46,6 @@
         ]
     },
     "style": "v2",
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "requiredPrivateInfos": ["getLocation", "chooseLocation", "chooseAddress"]
 }

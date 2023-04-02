@@ -9,14 +9,14 @@ Page({
             {index:1, name:'我的订单', num:12},
             {index:2, name:'我的接单', num:111},
             {index:3, name:'我的评价', num:45},
-            {index:4, name:'我的闲置', num:8}
+            {index:4, name:'我的报酬', num:8.35}
         ],
         userList: [
-            {id:1,name:"个人信息",icon:"/static/image/user_ic/person_ifon.png"},
-            {id:2,name:"我的地址",icon:"/static/image/user_ic/addr.png"},
-            {id:3,name:"分享好友",icon:"/static/image/user_ic/share.png"},
-            {id:4,name:"意见反馈",icon:"/static/image/user_ic/opinion.png"},
-            {id:5,name:"关于我们",icon:"/static/image/user_ic/about.png"}
+            {id:1,name:"个人信息",icon:"/static/image/user_ic/person_ifon.png", url:""},
+            {id:2,name:"我的地址",icon:"/static/image/user_ic/addr.png", url: "/pages/user/address/address"},
+            {id:3,name:"分享好友",icon:"/static/image/user_ic/share.png", url:""},
+            {id:4,name:"意见反馈",icon:"/static/image/user_ic/opinion.png", url:""},
+            {id:5,name:"关于我们",icon:"/static/image/user_ic/about.png", url:"/pages/user/about/about"}
         ]
     },
 
@@ -24,7 +24,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        
     },
 
     /**
@@ -74,5 +74,13 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+
+    open: function(e) {
+        console.log(e.currentTarget.dataset.url)
+        let toUrl = e.currentTarget.dataset.url
+        wx.navigateTo({
+          url: toUrl,
+        })
     }
 })

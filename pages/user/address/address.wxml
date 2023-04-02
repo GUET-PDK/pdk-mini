@@ -1,2 +1,38 @@
-<!--pages/user/address/address.wxml-->
-<text>pages/user/address/address.wxml</text>
+<view class="addr-list">
+	<block wx:for="{{addrData}}" wx:key="id">
+		<view class="addr-item" data-nowdata="{{item}}" catchtap='toDetail'>
+			<view class="bt-class">
+				<view>
+					<button class='{{item.flag==true?"btRed":"btGreen"}}' data-i="{{index}}" catchtap='setDefault'>
+						{{item.flag==true?"默认地址":"设为默认"}}
+					</button>
+				</view>
+				<view><button catchtap='delAddr' data-id="{{index}}">删除</button></view>
+			</view>
+			<view class="name-iphone">
+				<text>{{item.name}}</text>
+				<text>{{item.phone}}</text>
+			</view>
+			<view class="addr">
+				<text>{{item.addr}}</text>
+				<text class="iconfont icon-jinrujiantou"></text>
+			</view>
+		</view>
+	</block>
+
+	<!-- 地址为空 -->
+	<view wx:if='{{addrData.length == 0}}' class='noData'>
+		<image src='' />
+		<view class='emptyData'>抱歉，这里是空的哦</view>
+	</view>
+
+	<view class="bottom-button">
+		<view class="new-addr" bindtap="toAddAddr">
+			新增收货地址
+		</view>
+
+		<view class="wx-addr" bindtap="toWxAddr">
+			导入微信地址
+		</view>
+	</view>
+</view>

@@ -29,8 +29,8 @@
 						<text class="lable-tip"> (单选)</text>
 					</view>
 					<view class="time-option">
-						<text class="time-select" catchtap="selTime">12:00 ~ 14:00</text>
-						<text class="time-select time-selected" catchtap="selTime">19:00 ~ 22:00</text>
+						<text class="time-select {{timeSel==true ? 'time-selected':''}}" catchtap="selTime">12:00 ~ 14:00</text>
+						<text class="time-select  {{timeSel==false ? 'time-selected':''}}" catchtap="selTime">19:00 ~ 22:00</text>
 					</view>
 				</view>
 

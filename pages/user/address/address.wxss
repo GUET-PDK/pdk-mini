@@ -1,1 +1,121 @@
-/* pages/user/address/address.wxss */
+page {
+  background-color: #efeff4;
+}
+
+.addr-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.addr-item {
+  width: 90%;
+  padding: 20rpx 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px #e8e8e8 solid;
+}
+
+.addr-item:nth-child(1) {
+  border-top: 1px #e8e8e8 solid;
+}
+
+/* 按钮样式 */
+.addr-item .bt-class {
+	display: flex;
+	justify-content: space-between;
+}
+
+.addr-item .bt-class button {
+  font-size: 20rpx;
+  border-radius: 18rpx;
+  padding: 0;
+  margin-bottom: 8rpx;
+}
+
+.addr-item .bt-class view:nth-child(1) button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+  height: 36rpx;
+  color: #fff;
+}
+
+.addr-item .bt-class view:nth-child(2) button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 36rpx;
+  background-color: #fff;
+  color: #f44225;
+  border: 2rpx solid #f44225;
+}
+.btRed {
+  background-color: #F44225;
+}
+.btGreen {
+  background-color: #07c160;
+}
+/* 地址内容 */
+.name-iphone {
+  width: 60%;
+  margin: 0 0 10rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.addr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addr text:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+}
+
+/* 底部固定 */
+.bottom-button {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottom-button view {
+  height: 98rpx;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #282828;
+  border: 2rpx solid #e8e8e8;
+}
+
+/* 没有数据显示 */
+.noData {
+  text-align: center;
+}
+
+.noData image {
+  width: 98rpx;
+  height: 98rpx;
+  margin-top: 160rpx;
+  margin-bottom: 24rpx;
+}
+
+.emptyData {
+  padding: 24rpx;
+  text-align: center;
+  color: #c5c5c5;
+  font-size: 24rpx;
+}

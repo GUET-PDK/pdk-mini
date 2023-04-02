@@ -11,6 +11,7 @@ Page({
       { id: 3, name: "大件", value: "big", price: 3.0 },
     ],
     imgList: [],
+    timeSel: false
   },
 
   /**
@@ -71,7 +72,10 @@ Page({
 
   /* 时间筛选 */
   selTime: function(id) {
-    console.log(id)
+    // console.log(id)
+    this.setData({
+        timeSel: !this.data.timeSel
+    })
   },
 
   // 子组件事件传值

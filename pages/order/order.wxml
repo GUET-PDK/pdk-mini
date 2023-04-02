@@ -11,7 +11,7 @@
 				<view class="item-container">
 					<view class="item" wx:for="{{list}}" wx:key="id" bindtap="">
 						<view>
-							<view class="order-type">代取快递</view>
+							<text class="order-type">代取快递</text>
 							<text>SN1000000000…… <text class=""></text></text>
 						</view>
 					</view>

@@ -1,2 +1,5 @@
-<!--pages/user/about/about.wxml-->
-<text>pages/user/about/about.wxml</text>
+<view class="container">
+	<view>
+		
+	</view>
+</view>

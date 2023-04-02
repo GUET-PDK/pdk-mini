@@ -22,7 +22,7 @@
 	<!-- 用户列表 -->
 	<view class="user-list">
 		<view class="main-list">
-			<view class="list-item" wx:for="{{userList}}" wx:key="id" wx:for-item="listItem">
+			<view class="list-item" wx:for="{{userList}}" wx:key="id" wx:for-item="listItem" bindtap="open" data-url="{{listItem.url}}">
 				<view>
 					<image src="{{listItem.icon}}" mode="aspectFit"/>
 					<text>{{listItem.name}}</text>
