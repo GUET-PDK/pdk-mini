@@ -1,1 +1,54 @@
-/* pages/user/about/about.wxss */
+.container {
+  position: relative;
+}
+
+.project-img {
+  position: fixed;
+  top: 0;
+  left: calc(100% / 2) rpx;
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.project-img image {
+  width: 100%;
+  height: 100%;
+}
+
+.intro {
+  z-index: 10;
+  position: absolute;
+  top: 300rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.border-bottom {
+  border-bottom: 2rpx #dcdcdc solid;
+}
+.project-name {
+  padding: 20rpx 20rpx;
+  text-align: center;
+  font-size: 42rpx;
+  font-weight: 600;
+  color: #4c4c4e;
+}
+
+.project-intro {
+  padding: 20rpx 32rpx;
+  color: #4c4c4e;
+}
+
+.contact {
+  padding: 16rpx 20rpx;
+  background-color: #e7e7e7;
+  color: #4c4c4e;
+}
+
+.className {
+  padding: 20rpx 20rpx;
+  color: #4c4c4e;
+}

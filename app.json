@@ -1,9 +1,9 @@
 {
     "pages": [
-        
-        "pages/home/index/index",
-        "pages/order/order",
         "pages/user/user",
+        "pages/home/index/index",
+        "pages/task/task",
+        "pages/order/order",
         "pages/home/navpages/pick-express/pick-express",
         "pages/home/navpages/post-express/post-express",
         "pages/home/navpages/pick-take-out/pick-take-out",
@@ -12,7 +12,9 @@
         "pages/home/navpages/universal/universal",
         "pages/user/address/address",
         "pages/user/about/about",
-        "pages/user/addAddr/addAddr"
+        "pages/user/addAddr/addAddr",
+        "pages/user/info/info",
+        "pages/user/apply/apply"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -32,6 +34,12 @@
                 "selectedIconPath": "/static/image/icon/home.png"
             },
             {
+                "pagePath": "pages/task/task",
+                "text": "任务",
+                "iconPath": "/static/image/icon/_task.png",
+                "selectedIconPath": "/static/image/icon/task.png"
+            },
+            {
                 "pagePath": "pages/order/order",
                 "text": "订单",
                 "iconPath": "/static/image/icon/_order.png",
@@ -47,5 +55,9 @@
     },
     "style": "v2",
     "sitemapLocation": "sitemap.json",
-    "requiredPrivateInfos": ["getLocation", "chooseLocation", "chooseAddress"]
+    "requiredPrivateInfos": [
+        "getLocation",
+        "chooseLocation",
+        "chooseAddress"
+    ]
 }

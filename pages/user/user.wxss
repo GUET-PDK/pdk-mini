@@ -1,39 +1,31 @@
 /* 我的页面 */
-
+container {
+  background: #f3f3f3;
+  position: relative;
+}
 /* 背景图 */
-.backg {
-  width: 100%;
-  height: 450rpx;
-  position: fixed;
-  left: 0;
-  top: 0;
+.backgroud {
+  width: 90%;
   border-radius: 20rpx;
-  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
-  z-index: 1;
+  background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
 }
-.backg image {
-  width: 100%;
-  height: 100%;
-  border-radius: 25rpx;
-}
-
 /* 用户简介 */
 .user-intro {
-  width: 100%;
-  margin-top: 60rpx;
+  width: 90%;
+  margin-top: 20rpx;
+  padding: 40rpx 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
-  z-index: 2;
 }
 .user-intro image {
   height: 128rpx;
   width: 128rpx;
+  margin-right: 30rpx;
 }
 .user-intro .user-name {
-  margin-top: 12rpx;
+  margin-top: 2rpx;
   font-size: 36rpx;
   font-weight: 600;
 }
@@ -42,41 +34,34 @@
   font-size: 30rpx;
 }
 
-/* 用户数据概况栏 */
+/* 用户概况栏 */
 .user-data-bar {
-  width: 88%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
-  margin: 24rpx auto;
-  color: white;
-  z-index: 2;
+  margin: 20rpx 0 8rpx 0;
 }
 .user-data-bar .bar-item {
+  background: white;
+  height: 150rpx;
+  width: 330rpx;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-}
-.bar-item view:first-child {
-  font-size: 32rpx;
-  font-weight: 600;
+  align-items: center;
+  border-radius: 12rpx;
+  box-shadow: 0 0 10rpx 0 #e1e1e1;
 }
 
 /* 用户列表 */
 .user-list {
   width: 100%;
-  flex: 1 1 auto; 
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  border-top-left-radius: 50rpx;
-  border-top-right-radius: 50rpx;
-  z-index: 2;
 }
 .user-list .main-list {
-  margin-top: 30rpx;
   width: 90%;
   height: 90%;
 }
@@ -86,9 +71,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #fff;
   border: 2rpx solid #cfd9df;
   box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
-  border-radius: 10rpx;
+  border-radius: 16rpx;
 }
 .list-item view {
   display: flex;
@@ -109,4 +95,10 @@
   text-align: center;
   font-size: 32rpx;
   color: #999;
+}
+
+.icon-jinrujiantou {
+  margin-left: 240rpx;
+  font-size: 40rpx;
+  font-weight: 200;
 }
