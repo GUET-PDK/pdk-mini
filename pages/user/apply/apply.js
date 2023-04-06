@@ -5,7 +5,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        cert: '',
+        stu_card: '',
+        show: true,  // todo 判断当前的认证状态
     },
 
     /**

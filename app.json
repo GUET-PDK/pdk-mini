@@ -1,9 +1,10 @@
 {
     "pages": [
-        "pages/user/user",
+        "pages/user/apply/apply",
         "pages/home/index/index",
         "pages/task/task",
         "pages/order/order",
+        "pages/user/user",
         "pages/home/navpages/pick-express/pick-express",
         "pages/home/navpages/post-express/post-express",
         "pages/home/navpages/pick-take-out/pick-take-out",
@@ -13,8 +14,8 @@
         "pages/user/address/address",
         "pages/user/about/about",
         "pages/user/addAddr/addAddr",
-        "pages/user/info/info",
-        "pages/user/apply/apply"
+        "pages/user/info/info"
+        
     ],
     "window": {
         "backgroundTextStyle": "light",

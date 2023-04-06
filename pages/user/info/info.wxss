@@ -1,1 +1,78 @@
-/* pages/user/info/info.wxss */
+page {
+  background: #f3f3f3;
+}
+
+.tip {
+  padding: 20rpx;
+  color: #999;
+  margin-left: 12rpx;
+}
+.main {
+  background: #fff;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+}
+.user-photo {
+  height: 180rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-photo image {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 100rpx;
+}
+
+.item {
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-class {
+  text-align: right;
+  color: #999;
+}
+.item view:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn {
+  margin-top: 120rpx;
+  padding: 30rpx;
+}
+.btn button {
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 100rpx;
+}
+.btns {
+  margin-bottom: 30rpx;
+  background: #07c160;
+}
+.btns:active {
+  background: green
+}
+
+.back-btn {
+    background: #ff6500;
+}
+.back-btn:active {
+    background: chocolate;
+}
+
+.border-bottom {
+  border-bottom: 1px #e1e1e1 solid;
+}
+
+.flex-j-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

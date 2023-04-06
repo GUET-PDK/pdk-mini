@@ -1,2 +1,51 @@
-<!--pages/user/info/info.wxml-->
-<text>pages/user/info/info.wxml</text>
+<view class="tip">
+    点击修改你的个人信息
+</view>
+<form bindsubmit="">
+    <view class="main">
+        <view class="user-photo border-bottom" bindtap="changAvatar">
+            <view>头像</view>
+            <view class="flex-j-end">
+                <image src="{{msg.avatar}}" mode="aspectFill" />
+                <text class="iconfont icon-jinrujiantou"></text>
+            </view>
+        </view>
+        <view class="item border-bottom">
+            <view>
+                用户id
+            </view>
+            <view class="input-class">
+                1234567890
+            </view>
+        </view>
+        <view class="item border-bottom">
+            <view>
+                昵称
+            </view>
+            <view>
+                <input name="" class="input-class" type="text" placeholder="请填写昵称(必填)"/>
+            </view>
+        </view>
+        <view class="item border-bottom">
+            <view>
+                手机号
+            </view>
+            <view>
+                <input name="" class="input-class" type="text" placeholder="请填写11位手机号(必填)"/>
+            </view>
+        </view>
+        <view class="item">
+            <view>
+                真实姓名
+            </view>
+            <view>
+                <input name="" class="input-class" type="text" placeholder="请填写真实姓名(必填)"/>
+            </view>
+        </view>
+    </view>
+
+    <view class="btn">
+        <button class="btns" form-type="submit">保存修改</button>
+        <button class="back-btn">取消返回</button>
+    </view>
+</form>
