@@ -10,9 +10,27 @@
 			<scroll-view class="scroll-container" scroll-y="true">
 				<view class="item-container">
 					<view class="item" wx:for="{{list}}" wx:key="id" bindtap="">
+						<!-- 第一行 订单类型 订单时间 订单状态 -->
 						<view>
 							<text class="order-type">代取快递</text>
-							<text>SN1000000000…… <text class=""></text></text>
+							<text>2023.4.3</text>
+							<text>待支付</text>
+						</view>
+
+						<!-- 配送地址(姓名+电话+宿舍号) -->
+						<view>
+							配送地址
+						</view>
+
+						<!-- 第三行 订单备注 -->
+						<view>
+							备注
+						</view>
+
+						<!-- 第四行 订单完成情况 -->
+						<view>
+							<button size="mini">取消支付</button>
+							<button size="mini">去支付</button>
 						</view>
 					</view>
 				</view>

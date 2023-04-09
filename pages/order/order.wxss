@@ -43,8 +43,42 @@
 
 .item {
   width: 690rpx;
-  height: 120rpx;
   margin: 10rpx 0;
+  padding: 6rpx 20rpx;
   background-color: #fff;
-  border: 1px red solid;
+  border-radius: 12rpx;
+  box-shadow: 0 0 10rpx 0 #e1e1e1;
+}
+
+.item view {
+  padding: 12rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item view:not(:last-child) {
+  border-bottom: 1rpx #aaa dotted;
+}
+
+.item view:first-child {
+  font-size: 26rpx;
+}
+.item view:first-child text:first-child {
+  padding: 10rpx;
+  color: #333;
+  border: 1rpx #07c160 solid;
+  border-radius: 12rpx;
+}
+
+.item view:first-child text:last-child {
+  color: coral;
+}
+
+.item view:last-child {
+  display: flex;
+}
+
+.item view button {
+  justify-content: end;
 }

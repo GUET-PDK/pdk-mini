@@ -1,1 +1,64 @@
-/* pages/task/task.wxss */
+page {
+  background-color: #f3f3f3;
+  --active-color: red;
+}
+
+/* 顶部 Tabbar 标签样式 */
+.top-tabbar {
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  color: #222;
+  font-weight: 400;
+}
+
+.top-tabbar view {
+  width: calc(100% / 2);
+  padding: 12rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar {
+  background: #fff;
+}
+.weui-search-bar__form {
+  border: 1px #e1e1e1 solid;
+  border-radius: 50rpx;
+}
+
+/* 子标签样式 */
+.scroll-tabs {
+  height: 66rpx;
+  background: #fff;
+}
+.scroll-tabs .tabs-box {
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #222;
+  font-weight: 400;
+}
+.scroll-tabs .tabs-box text {
+  height: 60rpx;
+}
+
+/* 标签选中样式 */
+.active {
+  font-weight: 600;
+}
+.active::after {
+  content: "";
+  position: absolute;
+  left: auto;
+  right: auto;
+  bottom: 0;
+  width: 50rpx;
+  border-bottom: 1px red solid;
+}
+.change {
+  font-weight: 600;
+  border-bottom: 1px red solid;
+}

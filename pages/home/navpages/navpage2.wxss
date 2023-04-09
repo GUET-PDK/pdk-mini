@@ -108,6 +108,10 @@ page {
   z-index: 10;
 }
 
+.total-bottom view text:nth-child(2) {
+  color: coral;
+}
+
 /* 其他通用 */
 .flex {
  display: flex;

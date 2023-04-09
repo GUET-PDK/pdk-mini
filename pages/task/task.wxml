@@ -1,2 +1,23 @@
-<!--pages/task/task.wxml-->
-<text>pages/task/task.wxml</text>
+<!-- 任务大厅 -->
+<view class="top-tabbar">
+    <view data-name="task" bindtap="changTab" class="{{chooseTab == 'task'? 'active': ''}}">任务大厅</view>
+    <view data-name="mytask" bindtap="changTab" class="{{chooseTab == 'mytask'? 'active': ''}}">我的任务</view>
+</view>
+
+<mp-searchbar cancel="false" cancelText="搜索" focus="true" ext-class="searchbar" placeholder="请输入关键字进行搜索,如 36栋"></mp-searchbar>
+
+<scroll-view scroll-x="true" enable-flex="true" class="scroll-tabs">
+    <view class="tabs-box">
+        <text wx:for="{{chooseTab=='task'? taskTabTitle:mytaskTabTitle}}" wx:key="index" data-id="{{index}}" bindtap="taskSwitch" class="{{currentIndex == index? 'change':''}}">{{item.title}}</text>
+    </view>
+</scroll-view>
+
+<swiper>
+    <swiper-item>
+        <scroll-view>
+            <view>
+                
+            </view>
+        </scroll-view>
+    </swiper-item>
+</swiper>

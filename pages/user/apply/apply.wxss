@@ -47,7 +47,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 48rpx;
+  font-size: 42rpx;
   color: #999;
   border: 1px dotted #aaa;
   border-radius: 10rpx;

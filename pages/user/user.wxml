@@ -14,10 +14,16 @@
 	<!-- 用户订单、跑腿数据 -->
 	<view class="user-data-bar">
 		<view class="bar-item" data-id="7">
-			<text></text>我的发布
+			<text>0</text>
+			<text>我的发布</text>
 		</view>
 		<view class="bar-item" data-id="8">
-			<text></text>我的接单
+			<text>0</text>
+			<text>我的接单</text> 
+		</view>
+		<view class="bar-item" data-id="9">
+			<text>0</text>
+			<text>我的收益</text>
 		</view>
 	</view>
 

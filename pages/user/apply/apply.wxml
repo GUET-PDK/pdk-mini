@@ -7,7 +7,7 @@
             </view>
         </view>
 
-        <form bindsubmit="">
+        <form bindsubmit="formSubmit">
             <view class='item flex-j-between border-bottom'>
                 <view class='bold'>姓名<text class="tip">(必填):</text></view>
                 <input class='input-class' name='name' value='{{name}}' placeholder='姓名'></input>
@@ -22,11 +22,11 @@
             </view>
             <view class='item'>
                 <view class='bold'>校园卡正面<text class="tip">(必填):</text></view>
-                <view class='upload-box' style='background-image:url({{cert}})' data-name='cert' bindtap='choose'>+</view>
+                <view class='upload-box' style='background-image:url({{stu_card}})' data-name='stu_card' bindtap='choose'>{{stu_card==''? '+' : '仅用于骑手认证'}}</view>
             </view>
             <view class='item'>
                 <view class='bold'>身份证正面<text class="tip">(必填):</text></view>
-                <view class='upload-box' style='background-image:url({{stu_card}})' data-name='stu_card' bindtap='choose'>+</view>
+                <view class='upload-box' style='background-image:url({{cert}})' data-name='cert' bindtap='choose'>{{cert==''? '+' : '仅用于骑手认证'}}</view>
             </view>
             <button class='btn' form-type="submit">提交申请</button>
         </form>

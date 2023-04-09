@@ -40,17 +40,25 @@ container {
   display: flex;
   justify-content: space-between;
   margin: 20rpx 0 8rpx 0;
-}
-.user-data-bar .bar-item {
   background: #FFF;
-  height: 150rpx;
-  width: 330rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 12rpx;
   box-shadow: 0 0 10rpx 0 #e1e1e1;
 }
+.user-data-bar .bar-item {
+  height: 150rpx;
+  width: 330rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user-data-bar .bar-item text:first-child{
+  color: green;
+}
+.user-data-bar .bar-item:last-child text:first-child{
+  color: coral
+}
+
 
 /* 用户列表 */
 .user-list {
