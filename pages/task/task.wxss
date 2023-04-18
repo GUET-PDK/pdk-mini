@@ -34,8 +34,7 @@ page {
   background: #fff;
 }
 .scroll-tabs .tabs-box {
-  box-sizing: border-box;
-  padding: 0 20rpx;
+  padding: 0 30rpx;
   display: flex;
   justify-content: space-between;
   color: #222;

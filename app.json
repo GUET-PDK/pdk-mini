@@ -1,63 +1,67 @@
 {
-  "pages": [
-    "pages/task/task",
-    "pages/home/index/index",
-
-    "pages/order/order",
-    "pages/user/user",
-    "pages/home/navpages/pick-express/pick-express",
-    "pages/home/navpages/post-express/post-express",
-    "pages/home/navpages/pick-take-out/pick-take-out",
-    "pages/home/navpages/buy-agent/buy-agent",
-    "pages/home/navpages/designee/designee",
-    "pages/home/navpages/universal/universal",
-    "pages/user/address/address",
-    "pages/user/about/about",
-    "pages/user/addAddr/addAddr",
-    "pages/user/info/info",
-    "pages/user/apply/apply"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "GUET跑得快",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "backgroundColor": "#F6F6F6",
-    "borderStyle": "black",
-    "selectedColor": "#2F88FF",
-    "list": [
-      {
-        "pagePath": "pages/home/index/index",
-        "text": "首页",
-        "iconPath": "/static/image/icon/_home.png",
-        "selectedIconPath": "/static/image/icon/home.png"
-      },
-      {
-        "pagePath": "pages/task/task",
-        "text": "任务",
-        "iconPath": "/static/image/icon/_task.png",
-        "selectedIconPath": "/static/image/icon/task.png"
-      },
-      {
-        "pagePath": "pages/order/order",
-        "text": "订单",
-        "iconPath": "/static/image/icon/_order.png",
-        "selectedIconPath": "/static/image/icon/order.png"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "我的",
-        "iconPath": "/static/image/icon/_mine.png",
-        "selectedIconPath": "/static/image/icon/mine.png"
-      }
-    ]
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json",
-  "requiredPrivateInfos": ["getLocation", "chooseLocation", "chooseAddress"],
-  "useExtendedLib": {
-    "weui": true
-  }
+    "pages": [
+        "pages/home/index/index",
+        "pages/task/task",
+        "pages/order/order",
+        "pages/user/user",
+        "pages/home/navpages/pick-express/pick-express",
+        "pages/home/navpages/post-express/post-express",
+        "pages/home/navpages/pick-take-out/pick-take-out",
+        "pages/home/navpages/buy-agent/buy-agent",
+        "pages/home/navpages/designee/designee",
+        "pages/home/navpages/universal/universal",
+        "pages/user/address/address",
+        "pages/user/about/about",
+        "pages/user/addAddr/addAddr",
+        "pages/user/info/info",
+        "pages/user/apply/apply",
+        "components/home-nav-unit/main-common/main-common"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "GUET跑得快",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "backgroundColor": "#F6F6F6",
+        "borderStyle": "black",
+        "selectedColor": "#2F88FF",
+        "list": [
+            {
+                "pagePath": "pages/home/index/index",
+                "text": "首页",
+                "iconPath": "/static/image/icon/_home.png",
+                "selectedIconPath": "/static/image/icon/home.png"
+            },
+            {
+                "pagePath": "pages/task/task",
+                "text": "任务",
+                "iconPath": "/static/image/icon/_task.png",
+                "selectedIconPath": "/static/image/icon/task.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "订单",
+                "iconPath": "/static/image/icon/_order.png",
+                "selectedIconPath": "/static/image/icon/order.png"
+            },
+            {
+                "pagePath": "pages/user/user",
+                "text": "我的",
+                "iconPath": "/static/image/icon/_mine.png",
+                "selectedIconPath": "/static/image/icon/mine.png"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "requiredPrivateInfos": [
+        "getLocation",
+        "chooseLocation",
+        "chooseAddress"
+    ],
+    "useExtendedLib": {
+        "weui": true
+    }
 }

@@ -4,7 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: ["广西壮族自治区", "桂林市", "灵川县"],
+    region: ["花江校区", "金鸡岭校区","六合路校区"],
+    selcompus: "花江校区",
     default: {name:'请输入姓名',phone:'请输入手机号码',addr:'请输入详细地址',flag:false},
   },
 
@@ -62,8 +63,10 @@ Page({
   },
   bindRegionChange: function (e) {
     //console.log("picker发送选择改变，携带值为", e.detail.value);
+    // console.log(e.detail.value)
+    let index = e.detail.value
     this.setData({
-      region: e.detail.value,
+      selcompus: this.data.region[index],
     });
   },
 
@@ -71,6 +74,6 @@ Page({
    * 新增地址
    */
   newAddr: function (e) {
-    // console.log(e.detail)
+    console.log(e.detail)
   },
 });

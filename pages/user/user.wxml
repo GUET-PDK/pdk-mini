@@ -38,8 +38,8 @@
 				<image src="/static/image/into.png" mode="aspectFit" />
 			</view>
 		</view>
-
 	</view>
+	
 	<!-- 版本号 -->
 	<view class="version">
 		v1.0.0

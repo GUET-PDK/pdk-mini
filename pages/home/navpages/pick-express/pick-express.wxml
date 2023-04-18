@@ -14,7 +14,7 @@
 		<!-- <form bindsubmit=""></form> -->
 
 		<!-- 地址栏 -->
-		<view class="addr-top border-bottom-line">
+		<view class="addr-top border-bottom-line" bindtap="toSelAddr">
 			<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> (姓名+电话+宿舍号)</text></text>
 			<text class="iconfont icon-jinrujiantou"></text>
 		</view>
@@ -29,8 +29,8 @@
 						<text class="lable-tip"> (单选)</text>
 					</view>
 					<view class="time-option">
-						<text class="time-select {{timeSel==true ? 'time-selected':''}}" catchtap="selTime">12:00 ~ 14:00</text>
-						<text class="time-select  {{timeSel==false ? 'time-selected':''}}" catchtap="selTime">19:00 ~ 22:00</text>
+						<text class="time-select {{timeSel=='a' ? 'time-selected':''}}" data-name='a' catchtap="selTime">12:00 ~ 14:00</text>
+						<text class="time-select  {{timeSel=='b' ? 'time-selected':''}}" data-name='b' catchtap="selTime">19:00 ~ 22:00</text>
 					</view>
 				</view>
 

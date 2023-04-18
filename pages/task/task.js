@@ -11,9 +11,7 @@ Page({
         {index: 1, title: '代取快递'},
         {index: 2, title: '代寄快递'},
         {index: 3, title: '代拿快递'},
-        {index: 4, title: '代购'},
-        {index: 5, title: '代送'},
-        {index: 6, title: '其他'},
+        {index: 4, title: '其他'},
     ],
     mytaskTabTitle: [
       {id: 0, title: '全部'},
@@ -92,4 +90,9 @@ Page({
       currentIndex: id
     })
   },
+
+  /**
+   * 覆写搜索框原“取消”伸缩按钮
+   */
+
 });

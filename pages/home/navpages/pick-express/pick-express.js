@@ -11,7 +11,7 @@ Page({
       { id: 3, name: "大件", value: "big", price: 3.0 },
     ],
     imgList: [],
-    timeSel: false
+    timeSel: "b",
   },
 
   /**
@@ -52,7 +52,6 @@ Page({
         // 更新imgList数组
         const { imgList = [] } = that.data;
         imgList.push(...res.tempFiles);
-
         that.setData({
           imgList,
         });
@@ -71,11 +70,26 @@ Page({
   },
 
   /* 时间筛选 */
-  selTime: function(id) {
-    // console.log(id)
-    this.setData({
-        timeSel: !this.data.timeSel
+  selTime: function (e) {
+    let time = e.currentTarget.dataset.name;
+    // console.log(e.currentTarget.dataset);
+    if (time == "b") {
+      this.setData({
+        timeSel: "b",
+      });
+    } else {
+      this.setData({
+        timeSel: "a",
+      });
+    }
+  },
+
+  // 选择地址
+  toSelAddr: function() {
+    wx.navigateTo({
+      url: '/pages/user/address/address',
     })
+    JSON.pa
   },
 
   // 子组件事件传值
