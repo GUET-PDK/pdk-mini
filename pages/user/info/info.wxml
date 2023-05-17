@@ -6,7 +6,7 @@
         <view class="user-photo border-bottom" bindtap="changAvatar">
             <view>头像</view>
             <view class="flex-j-end">
-                <image src="{{msg.avatar}}" mode="aspectFill" />
+                <image src="{{userInfo.avatar}}" mode="aspectFill" />
                 <text class="iconfont icon-jinrujiantou"></text>
             </view>
         </view>
@@ -23,7 +23,7 @@
                 昵称
             </view>
             <view>
-                <input name="" class="input-class" type="text" placeholder="请填写昵称(必填)"/>
+                <input name="" class="input-class" type="text" placeholder="{{userInfo.name}}"/>
             </view>
         </view>
         <view class="item border-bottom">

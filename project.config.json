@@ -48,5 +48,6 @@
     "editorSetting": {
         "tabIndent": "auto",
         "tabSize": 4
-    }
+    },
+    "simulatorPluginLibVersion": {}
 }

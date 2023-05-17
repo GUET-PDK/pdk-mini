@@ -8,10 +8,9 @@ Page({
         currentIndex: 0,
         tabs: [
             {id:1, title: '全部'},
-            {id:2, title: '待支付'},
-            {id:3, title: '待接单'},
-            {id:4, title: '已接单'},
-            {id:5, title: '已完成'},
+            {id:2, title: '待接单'},
+            {id:3, title: '已接单'},
+            {id:4, title: '已完成'},
         ],
         list: [
             {id:1, val: "第1快"},

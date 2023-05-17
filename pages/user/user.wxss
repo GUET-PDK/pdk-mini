@@ -20,8 +20,9 @@ container {
   color: white;
 }
 .user-intro image {
-  height: 128rpx;
-  width: 128rpx;
+  height: 144rpx;
+  width: 144rpx;
+  border-radius: 12rpx;
   margin-right: 30rpx;
 }
 .user-intro .user-name {
@@ -45,7 +46,7 @@ container {
   box-shadow: 0 0 10rpx 0 #e1e1e1;
 }
 .user-data-bar .bar-item {
-  height: 150rpx;
+  height: 180rpx;
   width: 330rpx;
   display: flex;
   flex-direction: column;
@@ -74,7 +75,7 @@ container {
   height: 90%;
 }
 .main-list .list-item {
-  height: 100rpx;
+  height: 120rpx;
   margin: 12rpx auto;
   display: flex;
   justify-content: space-between;
@@ -96,6 +97,20 @@ container {
   margin-right: 24rpx;
 }
 
+/* 登录按钮 */
+.btLogin {
+  margin-top: 36rpx;
+  padding: 0;
+  width: 700rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  border-radius: 40rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+/* 版本号显示 */
 .version {
   position: fixed;
   bottom: 0;

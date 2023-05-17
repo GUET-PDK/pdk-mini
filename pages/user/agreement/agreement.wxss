@@ -1,0 +1,29 @@
+.fo-36 {
+	font-size: 36rpx;
+}
+.fo-30 {
+	font-size: 30rpx;
+}
+.fo-28 {
+	font-size: 28rpx;
+}
+.text-center {
+	text-align: center;
+}
+.bold {
+	font-weight: bold;
+}
+
+.pa-30 {
+ padding: 30rpx;
+}
+.ma-t30 {
+	margin-top: 30rpx;
+}
+.ma-b10 {
+	margin-bottom: 10rpx;
+}
+
+.btns {
+	
+}

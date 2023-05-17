@@ -1,0 +1,12 @@
+<!--登录页-->
+<view class="container">
+    <view class="ma-b30 font">欢迎宁，加入GUET跑得快！</view>
+    <view class="ma-b30">
+        <image src="/static/image/icon/avatar.png" mode="aspectFit"/>
+    </view>
+    <!-- <image src="{{userInfo.avatar}}" mode="aspectFit"/>
+    <text>{{userInfo.name}}</text> -->
+    <text class="fo-32 ma-b30">申请获取以下权限</text>
+    <text class="fo-24 ma-b30">(获取你的微信头像以及微信昵称等公开信息)</text>
+    <button class="ma-t30" bindtap="onProfile">授权登录</button>
+</view>

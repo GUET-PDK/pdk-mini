@@ -3,12 +3,15 @@
 
 	<!-- 用户简介 -->
 	<view class="user-intro backgroud" bindtap="toOpen" data-id="0">
-		<image src="/static/image/icon/avatar.png" mode="aspectFit" />
-		<view>
-			<view class="user-name">蛋白质</view>
-			<view class="user-id">2000301417</view>
+		<image src="{{userInfo.avatar}}" mode="aspectFit" />
+		<view wx:if="{{token}}" >
+			<view class="user-name">{{userInfo.name}}</view>
+			<view class="user-id">{{userInfo.id}}</view>
 		</view>
-		<text class="iconfont icon-jinrujiantou" ></text>
+		<view wx:else>
+			请先登录！
+		</view>
+		<text class="iconfont icon-jinrujiantou"></text>
 	</view>
 
 	<!-- 用户订单、跑腿数据 -->
@@ -19,7 +22,7 @@
 		</view>
 		<view class="bar-item" data-id="8">
 			<text>0</text>
-			<text>我的接单</text> 
+			<text>我的接单</text>
 		</view>
 		<view class="bar-item" data-id="9">
 			<text>0</text>
@@ -39,7 +42,9 @@
 			</view>
 		</view>
 	</view>
-	
+
+	<button class="btLogin" type="primary" wx:if="{{!token}}" bindtap="toLogin">登 录</button>
+
 	<!-- 版本号 -->
 	<view class="version">
 		v1.0.0

@@ -1,22 +1,18 @@
 // app.js
 App({
-  onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  /**
+   * 全局变量
+   */
+  globalData: {
+    token: "",
+  },
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log("***** " + res.code)
-      }
-    })
+  onLaunch() {
+    
   },
 
   /**
-   * 授权
+   * 获取用户授权
    * scope.userInfo wx.getUserInfo  用户信息
       scope.userLocation    wx.getLocation, wx.chooseLocation   地理位置
       scope.address wx.chooseAddress    通讯地址
@@ -32,19 +28,32 @@ App({
         //console.log(res.authSetting[scope])
         if (!res.authSetting[scope]) {
           wx.showModal({
-            title: '用户未授权',
-            content: '拒绝授权将不能体验小程序完整功能，点击确定开启授权',
+            title: "用户未授权",
+            content: "拒绝授权将不能体验小程序完整功能，点击确定开启授权",
             success: (res) => {
-              console.log(res)
+              console.log(res);
               if (res.confirm) {
-                wx.openSetting({})
+                wx.openSetting({});
               }
-            }
-          })
+            },
+          });
         }
-      }
-    })
+      },
+    });
   },
 
-  globalData: {},
-})
+  /**
+   * 全局路由跳转
+   */
+  redirectTo(url) {
+    if (!this.globalData.token) {
+      wx.redirectTo({
+        url: "/pages/login/login",
+      });
+    } else {
+      wx.redirectTo({
+        url,
+      });
+    }
+  },
+});
