@@ -1,15 +1,10 @@
-// app.js
 App({
   /**
    * 全局变量
    */
-  globalData: {
-    token: "",
-  },
+  globalData: {},
 
-  onLaunch() {
-    
-  },
+  onLaunch() { },
 
   /**
    * 获取用户授权

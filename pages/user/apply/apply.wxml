@@ -3,7 +3,7 @@
     <view class="main">
         <view style="height: 60rpx;">
             <view class="avatar">
-                <image src="/static/image/icon/avatar.png" mode="aspectFill" />
+                <image src="{{avatar}}" mode="aspectFill" />
             </view>
         </view>
 

@@ -22,37 +22,37 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 数量选择器——加、减方法
-    addNum() {
-      let tmp = this.data.def_num;
-      if (tmp < 5) {
-        tmp++;
-        this.setData({
-          def_num: tmp,
-        });
-      } else {
-        wx.showToast({
-          title: "再多马车都装不完啦!",
-          icon: "none",
-          duration: 1000,
-        });
-      }
-    },
-    subNum() {
-      let tmp = this.data.def_num;
-      if (tmp > 1) {
-        tmp--;
-        this.setData({
-          def_num: tmp,
-        });
-      } else {
-        wx.showToast({
-          title: "最少一个哟!",
-          icon: "none",
-          duration: 1000,
-        });
-      }
-    },
+    // // 数量选择器——加、减方法
+    // addNum() {
+    //   let tmp = this.data.def_num;
+    //   if (tmp < 5) {
+    //     tmp++;
+    //     this.setData({
+    //       def_num: tmp,
+    //     });
+    //   } else {
+    //     wx.showToast({
+    //       title: "再多马车都装不完啦!",
+    //       icon: "none",
+    //       duration: 1000,
+    //     });
+    //   }
+    // },
+    // subNum() {
+    //   let tmp = this.data.def_num;
+    //   if (tmp > 1) {
+    //     tmp--;
+    //     this.setData({
+    //       def_num: tmp,
+    //     });
+    //   } else {
+    //     wx.showToast({
+    //       title: "最少一个哟!",
+    //       icon: "none",
+    //       duration: 1000,
+    //     });
+    //   }
+    // },
 
     // 快递大小单选监听
     radioChange(e) {

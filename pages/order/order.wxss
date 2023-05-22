@@ -2,6 +2,9 @@
 .container {
   background-color: #f2f2f2;
 }
+.empty {
+  height: 95vh;
+}
 
 .scroll-tabs {
   width: 680rpx;

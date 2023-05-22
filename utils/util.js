@@ -20,23 +20,6 @@ const formatNumber = (n) => {
   return n[1] ? n : `0${n}`;
 };
 
-/**
- * 获取token函数
- */
-const getToken = () => {
-  // 异步获取,不会阻塞线程
-  wx.getStorageSync({
-    key: "token",
-    success: (res) => {
-      //console.log(res.data)
-      this.globalData.token = res.data;
-    },
-    fail: (err) => {
-      //console.log(err);
-    },
-  });
-};
-
 module.exports = {
-  formatTime, getToken
+  formatTime
 };

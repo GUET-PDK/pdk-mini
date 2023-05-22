@@ -7,6 +7,7 @@ Page({
     cert: "",
     stu_card: "",
     show: true, // todo 判断当前的认证状态
+    avatar: '/static/image/icon/avatar.png'
   },
 
   /**
@@ -14,6 +15,13 @@ Page({
    */
   onLoad(options) {
     _this = this;
+    try {
+      this.setData({
+        avatar:options.avatar
+      })
+    }catch (err) {
+      console.log(err)
+    }
   },
 
   /**

@@ -1,6 +1,5 @@
 // pages/user/user.js
 const app = getApp();
-import { getToken } from '../../utils/util'
 Page({
   /**
    * 页面的初始数据
@@ -104,6 +103,9 @@ Page({
     let toUrl;
     if (id > 0 && id < 7) {
       toUrl = e.currentTarget.dataset.url;
+      if(id == 1) {
+        toUrl = toUrl + "?avatar=" + this.data.userInfo.avatar
+      }
     } else {
       switch (id) {
         case "0":

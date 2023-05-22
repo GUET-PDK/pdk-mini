@@ -7,9 +7,6 @@
 
 	<!-- 订单内容 -->
 	<view class="main-from">
-		
-	</view>
-	<view class="main-from">
 		<!-- Todo 表单优化 -->
 		<!-- <form bindsubmit=""></form> -->
 
@@ -73,7 +70,7 @@
 				<text>￥{{sum}}</text>
 			</view>
 			<view>
-				<button size="mini" type="primary" class="submitBtn" bindtap="">提交订单</button>
+				<button size="mini" type="primary" class="submitBtn" bindtap="publish">提交订单</button>
 			</view>
 		</view>
 	</view>

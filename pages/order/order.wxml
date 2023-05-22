@@ -5,7 +5,7 @@
 	</scroll-view>
 
 	<!-- swiper容器 -->
-	<swiper class="swiper-container" current="{{currentIndex}}" style="height: {{scrollHeight}}rpx;" bindchange="swiperSwitch" 	next-margin="6rpx">
+	<swiper wx:if="{{tmp}}" class="swiper-container" current="{{currentIndex}}" style="height: {{scrollHeight}}rpx;" bindchange="swiperSwitch" next-margin="6rpx">
 		<swiper-item wx:for="{{tabs}}" wx:key="index">
 			<scroll-view class="scroll-container" scroll-y="true">
 				<view class="item-container">
@@ -21,7 +21,7 @@
 						<view>
 							备注
 						</view>
-						
+
 						<!-- 第三行 服务件大小和数量 -->
 						<view class="">
 							<text>小件 x1</text>
@@ -38,4 +38,10 @@
 			</scroll-view>
 		</swiper-item>
 	</swiper>
+
+	<view wx:else class="empty">
+		<text class="iconfont icon-meiyoudingdan"
+		style="font-size: 300rpx;"></text>
+		<text>抱歉你还没有订单!</text>
+	</view>
 </view>

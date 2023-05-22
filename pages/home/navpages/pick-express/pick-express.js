@@ -12,6 +12,15 @@ Page({
     ],
     imgList: [],
     timeSel: "b",
+    fromData: {
+      shippingAddress: '',
+      deliveryTime1: '',
+      deliveryTime2: '',
+      pickupCode: '',
+      remark: '',
+      totalPrice: '',
+      courierSize: ''
+    },
   },
 
   /**
@@ -89,7 +98,6 @@ Page({
     wx.navigateTo({
       url: '/pages/user/address/address',
     })
-    JSON.pa
   },
 
   // 子组件事件传值
@@ -98,4 +106,16 @@ Page({
       sum: e.detail,
     });
   },
+
+  publish: function (data) {
+    console.log("@@@@@@@@@@")
+    console.log(data)
+    wx.request({
+      url: 'http://pdk.usail.asia:88/user/substitutionPublishOrder',
+      method: 'POST',
+      data: {
+
+      }
+    })
+  }
 });

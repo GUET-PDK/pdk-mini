@@ -25,6 +25,7 @@ Page({
             {id:10, val: "第10快"}
         ],
         scrollHeight: 0,
+        tmp: ''
     },
 
     /**

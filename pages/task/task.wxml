@@ -12,12 +12,16 @@
     </view>
 </scroll-view>
 
-<swiper>
+<swiper wx:if="{{tmp}}">
     <swiper-item>
         <scroll-view>
             <view>
-                
+
             </view>
         </scroll-view>
     </swiper-item>
 </swiper>
+<view wx:else class="empty">
+    <text class="iconfont icon-meiyoudingdan-01" style="font-size: 280rpx;"></text>
+    <text>抱歉平台还没有任何跑腿任务</text>
+</view>

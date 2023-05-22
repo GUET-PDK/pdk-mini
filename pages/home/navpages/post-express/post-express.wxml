@@ -11,7 +11,7 @@
 
 				<!-- 地址栏 -->
 				<view class="main-item flex flex-j-between border-bottom-line">
-					<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> (姓名+电话+宿舍号)</text></text>
+					<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip" data-name="{{fromData.shippingAddress}}"> (姓名+电话+宿舍号)</text></text>
 					<text class="iconfont icon-jinrujiantou"></text>
 				</view>
 
@@ -20,7 +20,7 @@
 					<text>
 						<text class="">收件人地址<text class="lable-tip"> (收件人详细信息)</text></text>
 					</text>
-					<textarea model:value="{{}}" placeholder="请填写收件人姓名+详细地址+手机号" placeholder-class="textarea-holder" class="textarea-class" />
+					<textarea model:value="{{fromData.recipientAddress}}" placeholder="请填写收件人姓名+详细地址+手机号" placeholder-class="textarea-holder" class="textarea-class" />
 				</view>
 
 				<!-- 快递选择栏 -->
@@ -52,7 +52,7 @@
 				<text>￥{{sum}}</text>
 			</view>
 			<view>
-				<button size="mini" type="primary" class="submitBtn" bindtap="">提交订单</button>
+				<button size="mini" type="primary" class="submitBtn" bindtap="publish">提交订单</button>
 			</view>
 		</view>
 	</view>

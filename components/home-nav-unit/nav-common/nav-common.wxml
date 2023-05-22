@@ -19,7 +19,7 @@
 	</view>
 
 	<!-- 数量栏 -->
-	<view class="common-item item-number">
+	<!-- <view class="common-item item-number">
 		<text>请选择数量</text>
 		<view class="number-select">
 			<view bindtap="subNum">
@@ -30,7 +30,7 @@
 				<text class="iconfont icon-Add"></text>
 			</view>
 		</view>
-	</view>
+	</view> -->
 
 	<!-- 支付方式栏目 -->
 	<view class="common-item item-pay">
