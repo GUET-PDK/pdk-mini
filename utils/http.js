@@ -1,8 +1,11 @@
+import FormData from "./formData";
 // url请求前缀
 // http://117.50.177.54:8080
+// http://43.138.225.254:8080
+// http://pdk.usail.asia:88
 const BaseUrl = "http://pdk.usail.asia:88";
-let header = {
-  "content-type": "application/json;charset=utf-8",
+const header = {
+  "content-type": "application/json",
 };
 
 /**
@@ -10,9 +13,7 @@ let header = {
  * @url URL地址
  * @params 请求参数
  * @method 请求方式：GET/POST
- * @onSuccess 成功回调
- * @onFailed  失败回调
- * @useToken 是否使用token（不使用token调用时填入任意参数即可  如1）
+ * @token 传入token
  */
 export function request(url, params, method, token) {
   // 请求拦截器，判断token
@@ -24,9 +25,16 @@ export function request(url, params, method, token) {
   wx.showLoading({
     title: "正在加载中...",
   });
-  console.log("请求传参")
-  console.log(params)
-  console.log(token)
+  if (method == "POST") {
+    console.log("请求传参：");
+    console.log(params);
+    const formData = createFormData(params);
+    header["content-type"] = formData.contentType;
+    params = formData.buffer
+    // console.log(token);
+  }
+  // 将请求数据序列化为 JSON 字符串
+  // const datas = JSON.stringify(params)
   return new Promise((reslove, reject) => {
     wx.request({
       url: BaseUrl + url,
@@ -39,18 +47,35 @@ export function request(url, params, method, token) {
         if (res.header.token) {
           wx.setStorageSync("token", res.header.token);
         }
-        reslove(res);
+        reslove(res.data);
       },
       fail: (err) => {
         console.log("失败：", err);
-        wx.showLoading({
+        wx.showToast({
           title: "网络连接失败",
+          duration: 500,
         });
-        setTimeout(() => {
-          wx.hideLoading();
-        }, 1000);
         reject(err);
       },
     });
   });
+}
+
+/**
+ * 手动构造 form-data 数据格式
+ */
+function createFormData(obj) {
+  let formData = new FormData();
+  for (let name in obj) {
+    if (name == "pickupCode") {
+      obj[name].forEach((filepath) => {
+        formData.appendFile(name, filepath);
+      });
+    } else if (name == "idImage" || name == "cardImage") {
+      formData.appendFile(name, obj[name]);
+    } else {
+      formData.append(name, obj[name]);
+    }
+  }
+  return formData.getData();
 }

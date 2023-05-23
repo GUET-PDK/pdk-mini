@@ -40,7 +40,7 @@
 				<text>￥{{sum}}</text>
 			</view>
 			<view>
-				<button size="mini" type="primary" class="submitBtn" bindtap="">提交订单</button>
+				<button size="mini" type="primary" class="submitBtn" bindtap="publish">提交订单</button>
 			</view>
 		</view>
 	</view>

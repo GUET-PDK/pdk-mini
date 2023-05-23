@@ -1,4 +1,5 @@
-import { request } from "../../../../utils/http";
+const app = getApp()
+const request = app.globalMethod()
 Page({
   /**
    * 页面的初始数据
@@ -12,13 +13,13 @@ Page({
       { id: 5, val: "邮政", name: "邮政快递" },
     ],
     fromData: {
-      shippingAddress: "F区36栋519室",
-      recipientAddress: "C区22栋120室",
+      shippingAddress: "16教",
+      recipientAddress: "17教",
       type: "圆通",
       remark: "急件",
       courizer_size: "小",
-      price: 10,
-    },
+      price: 50
+    }
   },
 
   /**
@@ -30,36 +31,11 @@ Page({
    *
    */
   async publish() {
-    const params = this.data.fromData;
-    // console.log(this.data.fromData)
-    // const res = await request(
-    //   "/user/sentPublishOrder",
-    //   this.data.fromData,
-    //   "POST",
-    //   wx.getStorageSync('token')
-    // );
-    // console.log(res);
-    wx.request({
-      url: "http://pdk.usail.asia:88/user/sentPublishOrder",
-      data: {
-        shippingAddress: "F区36栋519室",
-        recipientAddress: "17教学楼",
-        type: "圆通",
-        remark: "急急急",
-        courizer_size: "小",
-        price: 2.5,
-      },
-      method: "POST",
-      header: {
-        "content-type": "application/json",
-        token: wx.getStorageSync("token"),
-      },
-      success(res) {
-        console.log(res.data);
-      },
-      fail(err) {
-        console.log(err)
-      }
-    });
+    const res = await request(
+      "/user/sentPublishOrder",
+      this.data.fromData,
+      "POST",
+      wx.getStorageSync('token')
+    );
   },
 });

@@ -9,7 +9,7 @@ Page({
         tabs: [
             {id:1, title: '全部'},
             {id:2, title: '待接单'},
-            {id:3, title: '已接单'},
+            {id:3, title: '配送中'},
             {id:4, title: '已完成'},
         ],
         list: [

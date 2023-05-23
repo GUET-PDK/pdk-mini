@@ -1,4 +1,7 @@
-// pages/home/page/pick-express/pick-express.js
+// 代寄快递页面逻辑
+const app = getApp()
+const request = app.globalMethod()
+
 Page({
   /**
    * 页面的初始数据
@@ -17,36 +20,11 @@ Page({
       deliveryTime1: '',
       deliveryTime2: '',
       pickupCode: '',
-      remark: '',
-      totalPrice: '',
-      courierSize: ''
-    },
+      remark: '无',
+      price: 2,
+      courierSize: '小'
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {},
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
 
   // 上传事件
   upLoad: function () {
@@ -63,6 +41,7 @@ Page({
         imgList.push(...res.tempFiles);
         that.setData({
           imgList,
+          "fromData.pickupCode": imgList
         });
       },
     });
@@ -75,6 +54,7 @@ Page({
     imgs.splice(e.currentTarget.dataset.index, 1);
     this.setData({
       imgList: imgs,
+      "fromData.pickupCode": imgs
     });
   },
 
@@ -85,10 +65,14 @@ Page({
     if (time == "b") {
       this.setData({
         timeSel: "b",
+        "fromData.deliveryTime1": "19:00",
+        "fromData.deliveryTime2": "22:00",
       });
     } else {
       this.setData({
         timeSel: "a",
+        "fromData.deliveryTime1": "12:00",
+        "fromData.deliveryTime2": "14:00",
       });
     }
   },
@@ -104,18 +88,12 @@ Page({
   onEvent: function (e) {
     this.setData({
       sum: e.detail,
+      "fromData.price": e.detail
     });
   },
 
-  publish: function (data) {
-    console.log("@@@@@@@@@@")
-    console.log(data)
-    wx.request({
-      url: 'http://pdk.usail.asia:88/user/substitutionPublishOrder',
-      method: 'POST',
-      data: {
-
-      }
-    })
+  async publish() {
+    console.log(this.data.fromData)
+    const res = await request()
   }
 });

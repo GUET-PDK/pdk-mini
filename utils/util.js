@@ -20,6 +20,19 @@ const formatNumber = (n) => {
   return n[1] ? n : `0${n}`;
 };
 
+// 对象判空
+const  isObjectValid = (obj) => {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      if (obj[key] === null || obj[key] === undefined || obj[key] == "") {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 module.exports = {
-  formatTime
+  formatTime,
+  isObjectValid
 };

@@ -1,4 +1,4 @@
-import {request} from '../../../utils/http'
+import { request } from "../../../utils/http";
 let _this;
 Page({
   /**
@@ -8,7 +8,7 @@ Page({
     cardImage: "",
     idImage: "",
     show: true, // todo 判断当前的认证状态
-    avatar: '/static/image/icon/avatar.png'
+    avatar: "/static/image/icon/avatar.png",
   },
 
   /**
@@ -18,10 +18,10 @@ Page({
     _this = this;
     try {
       this.setData({
-        avatar:options.avatar
-      })
-    }catch (err) {
-      console.log(err)
+        avatar: options.avatar,
+      });
+    } catch (err) {
+      console.log(err);
     }
   },
 
@@ -54,19 +54,19 @@ Page({
   /**
    * 表单上传认证
    */
-  formSubmit: function (e) {
-    let value = e.detail.value;
-    if (value.name == "") {
+  async formSubmit(e) {
+    const params = e.detail.value;
+    if (params.name == "") {
       wx.showToast({
         title: "请输入姓名",
         icon: "none",
       });
-    } else if (value.idNumber == "") {
+    } else if (params.idNumber == "") {
       wx.showToast({
         title: "请输入学号",
         icon: "none",
       });
-    } else if (value.cardNumber == "") {
+    } else if (params.cardNumber == "") {
       wx.showToast({
         title: "请输入身份证号",
         icon: "none",
@@ -81,32 +81,17 @@ Page({
         title: "请上传身份证",
         icon: "none",
       });
+    } else {
+      params.idImage = this.data.idImage;
+      params.cardImage = this.data.cardImage;
+      const res = await request(
+        "/user/beRunner",
+        params,
+        "POST",
+        wx.getStorageSync("token"),
+        "json"
+      );
+      console.log(res);
     }
   },
-
-  /**
-   * 申请成为骑手
-   */
-  async formSubmit(e) {
-    const params = e.detail.value
-    params.idImage = this.data.idImage
-    params.cardImage = this.data.cardImage
-    console.log(params)
-    const res = await request("/user/beRunner",
-    params,
-    "POST",
-    wx.getStorageSync('token'))
-    console.log(res)
-    // wx.request({
-    //   url: 'http://pdk.usail.asia:88/user/beRunner',
-    //   data: params,
-    //   method: "POST",
-    //   header: {
-    //     "token": wx.getStorageSync('token')
-    //   },
-    //   success: res => {
-    //     console.log(res)
-    //   }
-    // })
-  }
 });

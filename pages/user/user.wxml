@@ -17,11 +17,11 @@
 	<!-- 用户订单、跑腿数据 -->
 	<view class="user-data-bar">
 		<view class="bar-item" data-id="7">
-			<text>0</text>
+			<text>{{userInfo.publishCount}}</text>
 			<text>我的发布</text>
 		</view>
 		<view class="bar-item" data-id="8">
-			<text>0</text>
+			<text>{{userInfo.accessCount}}</text>
 			<text>我的接单</text>
 		</view>
 		<view class="bar-item" data-id="9">

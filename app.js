@@ -1,3 +1,4 @@
+import { request } from "./utils/http";
 App({
   /**
    * 全局变量
@@ -51,4 +52,11 @@ App({
       });
     }
   },
+
+  /**
+   * 全局方法注册
+   */
+  globalMethod: function() {
+    return request
+  }
 });

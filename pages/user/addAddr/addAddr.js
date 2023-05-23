@@ -1,4 +1,6 @@
 // pages/user/addAddr/addAddr.js
+const app = getApp()
+const http = app.globalMethod()
 Page({
   /**
    * 页面的初始数据
@@ -10,7 +12,7 @@ Page({
       name: "请输入姓名",
       phone: "请输入手机号码",
       addr: "请输入详细地址",
-      flag: false,
+      // flag: false,
     },
   },
 
@@ -26,7 +28,7 @@ Page({
           default: queryBean,
         });
       } catch(err) {
-        //console.log(err)
+        console.log(err)
       }
     }
   },
@@ -43,7 +45,21 @@ Page({
   /**
    * 新增地址
    */
-  newAddr: function (e) {
+  async newAddr(e) {
     console.log(e.detail.value);
+    const params = e.detail.value
+    delete params['selcompus']
+    const addr_description = `${this.data.selcompus}${e.detail.value.address_description}`
+    params.address_description = addr_description
+    // this.setData({
+    //   "formData.address_description": addr_description
+    // })
+    const res = await http(
+      "/user/addAddress",
+      params,
+      "POST",
+      wx.getStorageSync('token'),
+      "json"
+    )
   },
 });

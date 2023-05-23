@@ -1,4 +1,6 @@
 const app = getApp();
+const http = app.globalMethod()
+
 Page({
   /**
    * 页面的初始数据
@@ -32,42 +34,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
+  onLoad(options) {
+    this.getAddress()
+  },
 
   /**
    * 新增用户地址
@@ -138,7 +107,7 @@ Page({
   /**
    * 删除地址
    */
-  delAddr: function (e) {
+  async delAddr(e) {
     // console.log(e.currentTarget.dataset.id);
     let id = e.currentTarget.dataset.id;
     let addr = this.data.addrData;
@@ -153,5 +122,25 @@ Page({
     wx.showToast({
       title: "删除",
     });
+    const res = await http(
+      "/user/deleteAddress",
+      "",
+      "POST",
+      wx.getStorageSync('token')
+    )
   },
+
+  /**
+   * 获取用户的所有地址
+   */
+  async getAddress() {
+    const res = await http(
+      "/user/getAllAddress",
+      "",
+      "GET",
+      wx.getStorageSync('token'),
+      "json"
+    )
+    console.log("所有地址如下：",res)
+  }
 });
