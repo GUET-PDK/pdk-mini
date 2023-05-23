@@ -1,11 +1,12 @@
+import {request} from '../../../utils/http'
 let _this;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    cert: "",
-    stu_card: "",
+    cardImage: "",
+    idImage: "",
     show: true, // todo 判断当前的认证状态
     avatar: '/static/image/icon/avatar.png'
   },
@@ -25,41 +26,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
-
-  /**
    * 用户上传校园卡、身份证
    */
   choose: function (e) {
@@ -72,13 +38,13 @@ Page({
       success(res) {
         // console.log(res.tempFiles.tempFilePath)
         const tempFilePaths = res.tempFiles;
-        if (name == "cert") {
+        if (name == "cardImage") {
           _this.setData({
-            cert: tempFilePaths[0].tempFilePath,
+            cardImage: tempFilePaths[0].tempFilePath,
           });
         } else {
           _this.setData({
-            stu_card: tempFilePaths[0].tempFilePath,
+            idImage: tempFilePaths[0].tempFilePath,
           });
         }
       },
@@ -95,26 +61,52 @@ Page({
         title: "请输入姓名",
         icon: "none",
       });
-    } else if (value.stu_num == "") {
+    } else if (value.idNumber == "") {
       wx.showToast({
         title: "请输入学号",
         icon: "none",
       });
-    } else if (value.card_num == "") {
+    } else if (value.cardNumber == "") {
       wx.showToast({
         title: "请输入身份证号",
         icon: "none",
       });
-    } else if (this.data.stu_card == "") {
+    } else if (this.data.idImage == "") {
       wx.showToast({
         title: "请上传校园卡",
         icon: "none",
       });
-    } else if (this.data.cert == "") {
+    } else if (this.data.cardImage == "") {
       wx.showToast({
         title: "请上传身份证",
         icon: "none",
       });
     }
   },
+
+  /**
+   * 申请成为骑手
+   */
+  async formSubmit(e) {
+    const params = e.detail.value
+    params.idImage = this.data.idImage
+    params.cardImage = this.data.cardImage
+    console.log(params)
+    const res = await request("/user/beRunner",
+    params,
+    "POST",
+    wx.getStorageSync('token'))
+    console.log(res)
+    // wx.request({
+    //   url: 'http://pdk.usail.asia:88/user/beRunner',
+    //   data: params,
+    //   method: "POST",
+    //   header: {
+    //     "token": wx.getStorageSync('token')
+    //   },
+    //   success: res => {
+    //     console.log(res)
+    //   }
+    // })
+  }
 });

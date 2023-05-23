@@ -1,4 +1,5 @@
 // url请求前缀
+// http://117.50.177.54:8080
 const BaseUrl = "http://pdk.usail.asia:88";
 let header = {
   "content-type": "application/json;charset=utf-8",
@@ -23,6 +24,9 @@ export function request(url, params, method, token) {
   wx.showLoading({
     title: "正在加载中...",
   });
+  console.log("请求传参")
+  console.log(params)
+  console.log(token)
   return new Promise((reslove, reject) => {
     wx.request({
       url: BaseUrl + url,

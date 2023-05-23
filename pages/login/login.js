@@ -60,9 +60,9 @@ Page({
     let code = (await wx.login()).code;
     if (code) {
       wx.request({
-        // url: "http://pdk.usail.asia:88/wechat/login?code=" + code,
+        url: "http://pdk.usail.asia:88/wechat/login?code=" + code,
         // url: "http://117.50.177.54:8080/wechat/login?code=" + code,
-        url: "http://43.138.225.254:8080/wechat/login?code=" + code,
+        // url: "http://43.138.225.254:8080/wechat/login?code=" + code,
         success: (res) => {
           wx.setStorageSync('token', res.header.token)
           console.log(res)

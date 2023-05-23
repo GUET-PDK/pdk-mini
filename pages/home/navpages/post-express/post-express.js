@@ -12,12 +12,12 @@ Page({
       { id: 5, val: "邮政", name: "邮政快递" },
     ],
     fromData: {
-      shippingAddress: "",
-      recipientAddress: "",
-      type: "",
-      remark: "",
-      courizer_size: "",
-      price: null,
+      shippingAddress: "F区36栋519室",
+      recipientAddress: "C区22栋120室",
+      type: "圆通",
+      remark: "急件",
+      courizer_size: "小",
+      price: 10,
     },
   },
 
@@ -30,12 +30,36 @@ Page({
    *
    */
   async publish() {
-    const res = await request(
-      "/user/sentPublishOrder",
-      this.data.fromData,
-      "POST",
-      wx.getStorageSync('token')
-    );
-    console.log(res);
+    const params = this.data.fromData;
+    // console.log(this.data.fromData)
+    // const res = await request(
+    //   "/user/sentPublishOrder",
+    //   this.data.fromData,
+    //   "POST",
+    //   wx.getStorageSync('token')
+    // );
+    // console.log(res);
+    wx.request({
+      url: "http://pdk.usail.asia:88/user/sentPublishOrder",
+      data: {
+        shippingAddress: "F区36栋519室",
+        recipientAddress: "17教学楼",
+        type: "圆通",
+        remark: "急急急",
+        courizer_size: "小",
+        price: 2.5,
+      },
+      method: "POST",
+      header: {
+        "content-type": "application/json",
+        token: wx.getStorageSync("token"),
+      },
+      success(res) {
+        console.log(res.data);
+      },
+      fail(err) {
+        console.log(err)
+      }
+    });
   },
 });
