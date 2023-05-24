@@ -13,7 +13,8 @@ Page({
       phone: "",
       avatar: "/static/image/icon/avatar.png",
       publishCount: 0,
-      accessCount: 0
+      accessCount: 0,
+      earnings: 0
     },
     userList: [
       {
@@ -113,34 +114,47 @@ Page({
   },
 
   /**
-   * 获取接到、发布的订单数量以及收益
+   * 获取发布、接到的订单数量以及收益
    */
   async getCount() {
-    const publishCount = await http(
-      "/runner/getAccessCount",
-      "",
-      "GET",
-      wx.getStorageSync('token'),
-      "json"
-    ).count
-
-    const accessCount = await http(
+    // 获取用户发布的所有订单数量
+    const publishResponse  = await http(
       "/user/getPublishCount",
       "",
       "GET",
-      wx.getStorageSync('token'),
-      "json"
-    ).count
+      wx.getStorageSync('token')
+    )
+    const publishCount = publishResponse.data.count
+    
+    // 获取用户成为骑手接过的订单
+    const accessResponse  = await http(
+      "/runner/getAccessCount",
+      "",
+      "GET",
+      wx.getStorageSync('token')
+    )
+    const accessCount = accessResponse.data.count
+
+    // 获取用户成为骑手累计收益
+    const earningsResponse = await http(
+      "/runner/getMyEarnings",
+      "",
+      "GET",
+      wx.getStorageSync('token')
+    )
+    const earnings = earningsResponse.data.earning
 
     if(publishCount && accessCount) {
       this.setData({
         "userInfo.publishCount": publishCount,
-        "userInfo.accessCount": accessCount
+        "userInfo.accessCount": accessCount,
+        "userInfo.earnings": earnings
       })
     } else {
       this.setData({
         "userInfo.publishCount": 0,
-        "userInfo.accessCount": 0
+        "userInfo.accessCount": 0,
+        "userInfo.earnings": 0
       })
     }
   }

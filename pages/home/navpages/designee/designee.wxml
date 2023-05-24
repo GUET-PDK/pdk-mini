@@ -7,40 +7,13 @@
 	<!-- 表单滑动区域 -->
 	<view class="main-from">
 		<scroll-view class="scroll-section" scroll-y enable-flex="true">
-			<view class="main-section">
-
-				<!-- 配送地址栏 -->
-				<view class="main-item flex flex-j-between border-bottom-line">
-					<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> (姓名+电话+宿舍号)</text></text>
-					<text class="iconfont icon-jinrujiantou"></text>
-				</view>
-
-				<!-- 说明栏 -->
-				<view class="main-item border-bottom-line">
-					<text>代送内容<text class="lable-tip"> (描述具体事项)</text></text>
-					<textarea model:value="{{}}" placeholder="请填写代送的东西、件数等，实际价格面付。如桶装水2桶" placeholder-class="textarea-holder" class="textarea-class" />
-				</view>
-
-				<!-- 备注栏 -->
-				<view class="main-item flex border-bottom-line">
-					<text>备注：</text>
-					<input model:value="{{}}" type="text" placeholder="如送达时间" placeholder-class="input-holder" />
-				</view>
-			</view>
+			<main-common type="designee"></main-common>
 
 			<!-- 公共部分 -->
-			<nav-common bind:totalEvent="onEvent" radios="{{radios}}"></nav-common>
+			<nav-common bind:totalEvent="onEvent" radios="{{radios}}" type="类别"></nav-common>
 		</scroll-view>
 
 		<!-- 总结、结算栏 -->
-		<view class="total-bottom">
-			<view>
-				<text>合计</text>
-				<text>￥{{sum}}</text>
-			</view>
-			<view>
-				<button size="mini" type="primary" class="submitBtn" bindtap="">提交订单</button>
-			</view>
-		</view>
+		<bottom-common params="{{fromData}}"></bottom-common>
 	</view>
 </view>

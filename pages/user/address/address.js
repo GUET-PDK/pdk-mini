@@ -1,41 +1,26 @@
 const app = getApp();
-const http = app.globalMethod()
+const http = app.globalMethod();
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    addrData: [
-      {
-        id: 0,
-        name: "张三",
-        phone: "15324582440",
-        addr: "36栋211室",
-        flag: true,
-      },
-      {
-        id: 1,
-        name: "李四",
-        phone: "15324582440",
-        addr: "36栋210室",
-        flag: false,
-      },
-      {
-        id: 2,
-        name: "王五",
-        phone: "15324582440",
-        addr: "36栋212室",
-        flag: false,
-      },
-    ],
+    addrData: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getAddress()
+    this.getAddress();
+  },
+
+  /**
+   *
+   */
+  onShow() {
+    this.getAddress();
   },
 
   /**
@@ -56,9 +41,9 @@ Page({
         console.log(res);
         let addrs = this.data.addrData;
         addrs.push({
-          name: res.userName,
-          phone: res.telNumber,
-          addr:
+          addressName: res.userName,
+          addressPhone: res.telNumber,
+          addressDescription:
             res.provinceName + res.cityName + res.countyName + res.detailInfo,
           flag: false,
         });
@@ -79,7 +64,7 @@ Page({
   toDetail: function (e) {
     let nowdata = e.currentTarget.dataset.nowdata;
     //将对象转为string
-    var queryBean = JSON.stringify(nowdata)
+    var queryBean = JSON.stringify(nowdata);
     wx.navigateTo({
       url: "../addAddr/addAddr?queryBean=" + queryBean,
     });
@@ -113,21 +98,22 @@ Page({
     let addr = this.data.addrData;
     for (const key in addr) {
       if (id == key) {
+        const { addressId } = addr[key];
+        const param = { addressId };
+        // console.log(param)
+        await http(
+          "/user/deleteAddress",
+          param,
+          "POST",
+          wx.getStorageSync("token")
+        );
         addr.pop(key);
       }
     }
     this.setData({
       addrData: addr,
     });
-    wx.showToast({
-      title: "删除",
-    });
-    const res = await http(
-      "/user/deleteAddress",
-      "",
-      "POST",
-      wx.getStorageSync('token')
-    )
+    this.getAddress();
   },
 
   /**
@@ -138,9 +124,35 @@ Page({
       "/user/getAllAddress",
       "",
       "GET",
-      wx.getStorageSync('token'),
-      "json"
-    )
-    console.log("所有地址如下：",res)
-  }
+      wx.getStorageSync("token")
+    );
+    console.log("所有地址如下：", res.data);
+    if (res.data.length != null)
+      this.setData({
+        addrData: res.data,
+      });
+  },
+
+  /**
+   * 选择地址
+   */
+  chooseAddr(e) {
+    // 获取当前页面栈的信息
+    const pages = getCurrentPages();
+    // 获取前一个页面的路由
+    const previousPage = pages.length >= 2 ? pages[pages.length - 2].route : "";
+    // 判断前一个页面的路由是否包含 "/home"
+    if (previousPage.includes("/home")) {
+      // 前一个页面的路由包含 "/home"，执行相应的地址选择逻辑
+      console.log(e.currentTarget.dataset.nowdata);
+      const nowData = e.currentTarget.dataset.nowdata
+      const userInfo = wx.getStorageSync('userInfo')
+      userInfo.addr = nowData.addressDescription + ',' + nowData.addressPhone.slice(-4)
+      console.log(userInfo)
+      wx.setStorageSync('userInfo', userInfo)
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+  },
 });

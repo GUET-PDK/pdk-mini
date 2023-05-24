@@ -29,7 +29,7 @@ Page({
         token: wx.getStorageSync('token')
       },
       success: res => {
-        wx.setStorageSync('token', res.header.token)
+        wx.setStorage('token', res.header.token)
         console.log(res)
       },
       fail: err => {

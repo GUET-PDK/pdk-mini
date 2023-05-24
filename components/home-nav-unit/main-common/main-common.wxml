@@ -1,1 +1,58 @@
-<!-- 首页各标签页面主要内容 -->
+<view class="main-section">
+
+	<!-- 地址栏 -->
+	<view class="main-item flex flex-j-between border-bottom-line" bindtap="toSelAddr">
+		<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> {{formData.shippingAddress}}</text></text>
+		<text class="iconfont icon-jinrujiantou"></text>
+	</view>
+
+	<!-- 代寄-收件人信息栏 -->
+	<view class="main-item border-bottom-line" wx-if="{{type == 'post'}}">
+		<text>
+			<text class="">收件人地址<text class="lable-tip"> (收件人详细信息)</text></text>
+		</text>
+		<textarea bindinput="changeInputs" data-name="recipientAddress" placeholder="请填写收件人姓名+详细地址+手机号" placeholder-class="textarea-holder" class="textarea-class" />
+	</view>
+
+	<!-- 代取-取单地址 -->
+	<view class="main-item flex border-bottom-line" wx-if="{{type == 'take'}}">
+		<text class="iconfont icon-daohangdizhi"></text>
+		<textarea bindinput="changeInputs" data-name="pickUpPositon" type="text" placeholder="请填写外卖的取单位置，如F区36栋后门，17教学楼一楼咖啡机顶" placeholder-class="textarea-holder" />
+	</view>
+
+	<!-- 代购说明栏 -->
+	<view class="main-item border-bottom-line" wx-if="{{type == 'buy'}}">
+		<text>购买内容<text class="lable-tip"> (描述购物内容)</text></text>
+		<textarea bindinput="changeInputs" data-name="serviceDescription" placeholder="请填写代购的东西、件数等，实际价格面付。如牙膏大支1支，仲园餐厅二楼现炒(瘦肉+香菇+洋葱)" placeholder-class="textarea-holder" class="textarea-class" />
+	</view>
+
+	<!-- 代送说明栏 -->
+	<view class="main-item border-bottom-line" wx-if="{{type == 'designee'}}">
+		<text>代送内容<text class="lable-tip"> (描述具体事项)</text></text>
+		<textarea bindinput="changeInputs" data-name="serviceDescription" placeholder="请填写代送的东西、件数等，实际价格面付。如桶装水2桶" placeholder-class="textarea-holder" class="textarea-class" />
+	</view>
+
+	<!-- 万能服务栏 -->
+	<view class="main-item border-bottom-line" wx-if="{{type == 'universal'}}">
+		<text>万能服务<text class="lable-tip"> (描述实际需要的服务)</text></text>
+		<textarea bindinput="changeInputs" data-name="serviceDescription" placeholder="请输入实际需要服务的内容，如原神代肝、创高代跑等" placeholder-class="textarea-holder" class="textarea-class" />
+	</view>
+
+	<!-- 快递选择栏 -->
+	<view class="main-item border-bottom-line" wx-if="{{type == 'post'}}">
+		<radio-group bindchange="" class="radio-group">
+			<label wx:for="{{_express}}" wx:key="*this">
+				<view>
+					<view class="radio-label">{{item.name}}</view>
+					<radio value="{{item.val}}" />
+				</view>
+			</label>
+		</radio-group>
+	</view>
+
+	<!-- 备注栏 -->
+	<view class="main-item flex border-bottom-line">
+		<text>备注：</text>
+		<input bindinput="changeInputs" data-name="remark" type="text" placeholder="{{remarkHolder}}" placeholder-class="input-holder" />
+	</view>
+</view>

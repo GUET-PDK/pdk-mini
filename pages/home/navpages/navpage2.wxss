@@ -32,28 +32,10 @@ page {
   z-index: 10;
 }
 
-/* 主要独有部分 */
-.main-section {
-  background-color: #fff;
-  border-radius: 30rpx;
-  padding: 0 20rpx;
-}
-
-/* 表单子项 */
-.main-item {
-  padding: 20rpx 0;
-  font-size: 32rpx;
-}
-
 .radio-group label {
   display: inline-block;  /* 行内块 */
   margin-left: 6rpx;
 }
-
-.radio-group label:nth-child(n+6) {
-  
-}
-
 .radio-group .radio-label {
   position: absolute; 
   width: 108rpx; 
@@ -87,89 +69,6 @@ page {
   background: #FFF2F2; 
   border-radius: 12rpx; 
   content: ''; 
-}
-
-
-/* 结算、合计栏 */
-.total-bottom {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100rpx;
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 600;
-  background-color: #fff;
-  box-sizing: border-box;
-  padding: 0 40rpx;
-  z-index: 10;
-}
-
-.total-bottom view text:nth-child(2) {
-  color: coral;
-}
-
-/* 其他通用 */
-.flex {
- display: flex;
-}
-.flex-1 {
-  flex: 1;
-}
-.flex-column {
-  flex-direction: column;
-}
-.flex-warp {
-  flex-wrap: wrap;
-}
-.flex-row-warp {
-  flex-flow: row wrap;
-}
-.flex-a-center {
-  align-items: center;
-}
-.flex-j-center {
-  justify-content: center;
-}
-.flex-j-between {
-  justify-content: space-between;
-}
-.flex-j-around {
-  justify-content: space-around;
-}
-
-/* 常用图标 */
-.icon-daohangdizhi {
-  font-size: 32rpx;
-  margin-right: 12rpx;
-}
-.icon-jinrujiantou {
-  font-size: 36rpx;
-  margin-right: 12rpx;
-}
-
-/* 默认提示小文字 */
-.input-holder,
-.textarea-holder,
-.lable-tip {
-  font-size: 28rpx;
-  color: #999;
-}
-.textarea-class {
-  margin-top: 20rpx;
-  background-color: #f2f2f2;
-  width: 630rpx;
-  padding: 20rpx;
-  box-sizing: border-box;
-  border-radius: 16rpx;
-  color: #666;
-}
-
-.border-bottom-line {
-  border-bottom: 1px #e8e8e8 solid;
 }
 
 /* 单选按钮 */

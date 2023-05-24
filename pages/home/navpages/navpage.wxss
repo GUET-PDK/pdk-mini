@@ -131,28 +131,6 @@ page {
   display: flex;
 }
 
-/* 结算、合计栏 */
-.total-bottom {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100rpx;
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 600;
-  background-color: #fff;
-  box-sizing: border-box;
-  padding: 0 40rpx;
-  z-index: 10;
-}
-
-.total-bottom view text:nth-child(2) {
-  color: coral;
-}
-
 /* 常用图标 */
 .icon-daohangdizhi {
   font-size: 32rpx;

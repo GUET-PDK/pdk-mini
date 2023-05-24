@@ -1,6 +1,5 @@
 {
     "pages": [
-        
         "pages/home/index/index",
         "pages/task/task",
         "pages/order/order",
@@ -16,7 +15,6 @@
         "pages/user/addAddr/addAddr",
         "pages/user/info/info",
         "pages/user/apply/apply",
-        "components/home-nav-unit/main-common/main-common",
         "pages/user/agreement/agreement",
         "pages/user/opinion/opinion",
         "pages/login/login"

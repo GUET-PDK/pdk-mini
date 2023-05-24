@@ -1,0 +1,10 @@
+<!-- 总结、结算栏 -->
+<view class="total-bottom">
+	<view>
+		<text>合计</text>
+		<text>￥{{params.price}}</text>
+	</view>
+	<view>
+		<button size="mini" type="primary" class="submitBtn" bindtap="publish">提交订单</button>
+	</view>
+</view>

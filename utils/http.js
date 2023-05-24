@@ -26,8 +26,8 @@ export function request(url, params, method, token) {
     title: "正在加载中...",
   });
   if (method == "POST") {
-    console.log("请求传参：");
-    console.log(params);
+    // console.log("请求传参：");
+    // console.log(params);
     const formData = createFormData(params);
     header["content-type"] = formData.contentType;
     params = formData.buffer
@@ -68,8 +68,8 @@ function createFormData(obj) {
   let formData = new FormData();
   for (let name in obj) {
     if (name == "pickupCode") {
-      obj[name].forEach((filepath) => {
-        formData.appendFile(name, filepath);
+      obj[name].forEach((file) => {
+        formData.appendFile(name, file.tempFilePath);
       });
     } else if (name == "idImage" || name == "cardImage") {
       formData.appendFile(name, obj[name]);

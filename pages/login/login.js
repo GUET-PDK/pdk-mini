@@ -13,26 +13,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
   onProfile() {
     wx.getUserProfile({
       desc: '获取你的昵称、头像',
@@ -41,7 +21,7 @@ Page({
         const userInfo = {
           name: nickName,
           avatar: avatarUrl,
-          addr: '张三 14777562431 花江36#511',
+          addr: '',
         }
         wx.setStorageSync('userInfo', userInfo)
         // 去登陆

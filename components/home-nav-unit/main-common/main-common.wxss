@@ -1,1 +1,71 @@
-/* components/home-nav-unit/main-common/main-common.wxss */
+/* 主要独有部分 */
+.main-section {
+  background-color: #fff;
+  border-radius: 30rpx;
+  padding: 0 20rpx;
+}
+
+/* 表单子项 */
+.main-item {
+  padding: 20rpx 0;
+  font-size: 32rpx;
+}
+
+/* 其他通用 */
+.flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-warp {
+  flex-wrap: wrap;
+}
+.flex-row-warp {
+  flex-flow: row wrap;
+}
+.flex-a-center {
+  align-items: center;
+}
+.flex-j-center {
+  justify-content: center;
+}
+.flex-j-between {
+  justify-content: space-between;
+}
+.flex-j-around {
+  justify-content: space-around;
+}
+
+/* 常用图标 */
+.icon-daohangdizhi {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+.icon-jinrujiantou {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+/* 默认提示小文字 */
+.input-holder,
+.textarea-holder,
+.lable-tip {
+  font-size: 28rpx;
+  color: #999;
+}
+.textarea-class {
+  margin-top: 20rpx;
+  background-color: #f2f2f2;
+  width: 630rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  color: #666;
+}
+.border-bottom-line {
+  border-bottom: 1px #e8e8e8 solid;
+}

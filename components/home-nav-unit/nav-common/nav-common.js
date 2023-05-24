@@ -1,12 +1,13 @@
 // components/nav-common/nav-common.js
-const app = getApp()
+const app = getApp();
 
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    radios:Array, // 父组件传递的数据
+    radios: Array, // 父组件传递的数据
+    type: String
   },
 
   /**
@@ -16,13 +17,14 @@ Component({
     def_num: 1,
     def_price: 2.0,
     sum: 2.0,
+    formdata: {},
   },
 
   /**
-   * 组件的方法列表
+   * 组件的方法
    */
   methods: {
-    // // 数量选择器——加、减方法
+    // 数量选择器——加、减方法
     // addNum() {
     //   let tmp = this.data.def_num;
     //   if (tmp < 5) {
@@ -54,7 +56,7 @@ Component({
     //   }
     // },
 
-    // 快递大小单选监听
+    // 快递规格单选监听
     radioChange(e) {
       // console.log(e.detail.value);
       const items = this.data.radios;
@@ -62,19 +64,24 @@ Component({
         if ((items[i].check = items[i].value === e.detail.value)) {
           this.setData({
             def_price: items[i].price,
+            formdata: items[i],
           });
         }
       }
     },
   },
+  // 监听数据变化 同 watch
   observers: {
-    "def_num, def_price": function (new_num, new_price) {
-      this.setData({
-        sum: new_num * new_price,
-      });
-      let total = this.data.sum
-      // console.log(total)
-      this.triggerEvent('totalEvent', total)
+    // "def_num, def_price": function (new_num, new_price) {
+    //   this.setData({
+    //     sum: new_num * new_price,
+    //   });
+    //   let total = this.data.sum
+    //   // console.log(total)
+    //   this.triggerEvent('totalEvent', total)
+    // },
+    def_price: function (new_price) {
+      this.triggerEvent("formEvent", this.data.formdata);
     },
   },
 });

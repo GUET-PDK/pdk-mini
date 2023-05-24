@@ -49,17 +49,17 @@ Page({
     console.log(e.detail.value);
     const params = e.detail.value
     delete params['selcompus']
-    const addr_description = `${this.data.selcompus}${e.detail.value.address_description}`
-    params.address_description = addr_description
-    // this.setData({
-    //   "formData.address_description": addr_description
-    // })
+    params.address_description = `${this.data.selcompus}${e.detail.value.address_description}`
     const res = await http(
       "/user/addAddress",
       params,
       "POST",
-      wx.getStorageSync('token'),
-      "json"
+      wx.getStorageSync('token')
     )
+    if(res.msg == "更新地址成功"){
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   },
 });

@@ -7,41 +7,13 @@
 	<!-- 表单滑动区域 -->
 	<view class="main-from">
 		<scroll-view class="scroll-section" scroll-y enable-flex="true">
-			<view class="main-section">
-
-				<!-- 配送地址栏 -->
-				<view class="main-item flex flex-j-between border-bottom-line">
-					<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> (姓名+电话+宿舍号)</text></text>
-					<text class="iconfont icon-jinrujiantou"></text>
-				</view>
-
-				<!-- 取单地址 -->
-				<view class="main-item flex border-bottom-line">
-					<text class="iconfont icon-daohangdizhi"></text>
-					<input model:value="{{}}" type="text" placeholder="外卖取单位置，如F区36栋后门" class="flex-1" placeholder-class="input-holder" />
-					<text class="iconfont icon-jinrujiantou"></text>
-				</view>
-
-				<!-- 备注栏 -->
-				<view class="main-item flex border-bottom-line">
-					<text>备注：</text>
-					<input model:value="{{}}" type="text" placeholder="如送达时间" placeholder-class="input-holder" />
-				</view>
-			</view>
+			<main-common type="take"></main-common>
 
 			<!-- 公共部分 -->
-			<nav-common bind:totalEvent="onEvent" radios="{{radios}}"></nav-common>
+			<nav-common bind:totalEvent="onEvent" radios="{{radios}}" type="外卖份数"></nav-common>
 		</scroll-view>
 
 		<!-- 总结、结算栏 -->
-		<view class="total-bottom">
-			<view>
-				<text>合计</text>
-				<text>￥{{sum}}</text>
-			</view>
-			<view>
-				<button size="mini" type="primary" class="submitBtn" bindtap="publish">提交订单</button>
-			</view>
-		</view>
+		<bottom-common params="{{fromData}}" url="/user/takeawayPublishOrder"></bottom-common>
 	</view>
 </view>

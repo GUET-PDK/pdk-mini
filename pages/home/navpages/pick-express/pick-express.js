@@ -1,29 +1,37 @@
 // 代寄快递页面逻辑
-const app = getApp()
-const request = app.globalMethod()
-
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    sum: 2.0,
     radios: [
-      { id: 1, name: "小件", value: "small", price: 1.5 },
-      { id: 2, name: "中小件", value: "middle", check: "true", price: 2.0 },
-      { id: 3, name: "大件", value: "big", price: 3.0 },
+      { id: 1, name: "小件", value: "小", price: 1 },
+      { id: 2, name: "中小件", value: "中", check: "true", price: 2 },
+      { id: 3, name: "大件", value: "大", price: 3 },
     ],
     imgList: [],
     timeSel: "b",
     fromData: {
-      shippingAddress: '',
-      deliveryTime1: '',
-      deliveryTime2: '',
-      pickupCode: '',
-      remark: '无',
+      shippingAddress: '(姓名+电话+宿舍号)',// 配送地址
+      deliveryTime1: '19:00',             // 配送时间1
+      deliveryTime2: '22:00',             // 配送时间2
+      recipientAddress: '',               // 收件人地址
+      pickupCode: '',                     // 文件数组/取件码截图
+      pickUpPositon: '',                  // 代取-外卖位置
+      serviceDescription: '',             // 万能服务描述
+      remark: '',
       price: 2,
-      courierSize: '小'
+      courierSize: '中'                   // 快递大小
     }
+  },
+
+  /**
+   * changeInput 输入框变化 实现与对象的双向绑定
+   */
+  changeInput(e) {
+    this.setData({
+      "fromData.remark": e.detail.value
+    })
   },
 
   // 上传事件
@@ -86,14 +94,21 @@ Page({
 
   // 子组件事件传值
   onEvent: function (e) {
+    // console.log(e)
     this.setData({
-      sum: e.detail,
-      "fromData.price": e.detail
+      "fromData.price": e.detail.price,
+      "fromData.courierSize": e.detail.value
     });
   },
 
-  async publish() {
-    console.log(this.data.fromData)
-    const res = await request()
+  /**
+   * 监听页面显示
+   */
+  onShow() {
+    const userInfo = wx.getStorageSync('userInfo')
+    if(userInfo.addr)
+      this.setData({
+        "fromData.shippingAddress": userInfo.addr
+      })
   }
 });

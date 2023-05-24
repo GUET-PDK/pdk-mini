@@ -25,7 +25,7 @@
 			<text>我的接单</text>
 		</view>
 		<view class="bar-item" data-id="9">
-			<text>0</text>
+			<text>{{userInfo.earnings}}</text>
 			<text>我的收益</text>
 		</view>
 	</view>

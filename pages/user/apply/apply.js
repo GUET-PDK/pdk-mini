@@ -89,9 +89,12 @@ Page({
         params,
         "POST",
         wx.getStorageSync("token"),
-        "json"
       );
-      console.log(res);
+      if(res.code == 200) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
     }
   },
 });

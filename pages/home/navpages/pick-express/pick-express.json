@@ -1,6 +1,7 @@
 {
 	"navigationBarTitleText": "代取快递",
 	"usingComponents": {
-		"nav-common": "/components/home-nav-unit/nav-common/nav-common"
+		"nav-common": "/components/home-nav-unit/nav-common/nav-common",
+		"bottom-common": "/components/home-nav-unit/bottom-common/bottom-common"
 	}
 }

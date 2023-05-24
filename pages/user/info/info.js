@@ -60,7 +60,6 @@ Page({
         "",
         "POST",
         wx.getStorageSync("token"),
-        "json"
       );
     }else {
       wx.showToast({
@@ -69,8 +68,6 @@ Page({
         duration: 1000
       })
     }
-
-    console.log(params);
   },
 
   /**

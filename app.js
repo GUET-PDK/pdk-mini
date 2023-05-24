@@ -3,7 +3,20 @@ App({
   /**
    * 全局变量
    */
-  globalData: {},
+  globalData: {
+    formData: {
+      shippingAddress: '(姓名+电话+宿舍号)',// 配送地址
+      deliveryTime1: '19:00',             // 配送时间1
+      deliveryTime2: '22:00',             // 配送时间2
+      recipientAddress: '',               // 收件人地址
+      pickupCode: [],                     // 文件数组/取件码截图
+      pickUpPositon: '',                  // 代取-外卖位置
+      serviceDescription: '',             // 万能服务描述
+      remark: '',
+      price: 2,
+      courierSize: ''                   // 快递大小
+    }
+  },
 
   onLaunch() { },
 

@@ -1,20 +1,16 @@
 <view class="addr-list">
-	<block wx:for="{{addrData}}" wx:key="id">
-		<view class="addr-item">
-			<view class="bt-class">
-				<view>
-					<button class='{{item.flag==true?"btRed":"btGreen"}}' data-i="{{index}}" catchtap='setDefault'>
-						{{item.flag==true?"默认地址":"设为默认"}}
-					</button>
+	<block wx:for="{{addrData}}" wx:key="addressId">
+		<view class="addr-item" bindtap="chooseAddr" data-nowdata="{{item}}">
+
+			<view class="addr-top">
+				<view class="name-iphone">
+					<text>{{item.addressName}}</text>
+					<text>{{item.addressPhone}}</text>
 				</view>
-				<view><button catchtap='delAddr' data-id="{{index}}">删除</button></view>
+				<view class="bt-class"><button catchtap='delAddr' data-id="{{index}}">删除</button></view>
 			</view>
-			<view class="name-iphone">
-				<text>{{item.name}}</text>
-				<text>{{item.phone}}</text>
-			</view>
-			<view class="addr">
-				<text>{{item.addr}}</text>
+			<view class="addr-bottom">
+				<text>{{item.addressDescription}}</text>
 				<text class="iconfont icon-jinrujiantou" catchtap='toDetail' data-nowdata="{{item}}"></text>
 			</view>
 		</view>
@@ -22,7 +18,7 @@
 
 	<!-- 地址为空 -->
 	<view wx:if='{{addrData.length == 0}}' class='noData'>
-		<image src='' />
+		<text class="iconfont icon-meiyoushuju" style="font-size: 180rpx;"></text>
 		<view class='emptyData'>抱歉，这里是空的哦</view>
 	</view>
 

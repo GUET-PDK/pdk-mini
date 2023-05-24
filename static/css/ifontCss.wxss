@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3926611 */
-  src: url('//at.alicdn.com/t/c/font_3926611_t2ne061euqb.woff2?t=1684761542692') format('woff2'),
-      url('//at.alicdn.com/t/c/font_3926611_t2ne061euqb.woff?t=1684761542692') format('woff'),
-      url('//at.alicdn.com/t/c/font_3926611_t2ne061euqb.ttf?t=1684761542692') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3926611_u6dkecfrke.woff2?t=1684857604663') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3926611_u6dkecfrke.woff?t=1684857604663') format('woff'),
+       url('//at.alicdn.com/t/c/font_3926611_u6dkecfrke.ttf?t=1684857604663') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,11 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* 空数据图标 */
+.icon-meiyoushuju:before {
+  content: "\e60b";
 }
 
 .icon-meiyoudingdan-01:before {
@@ -28,6 +33,7 @@
 .icon-xieyixiangqing:before {
   content: "\e63a";
 }
+/* 空数据图标 END*/
 
 /* 地址图图标1 */
 .icon-weibiaoti-3:before {

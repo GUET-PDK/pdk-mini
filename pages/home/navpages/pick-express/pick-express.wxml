@@ -12,7 +12,7 @@
 
 		<!-- 地址栏 -->
 		<view class="addr-top border-bottom-line" bindtap="toSelAddr">
-			<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> (姓名+电话+宿舍号)</text></text>
+			<text class="iconfont icon-daohangdizhi"> 配送地址<text class="lable-tip"> {{fromData.shippingAddress}}</text></text>
 			<text class="iconfont icon-jinrujiantou"></text>
 		</view>
 
@@ -55,23 +55,14 @@
 				<!-- 备注栏 -->
 				<view class="main-item item-remake border-bottom-line">
 					<text>备注：</text>
-					<input model:value="{{}}" type="text" placeholder="如物品贵重" placeholder-class="input-holder"/>
+					<input bindinput="changeInput" model:value="{{fromData.remark}}" type="text" placeholder="如物品贵重" placeholder-class="input-holder"/>
 				</view>
 			</view>
 
 			<!-- 公共部分 -->
-			<nav-common bind:totalEvent="onEvent" radios="{{radios}}"></nav-common>
+			<nav-common bind:formEvent="onEvent" radios="{{radios}}" type="快递大小"></nav-common>
 		</scroll-view>
 
-		<!-- 总结、结算栏 -->
-		<view class="total-bottom">
-			<view>
-				<text>合计</text>
-				<text>￥{{sum}}</text>
-			</view>
-			<view>
-				<button size="mini" type="primary" class="submitBtn" bindtap="publish">提交订单</button>
-			</view>
-		</view>
+		<bottom-common params="{{fromData}}" url="/user/substitutionPublishOrder"></bottom-common>
 	</view>
 </view>

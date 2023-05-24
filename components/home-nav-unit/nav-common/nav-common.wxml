@@ -2,7 +2,7 @@
 <view class="common-section">
 	<!-- 物件大小栏 -->
 	<view class="common-item item-size bottom-line">
-		<text>快递大小：</text>
+		<text>{{type}}：</text>
 		<radio-group bindchange="radioChange">
 			<label wx:for="{{radios}}" wx:key="id" class="size-radio-lab">
 				<radio value="{{item.value}}" checked="{{item.check}}" />{{item.name}}

@@ -21,30 +21,28 @@ page {
 .addr-item:nth-child(1) {
   border-top: 1px #e8e8e8 solid;
 }
-
-/* 按钮样式 */
-.addr-item .bt-class {
-	display: flex;
-	justify-content: space-between;
-}
-
-.addr-item .bt-class button {
-  font-size: 20rpx;
-  border-radius: 18rpx;
-  padding: 0;
-  margin-bottom: 8rpx;
-}
-
-.addr-item .bt-class view:nth-child(1) button {
+/* 地址内容 */
+.addr-top {
+  width: 96%;
+  margin: 0 0 10rpx 10rpx;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 120rpx;
-  height: 36rpx;
-  color: #fff;
+  font-weight: 600;
 }
-
-.addr-item .bt-class view:nth-child(2) button {
+.name-iphone {
+  display: flex;
+  width: 66%;
+}
+.name-iphone text:last-child {
+  margin-left: auto;
+}
+/* 按钮样式 */
+.bt-class {
+  margin-left: auto;
+}
+.bt-class button {
+  font-size: 20rpx;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,29 +50,16 @@ page {
   height: 36rpx;
   background-color: #fff;
   color: #f44225;
+  border-radius: 18rpx;
   border: 2rpx solid #f44225;
 }
-.btRed {
-  background-color: #F44225;
-}
-.btGreen {
-  background-color: #07c160;
-}
-/* 地址内容 */
-.name-iphone {
-  width: 60%;
-  margin: 0 0 10rpx 10rpx;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-}
 
-.addr {
+.addr-bottom {
   display: flex;
   justify-content: space-between;
 }
 
-.addr text:nth-child(2) {
+.addr-buttom text:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,18 +88,18 @@ page {
 
 /* 没有数据显示 */
 .noData {
-  text-align: center;
-}
-
-.noData image {
-  width: 98rpx;
-  height: 98rpx;
-  margin-top: 160rpx;
-  margin-bottom: 24rpx;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #efeff4;
 }
 
 .emptyData {
   padding: 24rpx;
+  margin-bottom: 120rpx;
   text-align: center;
   color: #c5c5c5;
   font-size: 24rpx;
