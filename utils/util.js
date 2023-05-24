@@ -23,7 +23,9 @@ const formatNumber = (n) => {
 // 对象判空
 const isObjectValid = (obj) => {
   for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if(key == 'remark') {
+      continue;
+    }else if (obj.hasOwnProperty(key)) {
       if (obj[key] === null || obj[key] === undefined || obj[key] == "") {
         return false;
       }
@@ -32,18 +34,32 @@ const isObjectValid = (obj) => {
   return true;
 };
 
+// 对象删减，返回新对象
+const isNewObject = (type,obj) => {
+  if(type == 'post'){
+    const { pickUpPositon, serviceDescription, ...newObj} = obj
+    return newObj
+  }else if(type == 'take') {
+    const { recipientAddress, serviceDescription, ...newObj} = obj
+    return newObj
+  }else {
+    const { recipientAddress, pickUpPositon, ...newObj} = obj
+    return newObj
+  }
+}
+
 // 身份证号校验
-const validateIDCard = (val) => {
+const validateIdCard = (val) => {
   // 正则表达式匹配身份证号码格式
   const reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
 
-  if (!reg.test(idCard)) {
+  if (!reg.test(val)) {
     // 身份证号格式不正确
     return false;
   }
 
   // 验证前两位省份代码
-  const provinceCode = idCard.substring(0, 2);
+  const provinceCode = val.substring(0, 2);
   const validProvinceCodes = [
     "11",
     "12",
@@ -88,7 +104,7 @@ const validateIDCard = (val) => {
   }
 
   // 验证生日格式
-  const birthday = idCard.substring(6, 14);
+  const birthday = val.substring(6, 14);
   const year = birthday.substring(0, 4);
   const month = birthday.substring(4, 6);
   const day = birthday.substring(6, 8);
@@ -104,40 +120,40 @@ const validateIDCard = (val) => {
   }
 
   // 验证校验位
-  if (idCard.length === 18) {
-    const coefficientArr = [
-      7,
-      9,
-      10,
-      5,
-      8,
-      4,
-      2,
-      1,
-      6,
-      3,
-      7,
-      9,
-      10,
-      5,
-      8,
-      4,
-      2,
-    ];
-    const checkCodeArr = ["1","0","X","9","8","7","6","5","4","3","2",];
-    let sum = 0;
+  // if (val.length === 18) {
+  //   const coefficientArr = [
+  //     7,
+  //     9,
+  //     10,
+  //     5,
+  //     8,
+  //     4,
+  //     2,
+  //     1,
+  //     6,
+  //     3,
+  //     7,
+  //     9,
+  //     10,
+  //     5,
+  //     8,
+  //     4,
+  //     2,
+  //   ];
+  //   const checkCodeArr = ["1","0","X","9","8","7","6","5","4","3","2",];
+  //   let sum = 0;
 
-    for (let i = 0; i < 17; i++) {
-      sum += parseInt(idCard.charAt(i)) * coefficientArr[i];
-    }
+  //   for (let i = 0; i < 17; i++) {
+  //     sum += parseInt(val.charAt(i)) * coefficientArr[i];
+  //   }
 
-    const checkCode = checkCodeArr[sum % 11];
+  //   const checkCode = checkCodeArr[sum % 11];
 
-    if (checkCode !== idCard.charAt(17).toUpperCase()) {
-      // 身份证号校验位不正确
-      return false;
-    }
-  }
+  //   if (checkCode !== val.charAt(17).toUpperCase()) {
+  //     // 身份证号校验位不正确
+  //     return false;
+  //   }
+  // }
   return true;
 };
 
@@ -150,11 +166,15 @@ const validatePhoneNumber = (val) => {
 
 // 以 1 开头的 10 位学号检验
 const validateStuNumber = (val) => {
-  var reg = /^1\d{9}$/;
-  return reg.test(studentID);
+  const reg = /^1\d{9}$/;
+  return reg.test(val);
 }
 
 module.exports = {
   formatTime,
   isObjectValid,
+  isNewObject,
+  validateIdCard,
+  validatePhoneNumber,
+  validateStuNumber,
 };

@@ -18,14 +18,10 @@ Page({
       { id: 2, name: "中小件", value: "中", price: 4 },
       { id: 3, name: "大件", value: "大", price: 5 },
     ],
-    fromData: {
-      shippingAddress: "(姓名+电话+宿舍号)",
-      recipientAddress: "17教",
-      type: "圆通",
-      remark: "急件",
-      courizer_size: "小",
-      price: 50,
-    },
+    total: {
+      courizerSize: '小',
+      price: 3
+    }
   },
 
   /**
@@ -43,14 +39,13 @@ Page({
   },
 
   /**
-   *
+   * 父组件接收子组件的触发事件
    */
-  async publish() {
-    const res = await request(
-      "/user/sentPublishOrder",
-      this.data.fromData,
-      "POST",
-      wx.getStorageSync("token")
-    );
+  onEvent(e) {
+    // console.log(e.detail)
+    this.setData({
+      "total.courizerSize": e.detail.courizerSize,
+      "total.price": e.detail.price
+    })
   },
 });

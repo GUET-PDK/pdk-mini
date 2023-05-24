@@ -1,37 +1,28 @@
 <view class="container">
 	<!-- 标签 -->
 	<scroll-view scroll-x="true" enable-flex="true" class="scroll-tabs">
-		<text class="tab-title {{currentIndex == index ? 'active' : ''}}" wx:for="{{tabs}}" data-index="{{index}}" wx:key="index" bindtap="tabSwitch">{{item.title}}</text>
+		<view class="tab-title {{currentIndex == index ? 'active' : ''}}" wx:for="{{tabs}}" data-index="{{index}}" wx:key="index" bindtap="tabSwitch">
+			{{item.title}}
+		</view>
 	</scroll-view>
 
 	<!-- swiper容器 -->
-	<swiper wx:if="{{tmp}}" class="swiper-container" current="{{currentIndex}}" style="height: {{scrollHeight}}rpx;" bindchange="swiperSwitch" next-margin="6rpx">
+	<swiper wx:if="{{orderList.length}}" class="swiper-container" current="{{currentIndex}}" style="height: {{scrollHeight}}rpx;" bindchange="swiperSwitch" next-margin="6rpx">
 		<swiper-item wx:for="{{tabs}}" wx:key="index">
 			<scroll-view class="scroll-container" scroll-y="true">
 				<view class="item-container">
-					<view class="item" wx:for="{{list}}" wx:key="id" bindtap="">
+					<view class="item" wx:for="{{orderList}}" wx:key="id" data-id="{{item.orderId}}" catchtap="toOrderdDetail">
 						<!-- 第一行 订单类型 订单时间 订单状态 -->
 						<view>
-							<text class="order-type">代取快递</text>
-							<text>2023.4.3</text>
-							<text>待支付</text>
+							<text class="order-category">{{item.order_category}}</text>
+							<text>{{item.createTime}}</text>
+							<text class="order-type">{{item.order_type}}</text>
 						</view>
 
-						<!-- 第二行 订单备注 -->
+						<!-- 第三行 订单备注 -->
 						<view>
-							备注
-						</view>
-
-						<!-- 第三行 服务件大小和数量 -->
-						<view class="">
-							<text>小件 x1</text>
-							<text>实付款 ￥12</text>
-						</view>
-
-						<!-- 第四行 订单完成情况 -->
-						<view>
-							<button size="mini">取消支付</button>
-							<button size="mini">去支付</button>
+							<text>备注：<text>{{item.remark}}{{item.orderId}}</text></text>
+							<text>实付款 <text>￥{{item.price}}</text> </text>
 						</view>
 					</view>
 				</view>
@@ -40,8 +31,54 @@
 	</swiper>
 
 	<view wx:else class="empty">
-		<text class="iconfont icon-meiyoudingdan"
-		style="font-size: 300rpx;"></text>
+		<text class="iconfont icon-meiyoudingdan" style="font-size: 300rpx;"></text>
 		<text>抱歉你还没有订单!</text>
 	</view>
+
+	<page-container show="{{showPage}}" position="bottom" round="{{true}}" bind:enter="getOrderDetail">
+		<view style="height: 60vh;">
+			<scroll-view scroll-y="true" style="height:{{pageHeight}}rpx;" enable-passive="{{true}}" enable-flex="true">
+				<view class="form-item">
+					<view class="type {{orderDetail.orderType}}">{{orderDetail.orderCategory}}</view>
+					<view>
+						<view wx:if="{{orderDetail.courierSize}}">{{orderDetail.courierSize}}</view>
+						<view wx:if="{{orderDetail.type}}">·{{orderDetail.type}}</view>
+					</view>
+					<view class="status">{{orderDetail.orderStatus}}</view>
+				</view>
+				<view class="form-item">
+					<view class="label">创建时间：</view>
+					<view class="value">{{orderDetail.createTime}}</view>
+					<view class="label">更新时间：</view>
+					<view class="value">{{orderDetail.updateTime}}</view>
+				</view>
+				<view class="form-item" wx:if="{{orderDetail.recipientAddress}}">
+					<view class="label">下单地址：</view>
+					<view class="value">{{orderDetail.recipientAddress}}</view>
+				</view>
+				<view class="form-item" wx:if="{{orderDetail.shippingAddress}}">
+					<view class="label">收件地址：</view>
+					<view class="value">{{orderDetail.shippingAddress}}</view>
+				</view>
+				<view class="form-item" wx:if="{{orderDetail.pickUpPosition}}">
+					<view class="label">取货位置：</view>
+					<view class="value">{{orderDetail.pickUpPosition}}</view>
+				</view>
+				<view class="form-item" wx:if="{{orderDetail.serviceDescription}}">
+					<view class="label">内容描述：</view>
+					<view class="value">{{orderDetail.serviceDescription}}</view>
+				</view>
+				<view class="form-item">
+					<view class="label">实付款：</view>
+					<view class="price">￥{{orderDetail.price}}</view>
+					<view class="label">订单ID：</view>
+					<view class="ID">{{orderDetail.orderId}}|<text class="iconfont icon-fuzhi"></text></view>
+				</view>
+				<view class="form-item">
+					<view class="label">备注：</view>
+					<view class="value">{{orderDetail.remark}}</view>
+				</view>
+			</scroll-view>
+		</view>
+	</page-container>
 </view>

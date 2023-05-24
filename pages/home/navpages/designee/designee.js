@@ -1,66 +1,43 @@
 // pages/home/navpages/designee/designee.js
 Page({
-
-    /**
-     * 页面的初始数据
-     */
-    data: {
-
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    // 外卖分数
+    radios: [
+      { id: 1, name: "书本", value: "小", check: "true", price: 1 },
+      { id: 2, name: "顺风车", value: "中", price: 2 },
+      { id: 3, name: "桶装水", value: "大", price: 3 },
+    ],
+    total: {
+      price: 2,
+      value: "小",
     },
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) { },
 
-    },
+  /**
+   * 监听页面显示
+   */
+  onShow() {
+    const component = this.selectComponent("#main");
+    // 调用 Component 组件的 refreshData 方法刷新数据
+    component.refreshAddr();
+  },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
+  /**
+   * 父组件接收子组件的触发事件
+   */
+  onEvent(e) {
+    // console.log(e.detail)
+    this.setData({
+      "total.courizerSize": e.detail.courizerSize,
+      "total.price": e.detail.price,
+    });
+  },
 })

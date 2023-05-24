@@ -4,6 +4,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 外卖分数
+    radios: [
+      { id: 1, name: "一份", value: "小", check: "true", price: 2 },
+      { id: 2, name: "两份", value: "中", price: 3 },
+      { id: 3, name: "三份", value: "大", price: 4 },
+    ],
+    total: {
+      price: 2,
+      value: "小"
+    }
   },
 
   /**
@@ -12,29 +22,22 @@ Page({
   onLoad(options) {},
 
   /**
-   * 
+   * 监听页面显示
    */
-  publish() {
-    wx.request({
-      url: 'http://pdk.usail.asia:88/user/takeawayPublishOrder',
-      method: "POST",
-      data: {
-        shippingAddress: "A区",
-        pickUpPositon: "B区",
-        remark: "测试",
-        price: 20
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        token: wx.getStorageSync('token')
-      },
-      success: res => {
-        wx.setStorage('token', res.header.token)
-        console.log(res)
-      },
-      fail: err => {
-        console.log(err)
-      }
+  onShow() {
+    const component = this.selectComponent("#main")
+    // 调用 Component 组件的 refreshData 方法刷新数据
+    component.refreshAddr();
+  },
+
+  /**
+   * 父组件接收子组件的触发事件
+   */
+  onEvent(e) {
+    // console.log(e.detail)
+    this.setData({
+      "total.courizerSize": e.detail.courizerSize,
+      "total.price": e.detail.price
     })
-  }
+  },
 });

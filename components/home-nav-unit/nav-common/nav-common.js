@@ -16,8 +16,7 @@ Component({
   data: {
     def_num: 1,
     def_price: 2.0,
-    sum: 2.0,
-    formdata: {},
+    formData: {}
   },
 
   /**
@@ -64,24 +63,18 @@ Component({
         if ((items[i].check = items[i].value === e.detail.value)) {
           this.setData({
             def_price: items[i].price,
-            formdata: items[i],
+            "formData.price": items[i].price,
+            "formData.courizerSize": items[i].value
           });
         }
       }
     },
   },
+
   // 监听数据变化 同 watch
   observers: {
-    // "def_num, def_price": function (new_num, new_price) {
-    //   this.setData({
-    //     sum: new_num * new_price,
-    //   });
-    //   let total = this.data.sum
-    //   // console.log(total)
-    //   this.triggerEvent('totalEvent', total)
-    // },
     def_price: function (new_price) {
-      this.triggerEvent("formEvent", this.data.formdata);
+      this.triggerEvent("totalEvent", this.data.formData);
     },
   },
 });

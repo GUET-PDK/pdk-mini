@@ -1,7 +1,7 @@
 // pages/user/user.js
 const app = getApp();
 const http = app.globalMethod()
-
+let userInfo= {}
 Page({
   /**
    * 页面的初始数据
@@ -54,15 +54,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const userInfo = wx.getStorageSync("userInfo");
+    userInfo = wx.getStorageSync("userInfo");
     const token = wx.getStorageSync('token')
     if (userInfo && token) {
       this.setData({
         userInfo: userInfo,
         token: token
       });
-      this.getCount()
+      
     }
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    this.getCount()
   },
 
   /**
@@ -85,7 +92,7 @@ Page({
             const userInfo = encodeURIComponent(JSON.stringify(this.data.userInfo));
             toUrl = "../user/info/info?user=" + userInfo;
           } else {
-            console.log("去登陆");
+            // console.log("去登陆");
             this.toLogin();
           }
           break;
@@ -144,18 +151,14 @@ Page({
     )
     const earnings = earningsResponse.data.earning
 
-    if(publishCount && accessCount) {
+    if(publishCount > 0 && publishCount != this.data.userInfo.publishCount) {
       this.setData({
         "userInfo.publishCount": publishCount,
         "userInfo.accessCount": accessCount,
         "userInfo.earnings": earnings
       })
-    } else {
-      this.setData({
-        "userInfo.publishCount": 0,
-        "userInfo.accessCount": 0,
-        "userInfo.earnings": 0
-      })
+      wx.setStorageSync('userInfo', this.data.userInfo)
+      // console.log(this.data.userInfo)
     }
   }
 });

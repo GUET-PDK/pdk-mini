@@ -4,6 +4,7 @@
 }
 .empty {
   height: 95vh;
+  margin-top: 90rpx;
 }
 
 .scroll-tabs {
@@ -59,7 +60,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .item view:not(:last-child) {
   border-bottom: 1rpx #aaa dotted;
 }
@@ -80,8 +80,59 @@
 
 .item view:last-child {
   display: flex;
+  justify-content: space-between;
+}
+.item view:last-child text:first-child text{
+  color: #222;
+  font-size: 32rpx;
+}
+.item view:last-child text:last-child text{
+  color: coral;
+  font-weight: 600;
 }
 
 .item view button {
   justify-content: end;
+}
+
+/* 订单详情样式 */
+.form-item:first-child {
+  margin-top: 12rpx;
+}
+.form-item:first-child view:not(:first-child):not(:last-child){
+  display: flex;
+}
+.form-item:not(:last-child){
+  border-bottom: 1rpx #aaa dotted;
+}
+.form-item {
+  padding: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.type {
+  padding: 6rpx;
+  color: #333;
+  border: 1rpx #07c160 solid;
+  border-radius: 12rpx;
+}
+.status {
+  color: coral;
+}
+.label {
+  width: 130rpx;
+  font-size: small;
+}
+.price {
+  flex: 1;
+  color: coral;
+  font-weight: bold;
+}
+.ID {
+  flex: 1;
+  color: #999;
+}
+.value {
+  flex: 1;
 }

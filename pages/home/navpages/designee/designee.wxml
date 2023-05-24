@@ -7,13 +7,13 @@
 	<!-- 表单滑动区域 -->
 	<view class="main-from">
 		<scroll-view class="scroll-section" scroll-y enable-flex="true">
-			<main-common type="designee"></main-common>
+			<main-common type="designee" id="main"></main-common>
 
 			<!-- 公共部分 -->
 			<nav-common bind:totalEvent="onEvent" radios="{{radios}}" type="类别"></nav-common>
 		</scroll-view>
 
 		<!-- 总结、结算栏 -->
-		<bottom-common params="{{fromData}}"></bottom-common>
+		<bottom-common params="{{total}}" url="/user/universalServicePublishOrder"></bottom-common>
 	</view>
 </view>

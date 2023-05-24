@@ -6,7 +6,7 @@
         <view class="user-photo border-bottom" bindtap="changAvatar">
             <view>头像</view>
             <view class="flex-j-end">
-                <image src="{{userInfo.avatar}}" mode="aspectFill"/>
+                <image src="{{userAvatar}}" mode="aspectFill" />
                 <text class="iconfont icon-jinrujiantou"></text>
             </view>
         </view>
@@ -23,7 +23,7 @@
                 昵称
             </view>
             <view>
-                <input name="userName" class="input-class" type="text" placeholder="{{userInfo.name}}"/>
+                <input name="userName" class="input-class" type="text" placeholder="{{userInfo.userName}}" placeholder-class="input-holder"/>
             </view>
         </view>
         <view class="item border-bottom">
@@ -31,7 +31,7 @@
                 手机号
             </view>
             <view>
-                <input name="userPhone" class="input-class" type="text" placeholder="请填写11位手机号(必填)"/>
+                <input name="userPhone" class="input-class" type="text" placeholder="{{userInfo.userPhone}}" placeholder-class="input-holder"/>
             </view>
         </view>
         <view class="item">
@@ -39,13 +39,13 @@
                 真实姓名
             </view>
             <view>
-                <input name="realName" class="input-class" type="text" placeholder="请填写真实姓名(必填)"/>
+                <input name="realName" class="input-class" type="text" placeholder="请填写真实姓名" placeholder-class="input-holder"/>
             </view>
         </view>
     </view>
 
     <view class="btn">
-        <button class="btns" form-type="submit">保存修改</button>
         <button class="back-btn" bindtap="backUserPage">取消返回</button>
+        <button class="btns" form-type="submit">保存修改</button>
     </view>
 </form>

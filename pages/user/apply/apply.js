@@ -1,4 +1,5 @@
 import { request } from "../../../utils/http";
+import { validateIdCard, validateStuNumber } from "../../../utils/util";
 let _this;
 Page({
   /**
@@ -7,7 +8,7 @@ Page({
   data: {
     cardImage: "",
     idImage: "",
-    show: true, // todo 判断当前的认证状态
+    applyStatus: 1, // 当前的认证状态 0表示申请中，1表示未通过，2表示已同意
     avatar: "/static/image/icon/avatar.png",
   },
 
@@ -23,6 +24,9 @@ Page({
     } catch (err) {
       console.log(err);
     }
+    this.setData({
+      applyStatus: wx.getStorageSync('userInfo').status
+    })
   },
 
   /**
@@ -61,15 +65,17 @@ Page({
         title: "请输入姓名",
         icon: "none",
       });
-    } else if (params.idNumber == "") {
+    } else if (params.idNumber == "" || !validateStuNumber(params.idNumber)) {
       wx.showToast({
-        title: "请输入学号",
-        icon: "none",
+        title: "学号有误",
+        icon: "error",
+        duration: 1000
       });
-    } else if (params.cardNumber == "") {
+    } else if (params.cardNumber == "" || !validateIdCard(params.cardNumber)) {
       wx.showToast({
-        title: "请输入身份证号",
-        icon: "none",
+        title: "身份证号有误",
+        icon: "error",
+        duration:1000
       });
     } else if (this.data.idImage == "") {
       wx.showToast({
@@ -91,6 +97,21 @@ Page({
         wx.getStorageSync("token"),
       );
       if(res.code == 200) {
+        const userInfo = wx.getStorageSync('userInfo')
+        switch(res.msg) {
+          case "申请已提交，待审核":
+            userInfo.status = 0;
+            break;
+          case "审核失败":
+            userInfo.status = 1;
+            break;
+          case "审核通过":
+            userInfo.status = 2;
+            break;
+          default:
+            break;
+        }
+        wx.setStorageSync('userInfo', userInfo)
         wx.navigateBack({
           delta: 1
         })

@@ -1,16 +1,17 @@
 /* 个人信息详情 */
-const app = getApp()
-const http = app.globalMethod()
-import { isObjectValid } from '../../../utils/util'
+const app = getApp();
+const http = app.globalMethod();
+import { validatePhoneNumber } from "../../../utils/util";
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     userInfo: {
-      name: "请填写昵称(必填)",
-      avatar: "",
+      userName: "请填写昵称(必填)",
+      userPhone: '请填写11位手机号(必填)',
     },
+    userAvatar: ''
   },
 
   /**
@@ -30,6 +31,13 @@ Page({
   },
 
   /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    this.getUserInfo()
+  },
+
+  /**
    * 点击更新用户头像
    */
   changAvatar: function () {
@@ -40,9 +48,9 @@ Page({
       sourceType: ["album", "camera"],
       camera: "front",
       success(res) {
-        // console.log(res.tempFiles.tempFilePath)
+        // console.log(res.tempFiles)
         that.setData({
-          "userInfo.avatar": res.tempFiles[0].tempFilePath,
+          "userAvatar": res.tempFiles[0].tempFilePath,
         });
       },
     });
@@ -53,19 +61,37 @@ Page({
    */
   async updateInfo(e) {
     const params = e.detail.value;
-    params["userAvator"] = this.data.userInfo.avatar;
-    if (isObjectValid(params)) {
+    params["userAvator"] = this.data.userAvatar;
+    if (validatePhoneNumber(params["userPhone"])) {
       const res = await http(
         "/user/updateName",
-        "",
+        params,
         "POST",
-        wx.getStorageSync("token"),
-      );
-    }else {
+        wx.getStorageSync("token")
+      )
+    } else {
       wx.showToast({
-        title: '数据有空值',
-        icon: 'error',
-        duration: 1000
+        title: "手机号错误",
+        icon: "error",
+        duration: 1000,
+      });
+    }
+  },
+
+  /**
+   * 获取用户当前信息
+   */
+  async getUserInfo() {
+    const res = await http(
+      "/user/getMessage",
+      "",
+      "GET",
+      wx.getStorageSync("token")
+    );
+    if (res.msg == "查询成功") {
+      console.log(res)
+      this.setData({
+        userInfo: res.data
       })
     }
   },

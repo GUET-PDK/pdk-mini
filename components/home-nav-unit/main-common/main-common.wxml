@@ -40,7 +40,7 @@
 
 	<!-- 快递选择栏 -->
 	<view class="main-item border-bottom-line" wx-if="{{type == 'post'}}">
-		<radio-group bindchange="" class="radio-group">
+		<radio-group bindchange="changeRadio" class="radio-group">
 			<label wx:for="{{_express}}" wx:key="*this">
 				<view>
 					<view class="radio-label">{{item.name}}</view>

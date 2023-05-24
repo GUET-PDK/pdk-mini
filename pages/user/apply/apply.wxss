@@ -75,3 +75,8 @@
 .btn:active {
   background: green;
 }
+
+/* 申请中 */
+.empty {
+  margin-top: 100rpx;
+}

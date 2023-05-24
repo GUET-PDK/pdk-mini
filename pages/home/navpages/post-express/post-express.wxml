@@ -14,6 +14,6 @@
 		</scroll-view>
 
 		<!-- 总结、结算栏 -->
-		<bottom-common params="{{fromData}}" url="/user/sentPublishOrder"></bottom-common>
+		<bottom-common params="{{total}}" url="/user/sentPublishOrder"></bottom-common>
 	</view>
 </view>

@@ -1,6 +1,7 @@
 // pages/user/addAddr/addAddr.js
-const app = getApp()
-const http = app.globalMethod()
+const app = getApp();
+const http = app.globalMethod();
+import { validatePhoneNumber } from "../../../utils/util";
 Page({
   /**
    * 页面的初始数据
@@ -27,8 +28,8 @@ Page({
         this.setData({
           default: queryBean,
         });
-      } catch(err) {
-        console.log(err)
+      } catch (err) {
+        console.log(err);
       }
     }
   },
@@ -46,20 +47,28 @@ Page({
    * 新增地址
    */
   async newAddr(e) {
-    console.log(e.detail.value);
-    const params = e.detail.value
-    delete params['selcompus']
-    params.address_description = `${this.data.selcompus}${e.detail.value.address_description}`
-    const res = await http(
-      "/user/addAddress",
-      params,
-      "POST",
-      wx.getStorageSync('token')
-    )
-    if(res.msg == "更新地址成功"){
-      wx.navigateBack({
-        delta: 1
+    // console.log(e.detail.value);
+    const params = e.detail.value;
+    delete params["selcompus"];
+    params.address_description = `${this.data.selcompus}${e.detail.value.address_description}`;
+    if (validatePhoneNumber(params["address_phone"])) {
+      var res = await http(
+        "/user/addAddress",
+        params,
+        "POST",
+        wx.getStorageSync("token")
+      );
+    }else {
+      wx.showToast({
+        title: '手机格式错误',
+        icon: 'error',
+        duration: 1000
       })
+    }
+    if (res.msg == "更新地址成功") {
+      wx.navigateBack({
+        delta: 1,
+      });
     }
   },
 });

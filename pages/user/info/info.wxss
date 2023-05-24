@@ -31,9 +31,13 @@ page {
   align-items: center;
 }
 
-.input-class {
+.input-holder {
   text-align: right;
   color: #999;
+}
+.input-class {
+  text-align: right;
+  color: #333;
 }
 .item view:last-child {
   display: flex;
@@ -44,16 +48,17 @@ page {
 .btn {
   margin-top: 120rpx;
   padding: 30rpx;
+  display: flex;
 }
 .btn button {
+  margin: 0 20rpx;
   line-height: 60rpx;
   text-align: center;
   color: #fff;
   font-size: 30rpx;
-  border-radius: 100rpx;
+  border-radius: 32rpx;
 }
 .btns {
-  margin-bottom: 30rpx;
   background: #07c160;
 }
 .btns:active {

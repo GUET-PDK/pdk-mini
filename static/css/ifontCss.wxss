@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3926611 */
-  src: url('//at.alicdn.com/t/c/font_3926611_u6dkecfrke.woff2?t=1684857604663') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3926611_u6dkecfrke.woff?t=1684857604663') format('woff'),
-       url('//at.alicdn.com/t/c/font_3926611_u6dkecfrke.ttf?t=1684857604663') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3926611_03rx5jngyw8q.woff2?t=1684956303195') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3926611_03rx5jngyw8q.woff?t=1684956303195') format('woff'),
+       url('//at.alicdn.com/t/c/font_3926611_03rx5jngyw8q.ttf?t=1684956303195') format('truetype');
 }
 
 .iconfont {
@@ -13,7 +13,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 空数据图标 */
+
+/* 复制 */
+.icon-fuzhi:before {
+  color: #999;
+  font-size: 42rpx;
+  content: "\e60d";
+}
+
+/* 申请中 */
+.icon-shenqingzhong:before {
+  font-size: 320rpx;
+  content: "\e6d2";
+}
+
+/* 空数据图标 Start */
 .icon-meiyoushuju:before {
   content: "\e60b";
 }

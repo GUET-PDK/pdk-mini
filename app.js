@@ -14,7 +14,7 @@ App({
       serviceDescription: '',             // 万能服务描述
       remark: '',
       price: 2,
-      courierSize: ''                   // 快递大小
+      courizerSize: ''                   // 快递大小
     }
   },
 

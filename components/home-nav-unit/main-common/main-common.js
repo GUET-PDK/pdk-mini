@@ -1,5 +1,5 @@
 const app = getApp();
-
+import { isNewObject } from "../../../utils/util";
 Component({
   /**
    * 组件的属性列表
@@ -18,12 +18,11 @@ Component({
       deliveryTime1: "19:00", // 配送时间1
       deliveryTime2: "22:00", // 配送时间2
       recipientAddress: "", // 收件人地址
-      pickupCode: [], // 文件数组/取件码截图
       pickUpPositon: "", // 代取-外卖位置
       serviceDescription: "", // 万能服务描述
       remark: "",
-      price: 2,
-      courierSize: "",
+      price: 0,
+      courizerSize: "",
     },
     remarkHolder: "",
   },
@@ -43,11 +42,14 @@ Component({
   methods: {
     // 更新备注内容
     updateRemark: function (val) {
+      let newObj = {};
       switch (val) {
         case "post":
           val = "如物品贵重";
+          newObj = isNewObject("post", this.data.formData);
           break;
         case "take":
+          newObj = isNewObject("take", this.data.formData);
           val = "如送达时间";
           break;
         case "buy":
@@ -60,11 +62,24 @@ Component({
           val = "如紧急性";
           break;
         default:
+          newObj = isNewObject("", this.data.formData);
           break;
       }
       this.setData({
         remarkHolder: val,
+        formData: newObj,
       });
+      app.globalData.formData = newObj;
+    },
+
+    // 快递单选按钮事件
+    changeRadio: function (e) {
+      // console.log(e.detail.value)
+      this.setData({
+        "formData.type": e.detail.value,
+      });
+      app.globalData.formData = this.data.formData;
+      // console.log(app.globalData.formData)
     },
 
     // 去选择地址
@@ -77,10 +92,12 @@ Component({
     // 更新选中的地址
     refreshAddr: function () {
       const userInfo = wx.getStorageSync("userInfo");
-      if (userInfo.addr)
+      if (userInfo.addr != "") {
         this.setData({
           "formData.shippingAddress": userInfo.addr,
         });
+        app.globalData.formData = this.data.formData;
+      }
     },
 
     // 输入框监听
@@ -90,10 +107,10 @@ Component({
       const value = e.detail.value;
       //console.log(e.detail.value);
       this.setData({
-        [`formData.${name}`]: value
-      })
+        [`formData.${name}`]: value,
+      });
       //console.log(this.data.formData)
-      app.globalData.formData = this.data.formData
+      app.globalData.formData = this.data.formData;
       // console.log(app.globalData.formData)
     },
   },

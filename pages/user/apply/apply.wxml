@@ -1,6 +1,6 @@
 <!-- 骑手认证 -->
 <view class="container">
-    <view class="main">
+    <view class="main" wx:if="{{applyStatus}}">
         <view style="height: 60rpx;">
             <view class="avatar">
                 <image src="{{avatar}}" mode="aspectFill" />
@@ -30,5 +30,10 @@
             </view>
             <button class='btn' form-type="submit">提交申请</button>
         </form>
+    </view>
+
+    <view class="empty">
+        <text class="iconfont icon-shenqingzhong"></text>
+        <text>等待管理员审核！</text>
     </view>
 </view>

@@ -1,4 +1,5 @@
 import FormData from "./formData";
+import { isObjectValid } from "./util";
 // url请求前缀
 // http://117.50.177.54:8080
 // http://43.138.225.254:8080
@@ -22,15 +23,25 @@ export function request(url, params, method, token) {
         title: "请先登录",
       })
     : (header["token"] = token);
-  wx.showLoading({
-    title: "正在加载中...",
-  });
+  if (isObjectValid(params) == false) {
+    wx.showToast({
+      title: "参数不能为空",
+      icon: "error",
+      duration: 1000,
+    });
+  }
+  // if (url.includes("Count") || url.includes("Earnings")) {
+  // } else {
+  //   wx.showLoading({
+  //     title: "正在加载中...",
+  //   });
+  // }
   if (method == "POST") {
     // console.log("请求传参：");
     // console.log(params);
     const formData = createFormData(params);
     header["content-type"] = formData.contentType;
-    params = formData.buffer
+    params = formData.buffer;
     // console.log(token);
   }
   // 将请求数据序列化为 JSON 字符串
@@ -42,7 +53,7 @@ export function request(url, params, method, token) {
       method: method,
       header: header,
       success: (res) => {
-        wx.hideLoading();
+        // wx.hideLoading();
         console.log("响应：", res.data);
         if (res.header.token) {
           wx.setStorageSync("token", res.header.token);

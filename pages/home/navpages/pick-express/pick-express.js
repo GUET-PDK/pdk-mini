@@ -11,17 +11,13 @@ Page({
     ],
     imgList: [],
     timeSel: "b",
-    fromData: {
+    formData: {
       shippingAddress: '(姓名+电话+宿舍号)',// 配送地址
       deliveryTime1: '19:00',             // 配送时间1
       deliveryTime2: '22:00',             // 配送时间2
-      recipientAddress: '',               // 收件人地址
-      pickupCode: '',                     // 文件数组/取件码截图
-      pickUpPositon: '',                  // 代取-外卖位置
-      serviceDescription: '',             // 万能服务描述
       remark: '',
       price: 2,
-      courierSize: '中'                   // 快递大小
+      courizerSize: '中'                   // 快递大小
     }
   },
 
@@ -30,7 +26,7 @@ Page({
    */
   changeInput(e) {
     this.setData({
-      "fromData.remark": e.detail.value
+      "formData.remark": e.detail.value
     })
   },
 
@@ -49,7 +45,7 @@ Page({
         imgList.push(...res.tempFiles);
         that.setData({
           imgList,
-          "fromData.pickupCode": imgList
+          "formData.pickupCode": imgList
         });
       },
     });
@@ -62,7 +58,7 @@ Page({
     imgs.splice(e.currentTarget.dataset.index, 1);
     this.setData({
       imgList: imgs,
-      "fromData.pickupCode": imgs
+      "formData.pickupCode": imgs
     });
   },
 
@@ -73,14 +69,14 @@ Page({
     if (time == "b") {
       this.setData({
         timeSel: "b",
-        "fromData.deliveryTime1": "19:00",
-        "fromData.deliveryTime2": "22:00",
+        "formData.deliveryTime1": "19:00",
+        "formData.deliveryTime2": "22:00",
       });
     } else {
       this.setData({
         timeSel: "a",
-        "fromData.deliveryTime1": "12:00",
-        "fromData.deliveryTime2": "14:00",
+        "formData.deliveryTime1": "12:00",
+        "formData.deliveryTime2": "14:00",
       });
     }
   },
@@ -96,8 +92,8 @@ Page({
   onEvent: function (e) {
     // console.log(e)
     this.setData({
-      "fromData.price": e.detail.price,
-      "fromData.courierSize": e.detail.value
+      "formData.price": e.detail.price,
+      "formData.courizerSize": e.detail.value
     });
   },
 
@@ -108,7 +104,7 @@ Page({
     const userInfo = wx.getStorageSync('userInfo')
     if(userInfo.addr)
       this.setData({
-        "fromData.shippingAddress": userInfo.addr
+        "formData.shippingAddress": userInfo.addr
       })
   }
 });

@@ -7,13 +7,13 @@
 	<!-- 表单滑动区域 -->
 	<view class="main-from">
 		<scroll-view class="scroll-section" scroll-y enable-flex="true">
-			<main-common type="take"></main-common>
+			<main-common type="take" id="main"></main-common>
 
 			<!-- 公共部分 -->
 			<nav-common bind:totalEvent="onEvent" radios="{{radios}}" type="外卖份数"></nav-common>
 		</scroll-view>
 
 		<!-- 总结、结算栏 -->
-		<bottom-common params="{{fromData}}" url="/user/takeawayPublishOrder"></bottom-common>
+		<bottom-common params="{{total}}" url="/user/takeawayPublishOrder"></bottom-common>
 	</view>
 </view>
