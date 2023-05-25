@@ -1,0 +1,6 @@
+<view class="dialog-container" wx:if="{{show}}">
+  <view class="dialog-mask" bindtap="closeDialog"></view>
+  <view class="dialog-content">
+    <slot></slot>
+  </view>
+</view>

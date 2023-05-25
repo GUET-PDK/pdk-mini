@@ -4,6 +4,7 @@ App({
    * 全局变量
    */
   globalData: {
+    
     formData: {
       shippingAddress: '(姓名+电话+宿舍号)',// 配送地址
       deliveryTime1: '19:00',             // 配送时间1

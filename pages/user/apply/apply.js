@@ -1,6 +1,6 @@
 import { request } from "../../../utils/http";
 import { validateIdCard, validateStuNumber } from "../../../utils/util";
-let _this;
+let _this, userInfo;
 Page({
   /**
    * 页面的初始数据
@@ -24,9 +24,20 @@ Page({
     } catch (err) {
       console.log(err);
     }
-    this.setData({
-      applyStatus: wx.getStorageSync('userInfo').status
-    })
+    userInfo = wx.getStorageSync("userInfo");
+    if (userInfo.status) {
+      // this.formSubmit(userInfo.applyData)
+      // if (userInfo.status == 2) {
+      //   this.setData({
+      //     applyStatus: userInfo.status,
+      //   });
+      // } else if(userInfo.status == 1){
+      //   this.setData
+      // }
+      this.setData({
+        applyStatus: status
+      })
+    }
   },
 
   /**
@@ -69,13 +80,13 @@ Page({
       wx.showToast({
         title: "学号有误",
         icon: "error",
-        duration: 1000
+        duration: 1000,
       });
     } else if (params.cardNumber == "" || !validateIdCard(params.cardNumber)) {
       wx.showToast({
         title: "身份证号有误",
         icon: "error",
-        duration:1000
+        duration: 1000,
       });
     } else if (this.data.idImage == "") {
       wx.showToast({
@@ -94,27 +105,21 @@ Page({
         "/user/beRunner",
         params,
         "POST",
-        wx.getStorageSync("token"),
+        wx.getStorageSync("token")
       );
-      if(res.code == 200) {
-        const userInfo = wx.getStorageSync('userInfo')
-        switch(res.msg) {
-          case "申请已提交，待审核":
-            userInfo.status = 0;
-            break;
-          case "审核失败":
-            userInfo.status = 1;
-            break;
-          case "审核通过":
-            userInfo.status = 2;
-            break;
-          default:
-            break;
-        }
-        wx.setStorageSync('userInfo', userInfo)
+      console.log("申请：",res.data)
+      if (res.code == 200) {
+        // const userInfo = wx.getStorageSync('userInfo')
+        userInfo.status = {
+          "申请已提交，待审核": 0,
+          "审核失败": 1,
+          "审核通过": 2,
+        }[res.msg] || userInfo.status;
+        // userInfo.applyData = params;
+        wx.setStorageSync("userInfo", userInfo);
         wx.navigateBack({
-          delta: 1
-        })
+          delta: 1,
+        });
       }
     }
   },

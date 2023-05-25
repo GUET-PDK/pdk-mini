@@ -23,7 +23,7 @@ Page({
       },
       {
         index: 2,
-        name: "代拿外卖",
+        name: "代领外卖",
         iconSrc: "/static/image/waimai.png",
         url: "../navpages/pick-take-out/pick-take-out",
       },

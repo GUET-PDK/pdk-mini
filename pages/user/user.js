@@ -1,7 +1,7 @@
 // pages/user/user.js
 const app = getApp();
-const http = app.globalMethod()
-let userInfo= {}
+const http = app.globalMethod();
+let userInfo = {};
 Page({
   /**
    * 页面的初始数据
@@ -14,7 +14,7 @@ Page({
       avatar: "/static/image/icon/avatar.png",
       publishCount: 0,
       accessCount: 0,
-      earnings: 0
+      earnings: 0,
     },
     userList: [
       {
@@ -55,13 +55,12 @@ Page({
    */
   onLoad(options) {
     userInfo = wx.getStorageSync("userInfo");
-    const token = wx.getStorageSync('token')
+    const token = wx.getStorageSync("token");
     if (userInfo && token) {
       this.setData({
         userInfo: userInfo,
-        token: token
+        token: token,
       });
-      
     }
   },
 
@@ -69,7 +68,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.getCount()
+    this.getCount();
   },
 
   /**
@@ -81,15 +80,17 @@ Page({
     let toUrl;
     if (id > 0 && id < 7) {
       toUrl = e.currentTarget.dataset.url;
-      if(id == 1) {
-        toUrl = toUrl + "?avatar=" + this.data.userInfo.avatar
+      if (id == 1) {
+        toUrl = toUrl + "?avatar=" + this.data.userInfo.avatar;
       }
     } else {
       switch (id) {
         case "0":
           if (this.data.token) {
             // console.log("@@@@@@@@@");
-            const userInfo = encodeURIComponent(JSON.stringify(this.data.userInfo));
+            const userInfo = encodeURIComponent(
+              JSON.stringify(this.data.userInfo)
+            );
             toUrl = "../user/info/info?user=" + userInfo;
           } else {
             // console.log("去登陆");
@@ -125,40 +126,46 @@ Page({
    */
   async getCount() {
     // 获取用户发布的所有订单数量
-    const publishResponse  = await http(
+    const publishResponse = await http(
       "/user/getPublishCount",
       "",
       "GET",
-      wx.getStorageSync('token')
-    )
-    const publishCount = publishResponse.data.count
-    
+      wx.getStorageSync("token")
+    );
+    const publishCount = publishResponse.data.count;
+    //console.log("我发布的订单数量：", publishCount);
+
     // 获取用户成为骑手接过的订单
-    const accessResponse  = await http(
+    const accessResponse = await http(
       "/runner/getAccessCount",
       "",
       "GET",
-      wx.getStorageSync('token')
-    )
-    const accessCount = accessResponse.data.count
+      wx.getStorageSync("token")
+    );
+    const accessCount = accessResponse.data.count;
+    //console.log("我接拦的订单数量：", accessCount);
 
     // 获取用户成为骑手累计收益
     const earningsResponse = await http(
       "/runner/getMyEarnings",
       "",
       "GET",
-      wx.getStorageSync('token')
-    )
-    const earnings = earningsResponse.data.earning
+      wx.getStorageSync("token")
+    );
+    const earnings = earningsResponse.data.earning;
 
-    if(publishCount > 0 && publishCount != this.data.userInfo.publishCount) {
+    if (
+      publishCount !== this.data.userInfo.publishCount ||
+      accessCount !== this.data.userInfo.accessCount ||
+      earnings !== this.data.userInfo.earnings
+    ) {
       this.setData({
         "userInfo.publishCount": publishCount,
         "userInfo.accessCount": accessCount,
-        "userInfo.earnings": earnings
-      })
-      wx.setStorageSync('userInfo', this.data.userInfo)
+        "userInfo.earnings": earnings,
+      });
+      wx.setStorageSync("userInfo", this.data.userInfo);
       // console.log(this.data.userInfo)
     }
-  }
+  },
 });

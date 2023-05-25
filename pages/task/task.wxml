@@ -1,27 +1,94 @@
 <!-- 任务大厅 -->
 <view class="top-tabbar">
-    <view data-name="task" bindtap="changTab" class="{{chooseTab == 'task'? 'active': ''}}">任务大厅</view>
-    <view data-name="mytask" bindtap="changTab" class="{{chooseTab == 'mytask'? 'active': ''}}">我的任务</view>
+    <view data-name="task" bindtap="changeTab" class="{{chooseTab == 'task'? 'active': ''}}">任务大厅</view>
+    <view data-name="mytask" bindtap="changeTab" class="{{chooseTab == 'mytask'? 'active': ''}}">我的任务</view>
 </view>
 
-<mp-searchbar cancel="false" cancelText="搜索" focus="true" ext-class="searchbar" placeholder="请输入关键字进行搜索,如 36栋"></mp-searchbar>
-
-<scroll-view scroll-x="true" enable-flex="true" class="scroll-tabs">
+<scroll-view enable-flex="true" class="scroll-tabs">
     <view class="tabs-box">
-        <text wx:for="{{chooseTab=='task'? taskTabTitle:mytaskTabTitle}}" wx:key="index" data-id="{{index}}" bindtap="taskSwitch" class="{{currentIndex == index? 'change':''}}">{{item.title}}</text>
+        <text wx:for="{{chooseTab=='task'? taskTabTitle : mytaskTabTitle}}" wx:key="index" data-id="{{item.index}}" catchtap="taskSwitch" class="{{currentIndex == index ? 'change':''}}">{{item.title}}</text>
     </view>
 </scroll-view>
 
-<swiper wx:if="{{tmp}}">
-    <swiper-item>
-        <scroll-view>
-            <view>
+<swiper current="{{currentIndex}}" style="height:{{scrollHeight}}rpx;" bindchange="swiperSwitch" class="swiper-container">
+    <block wx:for="{{chooseTab=='task' ? taskTabTitle : mytaskTabTitle}}" wx:key="index">
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scroll-container">
+                <view wx:for="{{chooseTab=='task' ? taskList : mytaskList}}" wx:key="index" class="item-container">
+                    <view class="item" data-id="{{item.orderId}}" catchtap="toDetail">
+                        <view class="order-info">
+                            <text class="order-category">{{item.orderCategory}}</text>
+                            <!-- <text>{{item.createTime}}</text> -->
+                            <text>实付款：<text class="order-price">￥{{item.price}}</text></text>
+                        </view>
+                        <view class="order-info">
+                            <text>备注：<text>{{item.remark}}</text></text>
+                        </view>
+                    </view>
 
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </block>
+</swiper>
+<view wx:if="{{!(taskList.length || mytaskList.length)}}" class="empty">
+    <text class="iconfont icon-meiyoudingdan-01"></text>
+    <text>抱歉,暂时没有跑腿任务</text>
+</view>
+
+<!-- 底部弹出抽屉 -->
+<page-container show="{{showPage}}" position="bottom" round="{{true}}" bind:enter="getTaskDetail">
+    <view style="height: 60vh;">
+        <scroll-view scroll-y="true" style="height:750rpx;" enable-passive="{{true}}" enable-flex="true">
+            <view class="form-item">
+                <view class="type">{{taskDetail.orderCategory}}</view>
+                <view style="margin-right: 30rpx;">
+                    <view wx:if="{{taskDetail.courizerSize}}">{{taskDetail.courizerSize}}件</view>
+                    <view wx:if="{{taskDetail.type}}">·{{taskDetail.type}}</view>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="label">下单时间：</view>
+                <view class="value">{{taskDetail.createTime}}</view>
+                <view class="label">更新时间：</view>
+                <view class="value">{{taskDetail.updateTime}}</view>
+            </view>
+            <view class="form-item" wx:if="{{taskDetail.shippingAddress}}">
+                <view class="label">下单地址：</view>
+                <view class="value">{{taskDetail.shippingAddress}}</view>
+            </view>
+            <view class="form-item" wx:if="{{taskDetail.recipientAddress}}">
+                <view class="label">收件地址：</view>
+                <view class="value">{{taskDetail.recipientAddress}}</view>
+            </view>
+            <view class="form-item" wx:if="{{taskDetail.pickUpPosition}}">
+                <view class="label">取货位置：</view>
+                <view class="value">{{taskDetail.pickUpPosition}}</view>
+            </view>
+            <view class="form-item" wx:if="{{taskDetail.serviceDescription}}">
+                <view class="label">内容描述：</view>
+                <view class="value">{{taskDetail.serviceDescription}}</view>
+            </view>
+            <view class="form-item">
+                <view class="label">实付款：</view>
+                <view class="price">￥{{taskDetail.price}}</view>
+                <view class="label">订单ID：</view>
+                <view class="ID">{{taskDetail.orderId}}|<text class="iconfont icon-fuzhi"></text></view>
+            </view>
+            <view class="form-item" wx:if="{{taskDetail.pickupCode}}">
+                <view class="label">取件码：</view>
+                <view class="pickup">
+                    <image src="{{taskDetail.pickupCode}}" catchtap="viewOriginalImage" />
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="label">备注：</view>
+                <view class="value">{{taskDetail.remark}}</view>
+            </view>
+            <view class="btn">
+                <button class="back-btn" bindtap="backPage">返回</button>
+                <button class="btns" bindtap="confirmTask" data-id="{{taskDetail.orderId}}">接单</button>
             </view>
         </scroll-view>
-    </swiper-item>
-</swiper>
-<view wx:else class="empty">
-    <text class="iconfont icon-meiyoudingdan-01" style="font-size: 280rpx;"></text>
-    <text>抱歉平台还没有任何跑腿任务</text>
-</view>
+    </view>
+</page-container>

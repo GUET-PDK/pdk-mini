@@ -23,7 +23,7 @@ const formatNumber = (n) => {
 // 对象判空
 const isObjectValid = (obj) => {
   for (var key in obj) {
-    if(key == 'remark') {
+    if(key == 'remark' || key == 'grade' || key == 'comment' || key == 'userAvator' || key == 'orderType' || key == 'orderStatus') {
       continue;
     }else if (obj.hasOwnProperty(key)) {
       if (obj[key] === null || obj[key] === undefined || obj[key] == "") {

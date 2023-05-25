@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3926611 */
-  src: url('//at.alicdn.com/t/c/font_3926611_03rx5jngyw8q.woff2?t=1684956303195') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3926611_03rx5jngyw8q.woff?t=1684956303195') format('woff'),
-       url('//at.alicdn.com/t/c/font_3926611_03rx5jngyw8q.ttf?t=1684956303195') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3926611_stn6wqley9p.woff2?t=1685039292493') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3926611_stn6wqley9p.woff?t=1685039292493') format('woff'),
+       url('//at.alicdn.com/t/c/font_3926611_stn6wqley9p.ttf?t=1685039292493') format('truetype');
 }
 
 .iconfont {
@@ -13,7 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+.icon-xingxing:before {
+  content: "\e608";
+}
 /* 复制 */
 .icon-fuzhi:before {
   color: #999;
@@ -33,6 +35,7 @@
 }
 
 .icon-meiyoudingdan-01:before {
+  font-size: 240rpx;
   content: "\e618";
 }
 

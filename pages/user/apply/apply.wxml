@@ -32,8 +32,8 @@
         </form>
     </view>
 
-    <view class="empty">
+    <!-- <view class="empty">
         <text class="iconfont icon-shenqingzhong"></text>
         <text>等待管理员审核！</text>
-    </view>
+    </view> -->
 </view>

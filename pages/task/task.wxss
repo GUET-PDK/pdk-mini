@@ -1,11 +1,10 @@
-page {
-  background-color: #f3f3f3;
-  --active-color: red;
+.container {
+  background-color: #f2f2f2;
 }
 
-/* 顶部 Tabbar 标签样式 */
+/* 顶部横向 Tabbar 标签样式 */
 .top-tabbar {
-  position: relative;
+  width: 100%;
   display: flex;
   background-color: #fff;
   color: #222;
@@ -13,25 +12,22 @@ page {
 }
 
 .top-tabbar view {
-  width: calc(100% / 2);
-  padding: 12rpx 0;
+  flex: 1;
+  padding: 6rpx 10rpx;
   display: flex;
+  width: 50%;
   align-items: center;
   justify-content: center;
 }
 
-.searchbar {
-  background: #fff;
-}
-.weui-search-bar__form {
-  border: 1px #e1e1e1 solid;
-  border-radius: 50rpx;
-}
-
-/* 子标签样式 */
+/* 横向子标签样式 */
 .scroll-tabs {
   height: 66rpx;
   background: #fff;
+}
+.tab-title {
+  font-weight: 400;
+  color: #b2b3b6;
 }
 .scroll-tabs .tabs-box {
   padding: 0 30rpx;
@@ -44,20 +40,146 @@ page {
   height: 60rpx;
 }
 
+/* swiper容器 */
+.swiper-container {
+  overflow: scroll;
+  width: 750rpx;
+}
+.scroll-container {
+  height: 100%;
+  overflow: scroll;
+  padding-top: 10rpx;
+}
+
 /* 标签选中样式 */
 .active {
   font-weight: 600;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
 }
 .active::after {
   content: "";
   position: absolute;
-  left: auto;
-  right: auto;
+  left: 0;
   bottom: 0;
-  width: 50rpx;
-  border-bottom: 1px red solid;
+  width: 100%;
+  height: 1px;
+  background-color: red; /* 自定义下划线颜色 */
+  transform: scaleX(0); /* 初始时将下划线长度设为0 */
+  transform-origin: center;
+  transition: transform 0.3s ease; /* 添加过渡效果 */
 }
+.active:hover::after {
+  transform: scaleX(1);
+}
+
 .change {
   font-weight: 600;
   border-bottom: 1px red solid;
+}
+
+/* 任务列表 */
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item {
+  width: 690rpx;
+  margin: 10rpx 0;
+  padding: 6rpx 20rpx;
+  background-color: #fff;
+  border-radius: 12rpx;
+  box-shadow: 0 0 16rpx 0 #aaa;
+}
+
+.order-info {
+  display: flex;
+  padding: 12rpx 6rpx;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1rpx #aaa dotted;
+}
+.order-category {
+  color: #333;
+  border: 1rpx #07c160 solid;
+  border-radius: 12rpx;
+}
+.order-price {
+  color: coral;
+  font-weight: bold;
+}
+
+/* 任务详情 */
+.form-item:first-child {
+  margin-top: 12rpx;
+}
+.form-item:not(:last-child){
+  border-bottom: 1rpx #aaa dotted;
+}
+.form-item {
+  padding: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-item .pickup {
+  display: flex;
+  width: 100%;
+}
+.form-item .pickup image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 30rpx;
+}
+.type {
+  padding: 6rpx;
+  color: #333;
+  border: 1rpx #07c160 solid;
+  border-radius: 12rpx;
+}
+.status {
+  color: coral;
+}
+.label {
+  width: 130rpx;
+  font-size: small;
+}
+.price {
+  flex: 1;
+  color: coral;
+  font-weight: bold;
+}
+.ID {
+  flex: 1;
+  color: #999;
+}
+.value {
+  flex: 1;
+}
+
+/* 接单按钮 */
+.btn {
+  display: flex;
+  margin-top: 15rpx;
+}
+.btn button {
+  margin: 0 20rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 32rpx;
+}
+.btns {
+  background: #ff6500;
+}
+.btns:active {
+  background: chocolate;
+}
+.back-btn {
+  background: #999;
 }

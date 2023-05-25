@@ -25,10 +25,11 @@ export function request(url, params, method, token) {
     : (header["token"] = token);
   if (isObjectValid(params) == false) {
     wx.showToast({
-      title: "参数不能为空",
+      title: "请补充必要信息",
       icon: "error",
-      duration: 1000,
+      duration: 1500,
     });
+    return {msg:"参数不能为空"}
   }
   // if (url.includes("Count") || url.includes("Earnings")) {
   // } else {
@@ -64,7 +65,8 @@ export function request(url, params, method, token) {
         console.log("失败：", err);
         wx.showToast({
           title: "网络连接失败",
-          duration: 500,
+          icon: 'error',
+          duration: 1500,
         });
         reject(err);
       },

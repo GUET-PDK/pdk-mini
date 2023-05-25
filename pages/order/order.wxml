@@ -7,19 +7,19 @@
 	</scroll-view>
 
 	<!-- swiper容器 -->
-	<swiper wx:if="{{orderList.length}}" class="swiper-container" current="{{currentIndex}}" style="height: {{scrollHeight}}rpx;" bindchange="swiperSwitch" next-margin="6rpx">
+	<swiper wx:if="{{orderList.length}}" class="swiper-container" current="{{currentIndex}}" style="height:{{scrollHeight}}rpx;" bindchange="swiperSwitch" next-margin="6rpx">
 		<swiper-item wx:for="{{tabs}}" wx:key="index">
 			<scroll-view class="scroll-container" scroll-y="true">
 				<view class="item-container">
 					<view class="item" wx:for="{{orderList}}" wx:key="id" data-id="{{item.orderId}}" catchtap="toOrderdDetail">
 						<!-- 第一行 订单类型 订单时间 订单状态 -->
 						<view>
-							<text class="order-category">{{item.order_category}}</text>
+							<text class="order-category">{{item.orderCategory}}</text>
 							<text>{{item.createTime}}</text>
-							<text class="order-type">{{item.order_type}}</text>
+							<text class="order-type">{{item.orderStatus}}</text>
 						</view>
 
-						<!-- 第三行 订单备注 -->
+						<!-- 第二行 订单备注 -->
 						<view>
 							<text>备注：<text>{{item.remark}}{{item.orderId}}</text></text>
 							<text>实付款 <text>￥{{item.price}}</text> </text>
@@ -31,13 +31,14 @@
 	</swiper>
 
 	<view wx:else class="empty">
-		<text class="iconfont icon-meiyoudingdan" style="font-size: 300rpx;"></text>
+		<text class="iconfont icon-meiyoudingdan" style="font-size: 240rpx;"></text>
 		<text>抱歉你还没有订单!</text>
 	</view>
 
+	<!-- 底部弹出抽屉 -->
 	<page-container show="{{showPage}}" position="bottom" round="{{true}}" bind:enter="getOrderDetail">
 		<view style="height: 60vh;">
-			<scroll-view scroll-y="true" style="height:{{pageHeight}}rpx;" enable-passive="{{true}}" enable-flex="true">
+			<scroll-view scroll-y="true" style="height:750rpx;" enable-passive="{{true}}" enable-flex="true">
 				<view class="form-item">
 					<view class="type {{orderDetail.orderType}}">{{orderDetail.orderCategory}}</view>
 					<view>
@@ -52,13 +53,13 @@
 					<view class="label">更新时间：</view>
 					<view class="value">{{orderDetail.updateTime}}</view>
 				</view>
-				<view class="form-item" wx:if="{{orderDetail.recipientAddress}}">
-					<view class="label">下单地址：</view>
-					<view class="value">{{orderDetail.recipientAddress}}</view>
-				</view>
 				<view class="form-item" wx:if="{{orderDetail.shippingAddress}}">
-					<view class="label">收件地址：</view>
+					<view class="label">下单地址：</view>
 					<view class="value">{{orderDetail.shippingAddress}}</view>
+				</view>
+				<view class="form-item" wx:if="{{orderDetail.recipientAddress}}">
+					<view class="label">收件地址：</view>
+					<view class="value">{{orderDetail.recipientAddress}}</view>
 				</view>
 				<view class="form-item" wx:if="{{orderDetail.pickUpPosition}}">
 					<view class="label">取货位置：</view>
@@ -74,11 +75,46 @@
 					<view class="label">订单ID：</view>
 					<view class="ID">{{orderDetail.orderId}}|<text class="iconfont icon-fuzhi"></text></view>
 				</view>
+				<view class="form-item" wx:if="{{orderDetail.pickupCode}}">
+					<view class="label">取件码：</view>
+					<view class="pickup">
+						<image src="{{orderDetail.pickupCode}}" catchtap="viewOriginalImage" />
+					</view>
+				</view>
 				<view class="form-item">
 					<view class="label">备注：</view>
 					<view class="value">{{orderDetail.remark}}</view>
 				</view>
+				<view class="btn">
+					<button class="back-btn" bindtap="backPage">返回</button>
+					<button class="btns" bindtap="confirmTask" data-id="{{orderDetail.orderId}}">确认完成</button>
+				</view>
 			</scroll-view>
 		</view>
 	</page-container>
+
+	<!-- 在需要使用拟态对话框的页面中 -->
+	<custom-dialog show="{{showDialog}}" bind:closeDialog="closeDialog">
+		<!-- 对话框内容 -->
+		<form bindsubmit="handleSubmit">
+			<view class="dialog-item">
+				<view class="dialog-label">评价：</view>
+				<input class="dialog-input" bindinput="handleInputChange" value="{{comment}}" placeholder="评价内容" />
+			</view>
+			<view class="dialog-item">
+				<view class="dialog-label">评星：</view>
+				<view class="dialog-rating">
+					<view wx:for="{{stars}}" wx:key="index">
+						<text class="iconfont icon-xingxing {{index < selectedStar ? 'iconcolor' : ''}}" bindtap="selectStar" data-star="{{index+1}}"></text>
+					</view>
+				</view>
+			</view>
+			<view class="dialog-item">
+				<view class="button-container">
+					<button bindtap="closeDialog" size="mini">返回</button>
+					<button form-type="submit" size="mini">提交</button>
+				</view>
+			</view>
+		</form>
+	</custom-dialog>
 </view>

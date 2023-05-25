@@ -16,9 +16,38 @@ Page({
     orderList: [],
     scrollHeight: 0,
     showPage: false,
-    pageHeight: 300,
+    showDialog: false,
     currentId: "",
     orderDetail: {},
+    // 拟态框数据
+    comment: "",
+    stars: [0, 0, 0, 0, 0], // 星级数组，初始为0表示未选中
+    grade: 0, // 当前评定的星级
+  },
+
+  /**
+   * 拟态框插槽事件
+   */
+  closeDialog() {
+    this.setData({ showDialog: false });
+  },
+  handleSubmit(e) {
+    // 处理表单提交逻辑
+    console.log("表单提交", e.detail.value);
+    this.closeDialog();
+  },
+  handleInputChange(e) {
+    // 处理输入框输入事件
+    this.setData({ comment: e.detail.value });
+  },
+  selectStar(e) {
+    const star = e.currentTarget.dataset.star; // 获取点击的星级
+    //console.log(star)
+    const stars = this.data.stars.map((item, index) => (index < star ? 1 : 0)); // 更新星级数组
+    this.setData({
+      stars,
+      grade: star,
+    });
   },
 
   /**
@@ -26,6 +55,7 @@ Page({
    */
   onLoad(options) {
     this.getOrder(0);
+    //console.log(this.data.orderList)
   },
 
   /**
@@ -38,10 +68,6 @@ Page({
         wx.getSystemInfoSync().windowHeight *
           (750 / wx.getSystemInfoSync().windowWidth) -
         70,
-      pageHeight:
-        wx.getSystemInfoSync().windowHeight *
-          (750 / wx.getSystemInfoSync().windowWidth) -
-        60,
     });
   },
 
@@ -54,7 +80,7 @@ Page({
    * 用户点击订单标签切换页面
    */
   tabSwitch: function (e) {
-    // console.log(e)
+    //console.log(e.currentTarget.dataset.index)
     let index = e.currentTarget.dataset.index;
     this.setData({
       currentIndex: index,
@@ -63,11 +89,12 @@ Page({
   },
 
   swiperSwitch: function (e) {
-    // console.log(e.detail.current)
+    //console.log(e.detail.current)
     let swiper_index = e.detail.current;
     this.setData({
       currentIndex: swiper_index,
     });
+    //this.getOrder(swiper_index)
   },
 
   /**
@@ -80,57 +107,98 @@ Page({
     });
     // console.log(e.currentTarget.dataset.id)
   },
+  /**
+   * 查看原图
+   */
+  viewOriginalImage(event) {
+    const originalImageUrl = event.currentTarget.dataset.src;
+    // 这里可以设定例如显示弹窗、跳转页面等查看方式
+    console.log("点击查看原图", originalImageUrl);
+  },
+  /**
+   * 点击返回 - 隐藏底部弹出抽屉
+   */
+  backPage() {
+    this.setData({
+      showPage: false,
+    });
+  },
+  /**
+   * 点击确认完成订单
+   */
+  async confirmTask(e) {
+    // console.log(e)
+    this.setData({
+      showDialog: true,
+    });
+    const { showDialog, grade, comment } = this.data;
+    const orderId = e.currentTarget.dataset.id;
+
+    if (grade && comment) {
+      try {
+        const res = await http(
+          "/user/commentOrder",
+          { orderId, grade, comment },
+          "POST",
+          wx.getStorageSync("token")
+        );
+
+        if (res.code === 200) {
+          wx.showToast({
+            title: "确认成功",
+            icon: "none",
+            duration: 1000,
+          });
+
+          this.setData({
+            showPage: false,
+            showDialog: false,
+            currentIndex: 3,
+          });
+
+          this.getOrder(3, true);
+          this.getOrder(0, true);
+        }
+      } catch (error) {
+        // 处理异步操作的错误
+        console.error(error);
+      }
+    }
+  },
 
   /**
-   * 弹窗进入中触发
+   * 弹窗进入中触发 - 查看详情
    */
   async getOrderDetail() {
     const orderId = this.data.currentId;
-    console.log(orderId);
+    // console.log(orderId);
     const res = await http(
       `/user/getOrderDetail?orderId=${orderId}`,
       "",
       "GET",
       wx.getStorageSync("token")
     );
-    // console.log(res)
+
     if (res.code == 200) {
       const orderDetail = res.data;
-      let orderCategory, orderStatus
-      switch (orderDetail.orderType) {
-        case 0:
-          orderCategory = "代取快递";
-          break;
-        case 1:
-          orderCategory = "代寄快递";
-          break;
-        case 2:
-          orderCategory = "代领外卖";
-          break;
-        case 3:
-          orderCategory = "其他服务";
-          break;
-      }
-      switch (orderDetail.orderStatus) {
-        case 0:
-          orderStatus = "待接单";
-          break;
-        case 1:
-          orderStatus = "配送中";
-          break;
-        case 2:
-          orderStatus = "已完成";
-          break;
-        default:
-          break;
-      }
-      orderDetail.orderCategory = orderCategory;
-      orderDetail.orderStatus = orderStatus;
-      // orderDetail.createTime = orderDetail.createTime.replace(/T/g, " ");
-      // orderDetail.updateTime = orderDetail.updateTime.replace(/T/g, " ");
+      const Category = {
+        0: "代取快递",
+        1: "代寄快递",
+        2: "代领外卖",
+        3: "其他服务",
+      }[orderDetail.orderType];
+      const Status = {
+        0: "待接单",
+        1: "配送中",
+        2: "已完成",
+      }[orderDetail.orderStatus];
+
+      orderDetail.orderCategory = Category;
+      orderDetail.orderStatus = Status;
+
       this.setData({
-        orderDetail: orderDetail
-      })
+        orderDetail: orderDetail,
+      });
     }
   },
 
@@ -139,7 +207,18 @@ Page({
    * @params 0 待接单，1 配送中，2 已完成，空 全部
    * @method GET
    */
-  async getOrder(i) {
+  async getOrder(i, update) {
+    // 先尝试从缓存中获取订单数据
+    const cachedOrders = wx.getStorageSync("cachedOrders") || [];
+    // 如果缓存中存在对应订单状态的数据，则直接使用缓存数据
+    if (cachedOrders[i] && !update) {
+      this.setData({
+        orderList: cachedOrders[i],
+      });
+      return;
+    }
+
+    // 如果缓存中不存在对应订单状态的数据，则从后端接口获取数据
     let url;
     if (i == 0) {
       url = `/user/selectOrder?orderStatus=${""}`;
@@ -147,44 +226,36 @@ Page({
       url = `/user/selectOrder?orderStatus=${i - 1}`;
     }
     const res = await http(url, "", "GET", wx.getStorageSync("token"));
+
     if (res.code == 200) {
       const list = res.data;
-      let order_category, type;
-      switch (i) {
-        case 1:
-          type = "待接单";
-          break;
-        case 2:
-          type = "配送中";
-          break;
-        case 3:
-          type = "已完成";
-          break;
-        default:
-          break;
-      }
-      list.forEach((list) => {
-        switch (list.order_type) {
-          case 0:
-            order_category = "代取快递";
-            break;
-          case 1:
-            order_category = "代寄快递";
-            break;
-          case 2:
-            order_category = "代领外卖";
-            break;
-          case 3:
-            order_category = "其他服务";
-            break;
-        }
-        list.order_category = order_category;
-        list.order_type = type;
-        // console.log(type)
-        list.createTime = list.createTime.replace(/T/g, " ");
+      const updateList = list.map((item) => {
+        const Category = {
+          0: "代取快递",
+          1: "代寄快递",
+          2: "代领外卖",
+          3: "其他服务",
+        }[item.order_type];
+        const status = {
+          1: "待接单",
+          2: "配送中",
+          3: "已完成",
+        }[i];
+
+        return {
+          ...item,
+          orderStatus: status,
+          orderCategory: Category,
+          createTime: item.createTime.replace(/T/g, " "),
+        };
       });
+
+      // 更新缓存数据
+      cachedOrders[i] = updateList;
+      wx.setStorageSync("cachedOrders", cachedOrders);
+      // console.log(updateList);
       this.setData({
-        orderList: list,
+        orderList: updateList,
       });
     }
   },

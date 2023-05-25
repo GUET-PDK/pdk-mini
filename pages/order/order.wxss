@@ -2,11 +2,7 @@
 .container {
   background-color: #f2f2f2;
 }
-.empty {
-  height: 95vh;
-  margin-top: 90rpx;
-}
-
+/* 横向标签 */
 .scroll-tabs {
   width: 680rpx;
   height: 60rpx;
@@ -28,11 +24,11 @@
   border-bottom: 1px red solid;
 }
 
+/* swiper容器 */
 .swiper-container {
   overflow: scroll;
   width: 750rpx;
 }
-
 .scroll-container {
   height: 100%;
   overflow: scroll;
@@ -82,11 +78,11 @@
   display: flex;
   justify-content: space-between;
 }
-.item view:last-child text:first-child text{
+.item view:last-child text:first-child text {
   color: #222;
   font-size: 32rpx;
 }
-.item view:last-child text:last-child text{
+.item view:last-child text:last-child text {
   color: coral;
   font-weight: 600;
 }
@@ -99,10 +95,10 @@
 .form-item:first-child {
   margin-top: 12rpx;
 }
-.form-item:first-child view:not(:first-child):not(:last-child){
+.form-item:first-child view:not(:first-child):not(:last-child) {
   display: flex;
 }
-.form-item:not(:last-child){
+.form-item:not(:last-child) {
   border-bottom: 1rpx #aaa dotted;
 }
 .form-item {
@@ -110,6 +106,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.form-item .pickup {
+  display: flex;
+  width: 100%;
+}
+.form-item .pickup image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 30rpx;
 }
 .type {
   padding: 6rpx;
@@ -135,4 +140,67 @@
 }
 .value {
   flex: 1;
+}
+
+/* 完成按钮 */
+.btn {
+  display: flex;
+  margin-top: 15rpx;
+}
+.btn button {
+  margin: 0 20rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 32rpx;
+}
+.btns {
+  background: #ff6500;
+}
+.btns:active {
+  background: chocolate;
+}
+.back-btn {
+  background: #999;
+}
+
+/* 拟态框 */
+.dialog-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.dialog-label {
+  width: 100rpx;
+  font-size: 28rpx;
+}
+
+.dialog-input {
+  flex: 1;
+  height: 60rpx;
+  padding: 10rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 4rpx;
+}
+.dialog-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-xingxing {
+  font-size: 32rpx;
+  margin-right: 6rpx;
+}
+.iconcolor {
+  color: gold;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+.button-container button {
+  flex: 1;
+  margin: 0 5px; /* 调整按钮之间的间距 */
 }

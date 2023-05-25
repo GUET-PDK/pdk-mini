@@ -1,4 +1,6 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "custom-dialog": "/components/order/custom-dialog/custom-dialog"
+    },
     "navigationBarTitleText": "个人订单"
 }
