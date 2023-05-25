@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "任务大厅"
 }
