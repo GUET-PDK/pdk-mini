@@ -85,7 +85,7 @@
 					<view class="label">备注：</view>
 					<view class="value">{{orderDetail.remark}}</view>
 				</view>
-				<view class="btn">
+				<view class="btn" wx:if="{{currentIndex === 2}}">
 					<button class="back-btn" bindtap="backPage">返回</button>
 					<button class="btns" bindtap="confirmTask" data-id="{{orderDetail.orderId}}">确认完成</button>
 				</view>
@@ -105,13 +105,13 @@
 				<view class="dialog-label">评星：</view>
 				<view class="dialog-rating">
 					<view wx:for="{{stars}}" wx:key="index">
-						<text class="iconfont icon-xingxing {{index < selectedStar ? 'iconcolor' : ''}}" bindtap="selectStar" data-star="{{index+1}}"></text>
+						<text class="iconfont icon-xingxing {{item === 1 ? 'iconcolor' : ''}}" bindtap="selectStar" data-star="{{index+1}}"></text>
 					</view>
 				</view>
 			</view>
 			<view class="dialog-item">
 				<view class="button-container">
-					<button bindtap="closeDialog" size="mini">返回</button>
+					<button catchtap="closeDialog" size="mini">返回</button>
 					<button form-type="submit" size="mini">提交</button>
 				</view>
 			</view>

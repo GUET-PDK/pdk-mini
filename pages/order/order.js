@@ -29,7 +29,11 @@ Page({
    * 拟态框插槽事件
    */
   closeDialog() {
-    this.setData({ showDialog: false });
+    this.setData({ 
+      showDialog: false,
+      showPage: false
+    });
+    this.toEvaluate()
   },
   handleSubmit(e) {
     // 处理表单提交逻辑
@@ -42,7 +46,7 @@ Page({
   },
   selectStar(e) {
     const star = e.currentTarget.dataset.star; // 获取点击的星级
-    //console.log(star)
+    console.log(star)
     const stars = this.data.stars.map((item, index) => (index < star ? 1 : 0)); // 更新星级数组
     this.setData({
       stars,
@@ -131,38 +135,45 @@ Page({
     this.setData({
       showDialog: true,
     });
-    const { showDialog, grade, comment } = this.data;
+  },
+  /**
+   * 提交订单评价
+   */
+  async toEvaluate() {
+    const { grade, comment } = this.data;
     const orderId = e.currentTarget.dataset.id;
+    if (grade || comment) {
+      var params = { orderId, grade, comment };
+    }
+    try {
+      const res = await http(
+        "/user/commentOrder",
+        { orderId, grade, comment },
+        "POST",
+        wx.getStorageSync("token")
+      );
 
-    if (grade && comment) {
-      try {
-        const res = await http(
-          "/user/commentOrder",
-          { orderId, grade, comment },
-          "POST",
-          wx.getStorageSync("token")
-        );
+      if (res.code === 200) {
+        wx.showToast({
+          title: "确认成功",
+          icon: "none",
+          duration: 1000,
+        });
 
-        if (res.code === 200) {
-          wx.showToast({
-            title: "确认成功",
-            icon: "none",
-            duration: 1000,
-          });
+        this.setData({
+          showPage: false,
+          showDialog: false,
+          currentIndex: 3,
+          grade: 0,
+          comment: ''
+        });
 
-          this.setData({
-            showPage: false,
-            showDialog: false,
-            currentIndex: 3,
-          });
-
-          this.getOrder(3, true);
-          this.getOrder(0, true);
-        }
-      } catch (error) {
-        // 处理异步操作的错误
-        console.error(error);
+        this.getOrder(3, true);
+        this.getOrder(0, true);
       }
+    } catch (error) {
+      // 处理异步操作的错误
+      console.error(error);
     }
   },
 
@@ -178,7 +189,7 @@ Page({
       "GET",
       wx.getStorageSync("token")
     );
-
+    console.log("订单详情", res);
     if (res.code == 200) {
       const orderDetail = res.data;
       const Category = {
@@ -191,7 +202,7 @@ Page({
         0: "待接单",
         1: "配送中",
         2: "已完成",
-      }[orderDetail.orderStatus];
+      }[this.data.currentIndex - 1];
 
       orderDetail.orderCategory = Category;
       orderDetail.orderStatus = Status;
@@ -215,7 +226,7 @@ Page({
       this.setData({
         orderList: cachedOrders[i],
       });
-      return;
+      console.log("当前", cachedOrders[i]);
     }
 
     // 如果缓存中不存在对应订单状态的数据，则从后端接口获取数据
@@ -253,7 +264,7 @@ Page({
       // 更新缓存数据
       cachedOrders[i] = updateList;
       wx.setStorageSync("cachedOrders", cachedOrders);
-      // console.log(updateList);
+      console.log(updateList);
       this.setData({
         orderList: updateList,
       });
