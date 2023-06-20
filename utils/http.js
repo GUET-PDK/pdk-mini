@@ -1,10 +1,6 @@
 import FormData from "./formData";
 import { isObjectValid } from "./util";
-// url请求前缀
-// http://117.50.177.54:8080
-// http://43.138.225.254:8080
-// http://pdk.usail.asia:88
-const BaseUrl = "http://pdk.usail.asia:88";
+const BaseUrl = "http://localhost:8888";
 const header = {
   "content-type": "application/json",
 };
