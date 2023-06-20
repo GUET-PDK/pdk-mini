@@ -29,11 +29,11 @@ Page({
    * 拟态框插槽事件
    */
   closeDialog() {
-    this.setData({ 
+    this.setData({
       showDialog: false,
-      showPage: false
+      showPage: false,
     });
-    this.toEvaluate()
+    this.toEvaluate();
   },
   handleSubmit(e) {
     // 处理表单提交逻辑
@@ -46,7 +46,7 @@ Page({
   },
   selectStar(e) {
     const star = e.currentTarget.dataset.star; // 获取点击的星级
-    console.log(star)
+    console.log(star);
     const stars = this.data.stars.map((item, index) => (index < star ? 1 : 0)); // 更新星级数组
     this.setData({
       stars,
@@ -165,7 +165,7 @@ Page({
           showDialog: false,
           currentIndex: 3,
           grade: 0,
-          comment: ''
+          comment: "",
         });
 
         this.getOrder(3, true);
